@@ -1,0 +1,53 @@
+; Área de Código
+LXI H, dado01      ; HL <- addr(dado01)
+MOV A, M           ; A <- MEM[HL] (Parte baixa de dado01)
+INX H
+MOV B, M           ; B <- MEM[HL] (Parte alta de dado01)
+INX H
+
+ADD M              ; A <- A + MEM[HL] (Parte baixa de dado02)
+MOV C, A           ; C <- Parte baixa parcial do resultado
+INX H
+ADC M              ; A <- A + MEM[HL] + Carry (Parte alta de dado02)
+MOV D, A           ; D <- Parte alta parcial do resultado
+INX H
+
+ADD M              ; A <- A + MEM[HL] (Parte baixa de dado03)
+MOV C, A           ; Atualiza parte baixa do resultado
+INX H
+ADC M              ; A <- A + MEM[HL] + Carry (Parte alta de dado03)
+MOV D, A           ; Atualiza parte alta do resultado
+INX H
+
+; Complemento de 2 para dado04
+MOV A, M           ; A <- Parte baixa de dado04
+CMA                ; A <- ~A (Complemento de 1)
+ADI 01h            ; A <- A + 1 (Complemento de 2)
+MOV E, A           ; E <- Parte baixa do complemento de dado04
+INX H
+MOV A, M           ; A <- Parte alta de dado04
+CMA                ; A <- ~A (Complemento de 1)
+ADC 00h            ; A <- A + Carry
+MOV F, A           ; F <- Parte alta do complemento de dado04
+
+; Subtração do complemento de 2
+MOV A, C           ; A <- Parte baixa do resultado parcial
+ADD E              ; A <- A + E
+MOV C, A           ; Atualiza parte baixa do resultado
+MOV A, D           ; A <- Parte alta do resultado parcial
+ADC F              ; A <- A + F + Carry
+MOV D, A           ; Atualiza parte alta do resultado
+
+; Armazena o resultado final
+LXI H, dado05
+MOV M, C           ; MEM[dado05] <- Parte baixa
+INX H
+MOV M, D           ; MEM[dado05+1] <- Parte alta
+HLT                ; halt
+
+; Área de Dados
+dado01: DW 1234h   ; primeiro dado 
+dado02: DW 5678h   ; segundo dado 
+dado03: DW 9ABCh   ; terceiro dado 
+dado04: DW 1234h   ; quarto dado 
+dado05: DW 0000h   ; resultado 

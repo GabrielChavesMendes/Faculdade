@@ -1,0 +1,73 @@
+-- Criação da tabela de ADMIN
+
+CREATE TABLE Admin (
+hospital_id INT REFERENCES Hospital(id) ON DELETE CASCADE,
+usuario VARCHAR(45),
+senha VARCHAR(45)
+);
+
+-- Criação da tabela de Pessoa
+CREATE TABLE Pessoa (
+    cpf VARCHAR(11) PRIMARY KEY,
+    nome VARCHAR(60) NOT NULL,
+    tiposanguineo VARCHAR(3) NOT NULL,
+    idade INT NOT NULL,
+    altura INT NOT NULL,
+    peso FLOAT NOT NULL,
+    alergias VARCHAR(90) NOT NULL,
+    senha VARCHAR(45)
+);
+
+-- Criação da tabela de Hospital
+CREATE TABLE Hospital (
+    id SERIAL NOT NULL PRIMARY KEY UNIQUE,
+    nome VARCHAR(45) NOT NULL
+);
+
+-- Criação da tabela de Médico
+CREATE TABLE Medico (
+    crm VARCHAR(20) PRIMARY KEY,  -- PRIMARY KEY já é único
+    hospital_id INT REFERENCES Hospital(id) ON DELETE CASCADE,
+    senha VARCHAR(20),
+    nome VARCHAR(45) NOT NULL,
+    especialidade VARCHAR(30),
+    email VARCHAR(30)
+);
+
+-- Criação da tabela de Farmacêutico
+CREATE TABLE Farmaceutico (
+    crf VARCHAR(20) PRIMARY KEY,
+    hospital_id INT REFERENCES Hospital(id) ON DELETE CASCADE,
+    senha VARCHAR(20) NOT NULL,
+    nome VARCHAR(45) NOT NULL,
+    email VARCHAR(30)
+);
+
+
+-- Criação da tabela de Remédio
+CREATE TABLE Remedio (
+    id SERIAL PRIMARY KEY,  -- SERIAL já é auto-incrementado e PRIMARY KEY
+    hospital_id INT REFERENCES Hospital(id) ON DELETE SET NULL,
+    nome VARCHAR(100) NOT NULL,
+    quantidade INT
+);
+
+-- Criação da tabela de Lote de Remédio
+CREATE TABLE Lote (
+    remedio_id INT REFERENCES Remedio(id) ON DELETE CASCADE,
+    codigo VARCHAR(45) NOT NULL,
+    data_validade DATE NOT NULL,
+    data_fabricacao DATE NOT NULL,
+    PRIMARY KEY (remedio_id, codigo)  -- Definindo a chave primária composta
+);
+
+
+-- Criação da tabela de Prontuário
+CREATE TABLE Prontuario (
+    cpf_pessoa VARCHAR(11) REFERENCES Pessoa(cpf) ON DELETE CASCADE,
+    hospital_id INT REFERENCES Hospital(id) ON DELETE SET NULL,
+    descricao TEXT NOT NULL,
+    data_atendimento DATE NOT NULL,
+    status VARCHAR(45) NOT NULL,
+    PRIMARY KEY (cpf_pessoa, data_atendimento)  -- Definindo chave composta para garantir um atendimento único por pessoa
+);

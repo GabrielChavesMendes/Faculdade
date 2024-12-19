@@ -1,0 +1,49 @@
+Exercício 1 a)
+
+a)26(10) = X(2)
+26/2 = 13, resto 0
+13/2 = 6, resto 1
+6/2 = 3, resto 0
+3/2 = 1, resto 1
+Resultado = 11010(2)
+
+b)53(10) = x(2)
+53/2 = 26, resto 1
+26/2 = 13, resto 0
+13/2 = 6, resto 1
+6/2 = 3, resto 0
+3/2 = 1, resto 1
+Resultado = 110101(2)
+
+c)713(10) = X(2)
+713/2 = 356, resto 1
+356/2 = 178, resto 0
+178/2 = 89, resto 0
+89/2 = 44, resto 1
+44/2 = 22, resto 0
+22/2 = 11, resto 0
+11/2 = 5, resto 1
+5/2 = 2, resto 1
+2/2 = 1, resto 0
+Resultado = 1011001001(2)
+
+d)213(10) = X(2)
+213/2 = 106, resto 1
+106/2 = 53, resto 0
+53/2 = 26, resto 1
+26/2 = 13, resto 0
+13/2 = 6, resto 1
+6/2 = 3, resto 0
+3/2 = 1, resto 1
+Resultado = 11010101(2)
+
+e)365(10) = X(2)
+365/2 = 182, resto 1
+182/2 = 91, resto 0
+91/2 = 45, resto 1
+45/2 = 22, resto 1
+22/2 = 11, resto 0
+11/2 = 5, resto 1
+5/2 = 2, resto 1
+2/2 = 1, resto 0
+Resultado = 101101101(2)

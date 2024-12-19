@@ -1,0 +1,174 @@
+$date
+	Sun Oct 27 23:40:52 2024
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module Guia_1205 $end
+$var wire 1 ! clock $end
+$upscope $end
+$scope module Guia_1205 $end
+$var wire 8 " result [7:0] $end
+$upscope $end
+$scope module Guia_1205 $end
+$var reg 3 # address [2:0] $end
+$upscope $end
+$scope module Guia_1205 $end
+$var reg 8 $ value [7:0] $end
+$upscope $end
+$scope module Guia_1205 $end
+$var reg 1 % read_write $end
+$upscope $end
+$scope module Guia_1205 $end
+$var reg 1 & clear $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+0&
+0%
+b0 $
+b0 #
+b0 "
+0!
+$end
+#3
+1%
+b1 $
+#6
+bx "
+1!
+#12
+0!
+#15
+b1000 $
+b1 #
+#18
+1!
+#24
+0!
+#27
+b0x "
+b10000 $
+b10 #
+#30
+bx "
+1!
+#36
+0!
+#39
+b10000000 $
+b100 #
+#42
+b0 "
+1!
+#48
+bx "
+0!
+#51
+0%
+b0 $
+b0 #
+#54
+b0 "
+1!
+#60
+b0x "
+0!
+#63
+b0x000 "
+b1 #
+#66
+1!
+#72
+0!
+#75
+b0x "
+b10 #
+#78
+b0x0000 "
+1!
+#84
+0!
+#87
+b100 #
+#90
+bx0000000 "
+1!
+#96
+0!
+#99
+1%
+b10 $
+b0 #
+#102
+b0 "
+1!
+#108
+b0x "
+0!
+#111
+b0x000 "
+b100 $
+b1 #
+#114
+1!
+#120
+0!
+#123
+b10 "
+b100000 $
+b10 #
+#126
+b0x0000 "
+1!
+#132
+0!
+#135
+b1000000 $
+b100 #
+#138
+b0 "
+1!
+#144
+bx0000000 "
+0!
+#147
+0%
+b0 $
+b0 #
+#150
+b0 "
+1!
+#156
+b10 "
+0!
+#159
+b100 "
+b1 #
+#162
+1!
+#168
+0!
+#171
+b10 "
+b10 #
+#174
+b100000 "
+1!
+#180
+0!
+#183
+b100 #
+#186
+b1000000 "
+1!
+#192
+0!
+#195

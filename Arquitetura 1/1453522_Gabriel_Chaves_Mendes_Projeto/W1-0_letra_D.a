@@ -1,0 +1,23 @@
+; Série de Fibonacci
+Main: load zero         ; acc <- 0 (primeiro número Fibonacci)
+      write             ; output <- acc
+      load one          ; acc <- 1 (segundo número Fibonacci)
+      write             ; output <- acc
+loop: load fib1         ; acc <- fib1
+      add fib2          ; acc <- fib1 + fib2
+      store temp        ; temp <- acc
+      load fib2         ; acc <- fib2
+      store fib1        ; fib1 <- fib2
+      load temp         ; acc <- temp
+      store fib2        ; fib2 <- temp
+      write             ; output <- acc
+      sub six           ; acc <- counter - 6
+      jz done           ; Se já calculamos 6 números, sair
+      jmp loop          ; Senão, continuar o loop
+done: stop              ; Finalizar programa
+zero: .data 2 0
+one: .data 2 1
+fib1: .data 2 0         ; Primeiro número Fibonacci
+fib2: .data 2 1         ; Segundo número Fibonacci
+temp: .data 2 0         ; Armazena temporário
+six: .data 2 6          ; Número 6 para controlar loop

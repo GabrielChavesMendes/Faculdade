@@ -1,0 +1,25 @@
+ORG 1000H          ; Origem do programa na memória
+
+; --- Multiplicação de dado02 por 2 ---
+LDA dado02          ; Carrega dado02 no acumulador
+ADD A               ; Soma o acumulador com ele mesmo (multiplica por 2)
+MOV B, A            ; Armazena o resultado (2 * dado02) em B
+
+; --- Subtração de dado01 - 2 * dado02 ---
+LDA dado01          ; Carrega dado01 no acumulador
+SUB B               ; Subtrai 2 * dado02 (armazenado em B)
+MOV C, A            ; Armazena o resultado da subtração em C
+
+; --- Multiplicação do resultado por 2 ---
+ADD C               ; Soma o acumulador com o resultado anterior (multiplica por 2)
+MOV D, A            ; Armazena o resultado final em D (dado03)
+
+; --- Armazenar o resultado em dado03 ---
+STA dado03          ; Armazena dado03
+
+HLT                 ; Finaliza o programa
+
+; --- Dados na memória ---
+dado01: DB 15H      ; Exemplo: dado01 = 15 (8 bits)
+dado02: DB 07H      ; Exemplo: dado02 = 07 (8 bits)
+dado03: DB 00H      ; Resultado inicializado com 0

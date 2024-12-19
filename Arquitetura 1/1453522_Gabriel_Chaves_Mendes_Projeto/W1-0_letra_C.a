@@ -1,0 +1,14 @@
+; XOR usando NAND
+Main: load zero     ; acc <- 0
+      store res     ; res <- 0
+      load one      ; acc <- 1
+      NAND res      ; temp <- NAND(1, 0) -> temp = 1
+      store temp    ; Salva temp
+      load one      ; acc <- 1
+      NAND temp     ; acc <- NAND(1, temp) -> acc = 0
+      write         ; output <- acc (XOR)
+      stop          ; Finaliza
+zero: .data 2 0
+one: .data 2 1
+res: .data 2 0
+temp: .data 2 0

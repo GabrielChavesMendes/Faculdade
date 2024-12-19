@@ -1,0 +1,26 @@
+Nome: 
+Gabriel
+Numero: 
+3198911-0304
+Endereco Residencial: 
+Rua Alameda, 94
+Endereco Profissional: 
+Rua Comendador, 115
+
+Nome: 
+Arthur
+Numero: 
+3199515-2022
+Endereco Residencial: 
+Rua Igarape, 88
+Endereco Profissional: 
+Av Contorno, 725
+
+Nome: 
+Yasmin
+Numero: 
+319820-3314
+Endereco Residencial: 
+Rua Esmeraldas, 120
+Endereco Profissional: 
+Av Coronel Paixao, 1470

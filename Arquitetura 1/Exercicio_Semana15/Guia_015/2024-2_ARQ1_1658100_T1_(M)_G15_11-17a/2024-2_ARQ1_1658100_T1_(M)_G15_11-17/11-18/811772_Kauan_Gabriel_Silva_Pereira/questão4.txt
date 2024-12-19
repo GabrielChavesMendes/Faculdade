@@ -1,0 +1,17 @@
+; Programa para calcular dado03 = 2 * (dado01 - 2 * dado02)
+
+START:
+    
+    MOV A, dado02     
+    ADD A              
+    MOV B, A          
+
+    
+    MOV A, dado01     
+    SUB B              
+
+    ; Calcular o dobro do resultado
+    ADD A              
+    MOV dado03, A      
+
+    HLT                ; Fim do programa

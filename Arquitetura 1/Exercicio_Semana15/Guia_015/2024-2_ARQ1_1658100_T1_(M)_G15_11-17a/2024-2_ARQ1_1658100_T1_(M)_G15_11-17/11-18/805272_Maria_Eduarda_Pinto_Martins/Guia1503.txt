@@ -1,0 +1,18 @@
+LDA dado01
+SUB dado02
+DAA
+
+ADD dado03
+DAA
+
+SUB dado04
+DAA
+
+STA dado05
+HLT
+
+dado01: 03H
+dado02: 03H
+dado03: 02H
+dado04: 02H
+dado05: 00H

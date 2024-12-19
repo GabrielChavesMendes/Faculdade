@@ -1,0 +1,19 @@
+; Guia_1501.txt
+; 1641880 - Matheus Felipe Cavalcanti Xavier
+; Calcular dado04 = dado01 + dado02 - dado03
+
+; Área de código
+LXI H, dado01   ; HL <- addr dado01           // Carrega o endereço de dado01
+MOV A, M        ; A <- MEM[HL]                // A = dado01
+INX H           ; HL <- HL+1                  // Endereço do dado02
+ADD M           ; A <- A + MEM[HL]            // A = dado01 + dado02
+INX H           ; HL <- HL+1                  // Endereço do dado03
+SUB M           ; A <- A - MEM[HL]            // A = dado01 + dado02 - dado03
+STA dado04      ; Armazenar resultado em dado04
+HLT             ; Parar execução
+
+; Área de dados
+dado01: DB 02h  ; Primeiro dado em hexadecimal
+dado02: DB 03h  ; Segundo dado em hexadecimal
+dado03: DB 01h  ; Terceiro dado em hexadecimal (para subtrair)
+dado04: DB 00h  ; Resultado em hexadecimal

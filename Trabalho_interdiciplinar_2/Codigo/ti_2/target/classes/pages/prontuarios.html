@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <link rel="stylesheet" href="../assets/css/stylereceitas.css" />
+    <title>Prontuários Médicos</title>
+</head>
+
+<body>
+    <main>
+        <header>
+            <nav class="nav-bar">
+                <div class="logo">
+                    <a href="../pages/index.html"><img src="../assets/images/logMediLog.png" id="logo" alt="Logo" /></a>
+                </div>
+                <div class="nav-list">
+                    <ul>
+                        <li class="nav-item"><a href="#inicio" class="nav-link">Início</a></li>
+                        <li class="nav-item"><a href="#projetos" class="nav-link">Projetos</a></li>
+                        <li class="nav-item"><a href="#footer" class="nav-link">Sobre</a></li>
+                    </ul>
+                </div>
+                <div class="mobile-menu-icon">
+                    <button onclick="menuShow()"><img class="icon" src="./assets/img/open-menu-white.svg"
+                            alt="Menu" /></button>
+                </div>
+            </nav>
+        </header>
+
+        <div class="container mt-5">
+            <div class="row justify-content-center bg-light rounded-3">
+                <div class="col-12 col-sm-10">
+                    <h3 class="text-center mb-4 mt-3 border-bottom border-success">Prontuários Médicos</h3>
+                    <div class="barra-pesquisa">
+                        <input id="pesquisaCPF" class="barra-pesquisa" type="search" placeholder="CPF" />
+                        <button class="btn btn-primary pesquisar" onclick="pesquisarProntuarios()">Pesquisar</button>
+                    </div>
+                    <!-- Botões para criar um novo prontuário e cadastrar pessoa -->
+                    <div class="d-flex justify-content-between criar_prontuario">
+                        <button class="btn btn-primary criar_prontuario" data-bs-toggle="modal"
+                            data-bs-target="#prontuarioModal">Adicionar Prontuário</button>
+                        <button class="btn btn-primary" style="margin-left: 20px; margin-bottom: 10px;"
+                            data-bs-toggle="modal" data-bs-target="#pessoaModal">Cadastrar Pessoa</button>
+
+                        <!-- Botão para Editar Prontuário -->
+                        <button class="btn btn-warning" style="margin-left: 20px; margin-bottom: 10px;"
+                            id="editarProntuario" data-bs-toggle="modal" data-bs-target="#editarProntuarioModal">
+                            Editar Prontuário
+                        </button>
+
+                        <!-- Botão para Excluir Prontuário -->
+                        <button class="btn btn-danger" style="margin-left: 20px; margin-bottom: 10px;"
+                            id="excluirProntuario">Excluir Prontuário</button>
+                    </div>
+
+                    <!-- Preenchimento dos cards dos prontuários -->
+                    <div class="prontuarios" id="prontuarios"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="editarProntuarioModal" tabindex="-1" aria-labelledby="editarProntuarioModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editarProntuarioModalLabel">Editar Prontuário</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="editarProntuarioForm">
+                            <div class="mb-3">
+                                <label for="cpfPaciente" class="form-label">CPF do Paciente</label>
+                                <input type="text" class="form-control" id="cpfPacienteed" required />
+                            </div>
+                            <div class="mb-3">
+                                <label for="medicoResp" class="form-label">Médico Responsável</label>
+                                <input type="text" class="form-control" id="medicoResped" required />
+                            </div>
+                            <div class="mb-3">
+                                <label for="dataAtendimento" class="form-label">Data de Atendimento</label>
+                                <input type="date" class="form-control" id="dataAtendimentoed" required />
+                            </div>
+                            <div class="mb-3">
+                                <label for="status" class="form-label">Status</label>
+                                <input type="text" class="form-control" id="statused" required />
+                            </div>
+                            <div class="mb-3">
+                                <label for="descricao" class="form-label">Descrição do Caso</label>
+                                <textarea class="form-control" id="descricaoed" rows="3" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-warning" id="esseaq">Editar Prontuário</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pop-up para criar um novo prontuário -->
+        <div class="modal fade" id="prontuarioModal" tabindex="-1" aria-labelledby="prontuarioModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="prontuarioModalLabel">Criar Prontuário</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="prontuarioForm">
+                            <div class="mb-3">
+                                <label for="cpfPaciente" class="form-label">CPF do Paciente</label>
+                                <input type="text" class="form-control" id="cpfPaciente" required />
+                            </div>
+                            <div class="mb-3">
+                                <label for="medicoResp" class="form-label">Médico Responsável</label>
+                                <input type="text" class="form-control" id="medicoResp" required />
+                            </div>
+                            <div class="mb-3">
+                                <label for="dataAtendimento" class="form-label">Data de Atendimento</label>
+                                <input type="date" class="form-control" id="dataAtendimento" required />
+                            </div>
+                            <div class="mb-3">
+                                <label for="status" class="form-label">Status</label>
+                                <input type="text" class="form-control" id="status" required />
+                            </div>
+                            <div class="mb-3">
+                                <label for="descricao" class="form-label">Descrição do Caso</label>
+                                <textarea class="form-control" id="descricao" rows="3" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-success">Criar Prontuário</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pop-up para cadastrar uma nova pessoa -->
+        <div class="modal fade" id="pessoaModal" tabindex="-1" aria-labelledby="pessoaModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="pessoaModalLabel">Cadastrar Pessoa</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="pessoaForm">
+                            <div class="mb-3">
+                                <label for="cpf" class="form-label">CPF</label>
+                                <input type="text" class="form-control" id="cpf" required />
+                            </div>
+                            <div class="mb-3">
+                                <label for="nome" class="form-label">Nome</label>
+                                <input type="text" class="form-control" id="nome" required />
+                            </div>
+                            <div class="mb-3">
+                                <label for="idade" class="form-label">Idade</label>
+                                <input type="number" class="form-control" id="idade" required />
+                            </div>
+                            <div class="mb-3">
+                                <label for="tipoSanguineo" class="form-label">Tipo Sanguíneo</label>
+                                <select class="form-select" id="tipoSanguineo" required>
+                                    <option value="" disabled selected>Selecione um tipo sanguíneo</option>
+                                    <option value="1">A+</option>
+                                    <option value="2">A-</option>
+                                    <option value="3">B+</option>
+                                    <option value="4">B-</option>
+                                    <option value="5">AB+</option>
+                                    <option value="6">AB-</option>
+                                    <option value="7">O+</option>
+                                    <option value="8">O-</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="alergia" class="form-label">Alergia</label>
+                                <input type="text" class="form-control" id="alergia" required />
+                            </div>
+                            <div class="mb-3">
+                                <label for="peso" class="form-label">Peso</label>
+                                <input type="text" class="form-control" id="peso" required />
+                            </div>
+                            <div class="mb-3">
+                                <label for="altura" class="form-label">Altura</label>
+                                <input type="text" class="form-control" id="altura" required />
+                            </div>
+                            <div class="mb-3">
+                                <label for="senha" class="form-label">Senha</label>
+                                <input type="password" class="form-control" id="senha" required />
+                            </div>
+                            <button type="submit" class="btn btn-success">Cadastrar Pessoa</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Pop-up para mostrar detalhes do prontuário-->
+        <div class="modal fade" id="detalhesModal" tabindex="-1" aria-labelledby="detalhesModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="detalhesModalLabel">Detalhes do Prontuário</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="modal-detalhes-conteudo"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div id="footer_content">
+            <div id="footer_contacts">
+                <a href="../pages/index.html"><img src="../assets/images/logMediLog.png" id="logo" alt="Logo" /></a>
+                <div id="footer_social_media">
+                    <a href="#" class="footer-link" id="instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="footer-link" id="facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="footer-link" id="whatsapp"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <ul class="footer-list">
+                <li>
+                    <h3>Blog</h3>
+                </li>
+                <li><a href="#" class="footer-link">Tech</a></li>
+                <li><a href="#" class="footer-link">Adventures</a></li>
+                <li><a href="#" class="footer-link">Music</a></li>
+            </ul>
+            <ul class="footer-list">
+                <li>
+                    <h3>Products</h3>
+                </li>
+                <li><a href="#" class="footer-link">App</a></li>
+                <li><a href="#" class="footer-link">Desktop</a></li>
+                <li><a href="#" class="footer-link">Cloud</a></li>
+            </ul>
+            <div id="footer_subscribe">
+                <h3>Subscribe</h3>
+                <p>Enter your e-mail to get notified about our news solutions</p>
+                <div id="input_group">
+                    <input type="email" id="email" />
+                    <button><i class="fa-regular fa-envelope"></i></button>
+                </div>
+            </div>
+        </div>
+        <div id="footer_copyright">
+            &#169; 2024 all rights reserved
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <script>
+
+        document.getElementById('esseaq').addEventListener('click', function () {
+
+            const cpf = document.getElementById('cpfPacienteed').value;
+            const medico = document.getElementById('medicoResped').value;
+            const dataInternacao = document.getElementById('dataAtendimentoed').value;
+            const status = document.getElementById('statused').value;
+            const descricao = document.getElementById('descricaoed').value;
+
+            console.log(cpf + medico + dataInternacao + status + descricao);
+
+            const dados = {
+                cpf: cpf,
+                medico: medico,
+                dataInternacao: dataInternacao,
+                status: status,
+                descricao: descricao
+            };
+
+
+            fetch("http://localhost:4567/prontuarios-editar", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(dados) // Envio do CPF no corpo da requisição
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Erro ao editar prontuário.');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Prontuário editado com sucesso:', data);
+                })
+                .catch(error => {
+                    console.error('Erro:', error);
+                    alert('Erro ao editar prontuário.');
+                });
+
+            alert('Função de edição foi implementada!');
+        });
+
+        // Função para excluir um prontuário
+        document.getElementById('excluirProntuario').addEventListener('click', function () {
+            const cpf = prompt("Digite o CPF do prontuário que deseja excluir:");
+            if (cpf) {
+                // Criação do objeto de dados a ser enviado
+                const dadosExclusao = { cpf: cpf };
+
+                // Envio da requisição para excluir o prontuário
+                fetch("http://localhost:4567/prontuarios-excluir", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(dadosExclusao) // Envio do CPF no corpo da requisição
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Erro ao excluir prontuário.');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log('Prontuário excluído com sucesso:', data);
+                        alert(`Prontuário com CPF ${cpf} excluído com sucesso!`); // Notificação de sucesso
+                    })
+                    .catch(error => {
+                        console.error('Erro:', error);
+                        alert('Erro ao excluir prontuário.');
+                    });
+            }
+        });
+
+
+        let prontuariosData = []; // Array para armazenar os prontuários
+
+        // Função para carregar prontuários
+        function carregarProntuarios() {
+            fetch("http://localhost:4567/prontuarios")
+                .then(response => response.json())
+                .then(data => {
+                    prontuariosData = data; // Armazena os prontuários no array global
+                    exibirProntuarios(prontuariosData); // Exibe todos os prontuários
+                })
+                .catch(error => console.error('Erro ao carregar os prontuários:', error));
+        }
+
+        // Função para exibir prontuários
+        function exibirProntuarios(prontuarios) {
+            const cardbody = document.getElementById("prontuarios");
+            cardbody.innerHTML = ''; // Limpa os prontuários exibidos
+
+            prontuarios.forEach(prontuario => {
+                const {
+                    cpf,
+                    nome,
+                    medicoResp,
+                    tipoSanguineo,
+                    dataAtendimento,
+                    status,
+                    descricao,
+                    alergia,
+                    peso,
+                    altura,
+                    idade,
+                    idHospital,
+                    nomeHospital
+                } = prontuario;
+
+
+                // Novo card formatado
+                const novoCard = `
+          <div class="prontuarios" id="prontuarios" data-cpf="${cpf}">
+            <div class="card mb-3" style="cursor: pointer;" onclick="mostrarDetalhes('${nome}', '${medicoResp}', ${tipoSanguineo}, '${dataAtendimento}', '${status}', '${descricao}', '${alergia}', '${peso}', '${altura}', '${nomeHospital}')">
+              <div class="row g-0">
+                <div class="col-md-4" style="padding-bottom: 5px">
+                <!--  <img src="https://randomuser.me/api/portraits/men/${idade}.jpg" class="img-fluid rounded-start" style="width: 200px; height: auto" alt="${nome}" /> -->
+                </div>
+                <div class="col-md-9">
+  <div class="card-body">
+    <h5 class="card-title mb-3">${nome}</h5>
+    <h6 class="card-subtitle text-muted mb-4">CPF: ${cpf}</h6>
+
+    <div class="mb-3">
+      <strong>Médico:</strong> ${medicoResp}
+    </div>
+
+    <div class="mb-3">
+      <strong>Status:</strong> ${status}
+    </div>
+
+    <div>
+      <strong>Hospital:</strong> ${nomeHospital}
+    </div>
+  </div>
+</div>
+              </div>
+            </div>
+          </div>
+        `;
+
+                // Adiciona o novo card ao contêiner de cards
+                cardbody.innerHTML += novoCard;
+            });
+        }
+
+        // Função para pesquisar prontuários com base no CPF
+        function pesquisarProntuarios() {
+            const cpfBusca = document.getElementById("pesquisaCPF").value.trim();
+            const resultados = prontuariosData.filter(prontuario => prontuario.cpf.includes(cpfBusca));
+            exibirProntuarios(resultados); // Exibe apenas os prontuários que correspondem à pesquisa
+        }
+
+        // Carrega os prontuários ao carregar a página
+        window.onload = carregarProntuarios();
+
+        function mostrarDetalhes(nome, medico, tipoSanguineo, dataInternacao, status, descricao, alergia, peso, altura, nomeHospital) {
+            var A;
+            switch (tipoSanguineo) {
+                case 1:
+                    var A = "A+";
+                    break;
+                case 2:
+                    var A = "A-";
+                    break;
+                case 3:
+                    var A = "B+";
+                    break;
+                case 4:
+                    var A = "B-";
+                    break;
+                case 5:
+                    var A = "AB+";
+                    break;
+                case 6:
+                    var A = "AB-";
+                    break;
+                case 7:
+                    var A = "O+";
+                    break;
+                case 8:
+                    var A = "O-";
+                    break;
+                default:
+                    System.out.println("Tipo Sanguíneo inválido.");
+                    break;
+            }
+
+            const detalhesConteudo = `
+    <div class="pop">
+      <h5 class="pop-title" style="font-weight: bold;">Nome do Paciente: ${nome}</h5>
+      <h5 class="pop-title" style="font-weight: bold;">Médico Responsável: ${medico}</h5>
+      <p><strong>Tipo Sanguíneo:</strong> ${A}</p>
+      <p><strong>Alergia:</strong> ${alergia}</p>
+      <p><strong>Peso:</strong> ${peso}</p>
+      <p><strong>Altura:</strong> ${altura}</p>
+      <p><strong>Data de Internação:</strong> ${dataInternacao}</p>
+      <p><strong>Status:</strong> ${status}</p>
+      <p><strong>Descrição:</strong> ${descricao}</p>
+      <p><strong>Hospital:</strong> ${nomeHospital}</p>
+    </div>
+  `;
+            document.getElementById('modal-detalhes-conteudo').innerHTML = detalhesConteudo;
+            var modal = new bootstrap.Modal(document.getElementById('detalhesModal'));
+            modal.show();
+        }
+
+        document.getElementById('prontuarioForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            // Coleta de dados do prontuário
+            const CPF = document.getElementById('cpfPaciente').value;
+            const medico = document.getElementById('medicoResp').value;
+            const dataInternacao = document.getElementById('dataAtendimento').value;
+            const status = document.getElementById('status').value;
+            const descricao = document.getElementById('descricao').value;
+
+            // Dados para enviar ao servidor
+            const prontuarioData = {
+                CPF: CPF,
+                medico: medico,
+                dataInternacao: dataInternacao,
+                status: status,
+                descricao: descricao
+            };
+
+            // Envia o prontuário via fetch para o servidor
+            fetch('http://localhost:4567/cadastrar-prontuario', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(prontuarioData)
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Erro ao cadastrar prontuário.');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+
+                    console.log('Prontuario cadastrada com sucesso:', data);
+
+                    // Limpa o formulário
+                    document.getElementById('prontuarioForm').reset();
+
+                    // Fecha o modal
+                    var modal = bootstrap.Modal.getInstance(document.getElementById('prontuarioModal'));
+                    modal.hide();
+                })
+                .catch(error => {
+                    console.error('Erro:', error);
+                    alert('Erro ao cadastrar prontuário.');
+                });
+
+            alert("Prontuario cadastrada com sucesso!");
+        });
+
+
+        document.getElementById('pessoaForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            // Coleta de dados da pessoa
+            const CPF = document.getElementById('cpf').value;
+            const nome = document.getElementById('nome').value;
+            const idade = document.getElementById('idade').value;
+            const tipoSanguineo = document.getElementById('tipoSanguineo').value;
+            const alergia = document.getElementById('alergia').value;
+            const peso = document.getElementById('peso').value;
+            const altura = document.getElementById('altura').value;
+            const senha = document.getElementById('senha').value;
+
+            // Dados para enviar ao servidor
+            const pessoaData = {
+                cpf: CPF,
+                nome: nome,
+                idade: idade,
+                tipoSanguineo: tipoSanguineo,
+                alergia: alergia,
+                peso: peso,
+                altura: altura,
+                senha: senha
+            };
+
+            // Envia os dados da pessoa via fetch para o servidor
+            fetch('http://localhost:4567/cadastrar-pessoa', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(pessoaData)
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Erro ao cadastrar pessoa.');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Exibe uma mensagem de sucesso ou processa a resposta do servidor
+                    console.log('Pessoa cadastrada com sucesso:', data);
+
+                    // Limpa o formulário
+                    document.getElementById('pessoaForm').reset();
+
+                    // Fecha o modal
+                    var modal = bootstrap.Modal.getInstance(document.getElementById('pessoaModal'));
+                    modal.hide();
+                })
+                .catch(error => {
+                    //  console.error('Erro:', error);
+                    //  alert('Erro ao cadastrar pessoa.');
+                });
+
+            alert("Cadastro concluido!");
+        });
+
+
+    </script>
+    <script src="https://kit.fontawesome.com/4e1bc412de.js" crossorigin="anonymous"></script>
+</body>
+
+</html>

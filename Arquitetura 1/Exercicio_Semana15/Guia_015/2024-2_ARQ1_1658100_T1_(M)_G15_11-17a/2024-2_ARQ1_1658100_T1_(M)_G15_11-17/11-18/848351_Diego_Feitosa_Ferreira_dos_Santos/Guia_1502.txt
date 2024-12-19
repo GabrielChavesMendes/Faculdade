@@ -1,0 +1,27 @@
+
+    LXI H, 2000H      
+   
+    MOV E, M         
+    INX H             
+    MOV D, M           
+    INX H             
+
+   
+    MOV L, M           
+    INX H              
+    MOV H, M         
+    INX H              
+    DAD H              
+
+   
+    MOV L, M         
+    INX H             
+    MOV H, M         
+    INX H             
+    DAD H              
+
+
+    MOV L, M          
+    CMA                
+    MOV M, L
+    INX H             

@@ -1,0 +1,70 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "C:\Users\gabri\OneDrive\DOCUME~2\ARQUIT~1\2024-2~1\2024-2~3\ICARUS~1\lib\ivl\system.vpi";
+:vpi_module "C:\Users\gabri\OneDrive\DOCUME~2\ARQUIT~1\2024-2~1\2024-2~3\ICARUS~1\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\Users\gabri\OneDrive\DOCUME~2\ARQUIT~1\2024-2~1\2024-2~3\ICARUS~1\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\Users\gabri\OneDrive\DOCUME~2\ARQUIT~1\2024-2~1\2024-2~3\ICARUS~1\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\Users\gabri\OneDrive\DOCUME~2\ARQUIT~1\2024-2~1\2024-2~3\ICARUS~1\lib\ivl\va_math.vpi";
+S_0000021c62d665b0 .scope module, "test_f5_nor" "test_f5_nor" 2 35;
+ .timescale 0 0;
+v0000021c62d1be20_0 .net "s", 0 0, L_0000021c62d328e0;  1 drivers
+v0000021c62d326a0_0 .var "x", 0 0;
+v0000021c62d32740_0 .var "y", 0 0;
+S_0000021c62d66740 .scope begin, "main" "main" 2 43, 2 43 0, S_0000021c62d665b0;
+ .timescale 0 0;
+S_0000021c62d32510 .scope module, "moduloNOR" "f5_nor" 2 40, 2 16 0, S_0000021c62d665b0;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "s";
+    .port_info 1 /INPUT 1 "a";
+    .port_info 2 /INPUT 1 "b";
+L_0000021c62d32fb0 .functor NOR 1, v0000021c62d326a0_0, v0000021c62d326a0_0, C4<0>, C4<0>;
+L_0000021c62d190f0 .functor NOR 1, v0000021c62d32740_0, v0000021c62d32740_0, C4<0>, C4<0>;
+L_0000021c62d327e0 .functor NOR 1, L_0000021c62d32fb0, v0000021c62d32740_0, C4<0>, C4<0>;
+L_0000021c62d328e0 .functor NOR 1, L_0000021c62d327e0, L_0000021c62d327e0, C4<0>, C4<0>;
+v0000021c62d32d90_0 .net "a", 0 0, v0000021c62d326a0_0;  1 drivers
+v0000021c62d32b70_0 .net "b", 0 0, v0000021c62d32740_0;  1 drivers
+v0000021c62d668d0_0 .net "not_a", 0 0, L_0000021c62d32fb0;  1 drivers
+v0000021c62d66970_0 .net "not_b", 0 0, L_0000021c62d190f0;  1 drivers
+v0000021c62d1bce0_0 .net "s", 0 0, L_0000021c62d328e0;  alias, 1 drivers
+v0000021c62d1bd80_0 .net "temp", 0 0, L_0000021c62d327e0;  1 drivers
+    .scope S_0000021c62d665b0;
+T_0 ;
+    %fork t_1, S_0000021c62d66740;
+    %jmp t_0;
+    .scope S_0000021c62d66740;
+t_1 ;
+    %vpi_call 2 44 "$display", "Guia_0500 - xxx yyy zzz - 999999" {0 0 0};
+    %vpi_call 2 45 "$display", "Teste modulo NOR portas" {0 0 0};
+    %vpi_call 2 46 "$display", "   x     y    s" {0 0 0};
+    %vpi_call 2 47 "$monitor", "%4b %4b %4b", v0000021c62d326a0_0, v0000021c62d32740_0, v0000021c62d1be20_0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000021c62d326a0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000021c62d32740_0, 0, 1;
+    %delay 1, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000021c62d326a0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000021c62d32740_0, 0, 1;
+    %delay 1, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000021c62d326a0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000021c62d32740_0, 0, 1;
+    %delay 1, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000021c62d326a0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000021c62d32740_0, 0, 1;
+    %end;
+    .scope S_0000021c62d665b0;
+t_0 %join;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Guia_0501.v";

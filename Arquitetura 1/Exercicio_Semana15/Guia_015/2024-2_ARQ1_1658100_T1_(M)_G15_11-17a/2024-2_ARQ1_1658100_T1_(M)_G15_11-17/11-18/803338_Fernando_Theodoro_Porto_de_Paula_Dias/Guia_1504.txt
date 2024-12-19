@@ -1,0 +1,15 @@
+; Área de Código
+LXI H, dado01       ; HL <- addr(dado01)
+MOV A, M            ; A <- MEM[HL] (A = dado01)
+INX H               ; HL <- HL + 1 (HL aponta para dado02)
+MOV B, M            ; B <- MEM[HL] (B = dado02)
+ADD B               ; A <- A + B (A = dado02 + dado02, ou 2 * dado02)
+SUB B               ; A <- dado01 - 2 * dado02
+ADD A               ; A <- A + A (dado03 = 2 * (dado01 - 2 * dado02))
+STA dado03          ; MEM[dado03] <- A
+HLT                 ; halt
+
+; Área de Dados
+dado01: DB 10h      ; Primeiro dado
+dado02: DB 03h      ; Segundo dado
+dado03: DB 00h      ; Resultado 

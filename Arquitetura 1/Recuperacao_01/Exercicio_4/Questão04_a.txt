@@ -1,0 +1,23 @@
+Questão04_a
+
+374,5(8)
+
+Para decimal: 
+Parte inteira: 3x8^2 + 7x8^1 + 4x8^0 = 3x64 + 7x8 + 4 = 192 + 56 + 4 = 252(10)
+Parte fracionária: 5x8^-1 = 5 x 1/8 = 0,625(10)
+
+252,625(10) para binário:
+Parte inteira: 11111100(2)
+Parte fracionária: 
+0,625 x 2 = 1,25(1)
+0,25 x 2 = 0,5(0)
+0,5 x 2 = 1(1)
+
+374,5(8) = 252,625(10) = 11111100,101(2)
+
+Normalizando usando a formula 1.m x 2^e = 1.1111100101(2) x 2^7
+
+Resultado: 
+Sinal: 1 bit
+Expoente: 7(10) = 0111(2) = 4bits
+Mantissa: 11111100,101(2) = 10bits

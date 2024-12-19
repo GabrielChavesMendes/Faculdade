@@ -1,0 +1,48 @@
+; Programa 8085
+
+
+START:
+
+    ; Somar dado01 + dado02
+    MOV A, H         
+    ADD D             
+    MOV H, A         
+
+    MOV A, L          
+    ADD E            
+    MOV L, A          
+
+    ; Somar dado03
+    MOV A, H          ; A = dado01_high + dado02_high
+    ADD H             ; A = (dado01 + dado02)_high + dado03_high
+    MOV H, A          ; Atualiza o resultado de alto byte
+
+    MOV A, L          ; A = dado01_low + dado02_low
+    ADD L             ; A = (dado01 + dado02)_low + dado03_low
+    MOV L, A          ; Atualiza o resultado de baixo byte
+
+    ; Subtrair dado04 (usando complemento de 2)
+    ; Complemento de 2: Inverter os bits e somar 1
+    MOV A, H          ; A = dado04_high
+    CMA               ; Inverte os bits (complemento de 1)
+    MOV D, A          ; Armazena complemento de 1 em D
+
+    MOV A, L          ; A = dado04_low
+    CMA               ; Inverte os bits (complemento de 1)
+    MOV E, A          ; Armazena complemento de 1 em E
+
+    ; Adicionar 1 (complemento de 2)
+    INX D             ; Adiciona 1 ao complemento de 1 (complemento de 2)
+    INX E             ; Adiciona 1 ao complemento de 2
+
+    ; Somar o complemento de 2 de dado04 à soma
+    MOV A, H          ; A = resultado da soma (dado01 + dado02 + dado03)
+    ADD D             ; A = A + complemento de 2 de dado04_high
+    MOV H, A          ; Armazena resultado de alto byte em H
+
+    MOV A, L          ; A = resultado da soma (dado01 + dado02 + dado03)
+    ADD E             
+    MOV L, A         
+
+    ; Resultado final em H e L (dado05)
+    HLT               ; Fim do programa

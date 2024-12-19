@@ -1,0 +1,64 @@
+// Guia_1502.txt
+// 834358 - Gabriela de Assis dos Reis
+//
+; Area de dados
+; dado01 em 0200h (16 bits)
+; dado02 em 0202h (16 bits)
+; dado03 em 0204h (16 bits)
+; dado04 em 0206h (16 bits)
+; Resultado dado05 em 0208h (16 bits)
+
+START:
+    ; Inicializa registradores de soma e diferença
+    LXI H, 0000h          ; HL = 0000h (acumulador de 16 bits)
+
+    ; ===== Soma dado01 =====
+    LXI D, 0200h          ; DE aponta para dado01
+    MOV A, M              ; A <- LSB de dado01
+    ADD L                 ; A <- A + L (LSB acumulador)
+    MOV L, A              ; Atualiza L (LSB do acumulador)
+    INX D                 ; DE -> MSB de dado01
+    MOV A, M              ; A <- MSB de dado01
+    ADC H                 ; A <- A + H + carry
+    MOV H, A              ; Atualiza H (MSB do acumulador)
+
+    ; ===== Soma dado02 =====
+    LXI D, 0202h          ; DE aponta para dado02
+    MOV A, M              ; A <- LSB de dado02
+    ADD L                 ; A <- A + L
+    MOV L, A              ; Atualiza L
+    INX D                 ; DE -> MSB de dado02
+    MOV A, M              ; A <- MSB de dado02
+    ADC H                 ; A <- A + H + carry
+    MOV H, A              ; Atualiza H
+
+    ; ===== Soma dado03 =====
+    LXI D, 0204h          ; DE aponta para dado03
+    MOV A, M              ; A <- LSB de dado03
+    ADD L                 ; A <- A + L
+    MOV L, A              ; Atualiza L
+    INX D                 ; DE -> MSB de dado03
+    MOV A, M              ; A <- MSB de dado03
+    ADC H                 ; A <- A + H + carry
+    MOV H, A              ; Atualiza H
+
+    ; ===== Subtração dado04 =====
+    LXI D, 0206h          ; DE aponta para dado04
+    MOV A, M              ; A <- LSB de dado04
+    CMA                   ; A <- complemento de A (complemento de 1)
+    ADD L                 ; A <- A + L (subtração de LSB)
+    MOV L, A              ; Atualiza L
+    INX D                 ; DE -> MSB de dado04
+    MOV A, M              ; A <- MSB de dado04
+    CMA                   ; A <- complemento de A
+    ADC H                 ; A <- A + H + carry
+    MOV H, A              ; Atualiza H
+
+    ; ===== Armazenar resultado =====
+    LXI D, 0208h          ; DE aponta para dado05
+    MOV M, L              ; MEM[0208h] <- LSB (resultado)
+    INX D                 ; DE -> endereço MSB de dado05
+    MOV M, H              ; MEM[0209h] <- MSB (resultado)
+
+    ; Finalizar execução
+    HLT                   ; Parar execução

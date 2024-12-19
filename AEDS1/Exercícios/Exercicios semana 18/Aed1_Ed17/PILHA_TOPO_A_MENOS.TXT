@@ -1,0 +1,2 @@
+Pilha sem valor do topo: 
+0 5 10 15 

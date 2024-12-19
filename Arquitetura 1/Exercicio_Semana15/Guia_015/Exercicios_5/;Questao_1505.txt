@@ -1,0 +1,13 @@
+;Questao_1505
+
+LXI H,0100H    ; Carrega o endereço do dado01 em HL
+MOV A,M        ; Move dado01 para o acumulador (A)
+ADD A          ; Soma o acumulador consigo mesmo (multiplica por 2)
+ADD A          ; Soma o acumulador consigo mesmo (multiplica por 4)
+ADD A          ; Soma o acumulador consigo mesmo (multiplica por 8)
+INX H          ; Incrementa HL para apontar para dado02
+MOV B,M        ; Move dado02 para o registrador B
+RRC            ; Divide dado02 por 2 (rotação para a direita)
+ADD B          ; Soma (dado01 * 8) + (dado02 / 2)
+STA 0102H      ; Armazena o resultado em dado03 (0102H)
+HLT            ; Finaliza o programa

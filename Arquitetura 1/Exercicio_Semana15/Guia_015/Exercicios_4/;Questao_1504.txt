@@ -1,0 +1,12 @@
+;Questao_1504
+
+LXI H,0100H    ; Carrega o endereço do dado01 em HL
+MOV A,M        ; Move dado01 para o acumulador (A)
+INX H          ; Incrementa HL para apontar para dado02
+MOV B,M        ; Move dado02 para o registrador B
+DCR B          ; Decrementa B em 1
+DCR B          ; Decrementa B em mais 1
+SUB B          ; Subtrai 2 * dado02 do acumulador (A)
+ADD A          ; Soma o acumulador consigo mesmo (dobro)
+STA 0102H      ; Armazena o resultado em dado03 (0102H)
+HLT            ; Finaliza o programa

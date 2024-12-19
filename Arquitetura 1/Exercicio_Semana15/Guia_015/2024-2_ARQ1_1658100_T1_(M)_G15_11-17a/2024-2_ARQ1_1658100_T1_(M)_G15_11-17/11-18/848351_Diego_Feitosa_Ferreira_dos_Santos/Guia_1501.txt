@@ -1,0 +1,20 @@
+Diego Santos
+    MVI H, 20H         
+    
+
+    MOV L, 00H         
+    MOV A, M           
+    
+    
+    MOV L, 01H         
+    ADD M              
+    
+    
+    MOV L, 02H          
+    SUB M               
+    
+    
+    MOV L, 03H         
+    MOV M, A           
+   
+    HLT                

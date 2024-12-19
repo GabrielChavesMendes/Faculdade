@@ -1,0 +1,19 @@
+; Programa 8085 Questão 1
+
+    MVI     B, 00H        ; Inicia o registrador B com 0 (dado01), sempre quando quiser começar com 0 será assim
+    MVI     C, 00H        
+    MVI     D, 00H        
+   
+   
+    ;   MVI     B, 10H      ; dado01 = 10
+    ;   MVI     C, 20H      ; dado02 = 20
+    ;   MVI     D, 05H      ; dado03 = 5
+
+    ADD     C             ; dado01 = dado01 + dado02 (em B e C)
+    MOV     E, B          ; Mover o resultado de B para E (temporário)
+
+    SUB     D             ; dado01 + dado02 - dado03
+    MOV     H, E          ; Armazenar resultado final em H (dado04)
+
+    ; fim do programa
+    HLT

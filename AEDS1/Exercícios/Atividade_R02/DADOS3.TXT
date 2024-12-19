@@ -1,0 +1,26 @@
+5
+
+01
+Supermercado BH
+Arroz:
+12.90
+
+02
+Supermercado Extra
+Arroz:
+15.90
+
+03
+Supermercado Apoio
+Arroz:
+13.50
+
+04
+Supermercado Mineirao
+Arroz:
+16.50
+
+05
+Supermercado Carreful
+Arroz:
+14.60

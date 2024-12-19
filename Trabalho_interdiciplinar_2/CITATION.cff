@@ -1,0 +1,27 @@
+cff-version: 1.0.1
+message: Please cite this software using these metadata.
+title: Medilog
+authors:
+  - family-names: Souza Carvalho
+    given-names: Arthur
+  - family-names: Chaves Mendes
+    given-names: Gabriel 
+  - family-names: Henrique da Silva Teodoro 
+    given-names: Guilherme 
+  - family-names: Oliveira Araujo
+    given-names: Raphael 
+  - name-suffix: Professor
+    affiliation: PUC Minas
+    family-names: Cardoso Brandão
+    given-names: Wladmir
+  - name-suffix: Professor
+    affiliation: PUC Minas
+    family-names: Stephanie Jerônimo De Almeida 
+    given-names: Carolina
+keywords:
+  - Hospital 
+  - Medicamentos 
+repository-code: https://github.com/ICEI-PUC-Minas-CC-TI/plmg-cc-ti2-2024-2-g37-medilog
+license: CC-BY-4.0
+version: 1.0.0
+date-released: 2024-11-28

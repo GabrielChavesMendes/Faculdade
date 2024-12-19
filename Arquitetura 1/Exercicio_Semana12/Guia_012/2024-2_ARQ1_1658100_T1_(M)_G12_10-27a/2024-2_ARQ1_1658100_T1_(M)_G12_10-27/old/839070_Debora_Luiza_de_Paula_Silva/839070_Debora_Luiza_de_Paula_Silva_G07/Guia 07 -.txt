@@ -1,0 +1,187 @@
+Guia 07 -
+
+Débora Luiza - 1499144
+
+//professor no local em que estava não consegui gerar o .v, mas estou enviando o código das questões
+
+
+1) 
+
+module Guia_0701 (
+    input wire a,   
+    input wire b,   
+    input wire sel,  // Sinal de seleção 
+    output wire out  // Saída 
+);
+    
+    wire and_out;  // Saída AND
+    wire nand_out; // Saída NAND
+    
+    assign and_out = a & b;
+    
+    assign nand_out = ~(a & b);
+    
+    assign out = (sel & and_out) | (~sel & nand_out);
+    
+endmodule
+
+
+2)
+
+module Guia_0702 (
+    input wire a,   
+    input wire b,    
+    input wire sel,  // Sinal de seleção 
+    output wire out  // Saída
+);
+
+    wire or_out;   // Saída OR
+    wire nor_out;  // Saída NOR
+
+    assign or_out = a | b;
+
+    assign nor_out = ~(a | b);
+
+    assign out = (sel & or_out) | (~sel & nor_out);
+
+endmodule
+
+
+3)
+
+module Guia_0703 (
+    input wire a, 
+    input wire b, 
+    input wire sel1,   // Sinal de seleção de porta
+    input wire sel2,   // Sinal de seleção de grupo
+    output wire out    // Saída
+);
+
+    wire and_out, nand_out;  // Saídas AND/NAND
+    wire or_out, nor_out;    // Saídas OR/NOR
+
+    assign and_out = a & b;     
+    assign nand_out = ~(a & b); 
+    assign or_out = a | b;      
+    assign nor_out = ~(a | b);  
+
+    assign out = (~sel2 & ((sel1 & and_out) | (~sel1 & nand_out))) | 
+                 (sel2 & ((sel1 & or_out) | (~sel1 & nor_out)));
+
+endmodule
+
+
+4)
+
+module Guia_0704 (
+    input wire a,        
+    input wire b,        
+    input wire [1:0] sel, // Sinal de seleção de 2 bits
+    output wire out       // Saída
+);
+
+    wire nor_out, or_out, xor_out, xnor_out; 
+
+    // Operações lógicas
+    assign nor_out = ~(a | b); 
+    assign or_out = a | b;      
+    assign xor_out = a ^ b;     
+    assign xnor_out = ~(a ^ b); 
+
+    assign out = (~sel[1] & ~sel[0] & nor_out) | 
+                 (~sel[1] & sel[0] & or_out)  |  
+                 (sel[1] & ~sel[0] & xor_out) |  
+                 (sel[1] & sel[0] & xnor_out);   
+
+endmodule
+
+
+5)
+module Guia_0705 (
+    input wire a,            
+    input wire b,           
+    input wire [2:0] sel,    // Sinal de seleção de 3 bits
+    output wire out          // Saída 
+);
+
+    wire not_out, and_out, nand_out, or_out, nor_out, xor_out, xnor_out; 
+
+    assign not_out = ~a;        
+    assign and_out = a & b;      
+    assign nand_out = ~(a & b); 
+    assign or_out = a | b;      
+    assign nor_out = ~(a | b);  
+    assign xor_out = a ^ b;     
+    assign xnor_out = ~(a ^ b);  
+
+
+    assign out = (sel == 3'b000) ? not_out  :
+                 (sel == 3'b001) ? and_out  :
+                 (sel == 3'b010) ? nand_out :
+                 (sel == 3'b011) ? or_out   :
+                 (sel == 3'b100) ? nor_out  :
+                 (sel == 3'b101) ? xor_out  :
+                 (sel == 3'b110) ? xnor_out : 1'b0;  
+
+endmodule
+
+
+Extras:
+
+6)
+module Guia_0706 (
+    input wire [2:0] a,
+    input wire [2:0] b,
+    input wire sel,
+    output wire out
+);
+
+    wire xor0, xor1, xor2;
+    wire xnor0, xnor1, xnor2;
+    wire all_equal, any_diff;
+
+    assign xor0 = a[0] ^ b[0];
+    assign xor1 = a[1] ^ b[1];
+    assign xor2 = a[2] ^ b[2];
+
+    assign xnor0 = ~(a[0] ^ b[0]);
+    assign xnor1 = ~(a[1] ^ b[1]);
+    assign xnor2 = ~(a[2] ^ b[2]);
+
+    assign all_equal = xnor0 & xnor1 & xnor2;
+    assign any_diff = xor0 | xor1 | xor2;
+
+    assign out = (sel == 1'b0) ? all_equal : any_diff;
+
+endmodule
+
+
+7)
+module Guia_0707 (
+    input wire [2:0] a,
+    input wire [2:0] b,
+    input wire sel,
+    output wire out
+);
+
+    wire a_gt_b; // a > b
+    wire a_lt_b; // a < b
+    wire a_eq_b; // a = b
+
+    wire a0_b0, a1_b1, a2_b2;
+    wire a1_b1_neg, a2_b2_neg;
+
+    assign a_eq_b = (a[0] ~^ b[0]) & (a[1] ~^ b[1]) & (a[2] ~^ b[2]);
+
+    assign a_gt_b = (~a[2] & b[2]) | (a[2] & ~b[2]) | (a[2] & b[2] & (~a[1] & b[1])) |
+                    (a[2] & b[2] & (a[1] & ~b[1])) | (a[1] & ~b[1]) | (a[1] & b[1] & (~a[0] & b[0])) |
+                    (a[1] & b[1] & (a[0] & ~b[0]));
+
+    assign a_lt_b = (~a[2] & ~b[2]) | (a[2] & ~b[2]) | (a[2] & b[2] & (a[1] & ~b[1])) |
+                    (a[2] & b[2] & (~a[1] & b[1])) | (a[0] & ~b[0]) | (a[1] & b[1] & (a[0] & b[0]));
+
+    assign out = (sel == 1'b0) ? a_lt_b : a_gt_b;
+
+endmodule
+
+

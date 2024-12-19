@@ -1,0 +1,31 @@
+
+
+    MVI H, 20H       
+
+
+    MOV L, 00H       
+    MOV A, M         
+    ANI 01H         
+                      
+    MOV B, A          
+
+   
+    MOV L, 01H        
+    MOV A, M         
+
+   
+    RAR             
+    RAR              
+
+  
+    MOV C, A         
+
+
+    MOV A, B          
+    ADD C              
+
+    
+    MOV L, 02H       
+    MOV M, A         
+
+    HLT              

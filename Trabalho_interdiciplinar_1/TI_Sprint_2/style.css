@@ -1,0 +1,56 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    background-color: #b3f5b2;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.titulo {
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.informação {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.informação p {
+    margin: 5px 0;
+}
+
+.todasfichas {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.ficha {
+    width: 30%;
+    padding: 10px;
+    background-color: #7de8dc;
+    border: 3px solid #000000;
+}
+
+.ficha h3 {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.ficha h5 {
+    font-size: 20px;
+}
+
+.ficha p {
+    font-size: 16px;
+    margin: 5px 0;
+}

@@ -1,0 +1,5 @@
+Exercicio02_a
+
+Simplificação:
+
+x . (x' + y)' = x . (x . y') = x . y'

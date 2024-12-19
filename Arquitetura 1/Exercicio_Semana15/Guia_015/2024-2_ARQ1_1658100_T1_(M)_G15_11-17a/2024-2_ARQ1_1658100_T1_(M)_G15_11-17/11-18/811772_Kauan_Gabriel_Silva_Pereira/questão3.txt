@@ -1,0 +1,20 @@
+; Programa para calcular dado05 = dado01 - dado02 + dado03 - dado04 (BCD)
+
+START:
+    
+    ; Suponhamos que dado01, dado02, dado03, dado04 já estejam carregados, não consegui abrir o programa para executar 
+
+    MOV A, dado01      ; A = dado01
+    SUB dado02         ; A = A - dado02
+    DAA                ; Ajuste de BCD (se necessário)
+
+    ADD dado03         ; A = A + dado03
+    DAA                ; Ajuste de BCD (se necessário)
+
+    SUB dado04         ; A = A - dado04
+    DAA                ; Ajuste de BCD (se necessário)
+
+    MOV dado05, A      ; Armazenar o resultado em dado05
+
+    HLT                ; Fim do programa
+; Eu não sei se você viu mas te mandei pelo teams oque ocorreu quando tentei abrir

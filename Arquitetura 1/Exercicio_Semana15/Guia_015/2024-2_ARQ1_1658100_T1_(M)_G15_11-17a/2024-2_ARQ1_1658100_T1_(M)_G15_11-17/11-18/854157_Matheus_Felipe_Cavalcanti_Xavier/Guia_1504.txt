@@ -1,0 +1,30 @@
+; Guia_1504.txt
+; 1641880 - Matheus Felipe Cavalcanti Xavier
+; Calcular dado03 = 2 * (dado01 - 2 * dado02)
+
+; Área de código
+LXI H, dado01       ; HL <- addr(dado01)
+MOV A, M            ; A <- MEM[HL] (Carregar dado01 em A)
+
+; Calcular 2 * dado02
+LXI H, dado02       ; HL <- addr(dado02)
+MOV B, M            ; B <- dado02
+ADD B               ; A = dado02 + dado02 (duplicação para 2 * dado02)
+
+; Subtrair 2 * dado02 de dado01
+MOV B, A            ; B <- 2 * dado02
+LXI H, dado01       ; HL <- addr(dado01)
+MOV A, M            ; A <- dado01
+SUB B               ; A = dado01 - 2 * dado02
+
+; Dobrar o resultado (multiplicar por 2)
+ADD A               ; A = (dado01 - 2 * dado02) * 2
+
+; Armazenar o resultado em dado03
+STA dado03          ; Armazenar o resultado final em dado03
+HLT                 ; Parar execução
+
+; Área de dados
+dado01: DB 05h      ; Primeiro dado em hexadecimal (exemplo: 05)
+dado02: DB 02h      ; Segundo dado em hexadecimal (exemplo: 02)
+dado03: DB 00h      ; Resultado (em hexadecimal)

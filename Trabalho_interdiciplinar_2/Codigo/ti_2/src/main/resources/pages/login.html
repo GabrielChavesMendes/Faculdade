@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login</title>
+  <link rel="stylesheet" href="../assets/css/stylelogin.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+</head>
+
+<body>
+  <nav>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <a href="#"><img src="../assets/images/logMediLog.png" alt=""></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid">
+    <div id="login-row" class="row justify-content-center align-items-center">
+      <div id="login-column" class="col-md-6 bg-light">
+        <div id="login-box" class="col-md-12">
+          <form id="login-form" class="form" method="post" onsubmit="loginUser(this)">
+            <h3 class="text-dark">Login</h3>
+
+            <div class="form-group">
+              <label for="username" class="text-dark">Usuário</label><br />
+              <input type="text" name="username" id="username" class="form-control" />
+            </div>
+
+            <div class="form-group">
+              <label for="password" class="text-dark">Senha</label><br />
+              <input type="password" name="password" id="password" class="form-control" />
+            </div>
+
+            <div class="form-container" style="display: flex; gap: 80px;">
+              <div class="form-group">
+                <label for="options-setor" class="text-dark">Escolha seu setor</label><br />
+                <select id="options-setor" name="options-setor">
+                  <option value="option">Selecione</option>
+                  <option value="option1">Farmacêutico(a)</option>
+                  <option value="option2">Médico(a)/Enfermeiro(a)</option>
+                  <option value="option3">Admin</option>
+                  <option value="option4">Paciente</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="options-hospital" class="text-dark">Escolha seu Hospital</label><br />
+                <select id="options-hospital" name="options-hospital">
+
+                  <!-- SENDO CRIADO DE ACORDO COM BANCO DE DADOS -->
+
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group text-right">
+              <button type="button" class="btn btn-info btn-md" id="open-consent">Login</button>
+            </div>
+
+
+            <!-- Modal do Termo de Consentimento -->
+            <div class="modal fade" id="consentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Termo de Consentimento</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <p>Prezado(a) Profissional de Saúde,
+
+                      Antes de prosseguir com o acesso ao sistema de prontuários unificados, é necessário que você
+                      esteja ciente de suas responsabilidades ao lidar com dados pessoais e sensíveis de pacientes. Ao
+                      acessar e utilizar este sistema, você concorda com os seguintes termos:<br><br>
+
+                      1.Manipulação de Dados Pessoais: Este sistema contém informações pessoais e médicas sensíveis de
+                      pacientes, como histórico médico, alergias, tipo sanguíneo e outras informações confidenciais. Seu
+                      uso deve ser exclusivamente para o tratamento adequado e seguro dos pacientes sob seus
+                      cuidados.<br>
+
+                      2.Proteção de Dados: Conforme as legislações vigentes, incluindo a Lei Geral de Proteção de Dados
+                      (LGPD), você é responsável por garantir a privacidade e a segurança das informações acessadas.
+                      Isso significa que os dados só devem ser utilizados para fins estritamente relacionados ao
+                      tratamento médico, e qualquer uso indevido ou compartilhamento não autorizado poderá resultar em
+                      penalidades legais.<br>
+
+                      3.Consentimento do Paciente: O acesso a este sistema está condicionado ao consentimento prévio dos
+                      pacientes, os quais aceitaram os termos de uso ao realizarem a consulta em nossas unidades
+                      hospitalares. O paciente tem o direito de saber como seus dados estão sendo utilizados e
+                      armazenados.<br>
+
+                      4.Responsabilidade Ética e Legal: Ao acessar este sistema, você reconhece sua responsabilidade
+                      legal e ética em proteger os dados pessoais dos pacientes. O uso indevido ou negligente de
+                      informações poderá resultar em ações disciplinares e legais, conforme previsto pelas leis de
+                      proteção de dados e pelo código de conduta profissional.<br><br>
+
+                      Declaração de Consentimento:<br>
+                      Ao clicar em "Aceitar", você declara que leu, entendeu e concorda em cumprir os termos acima
+                      estabelecidos, reconhecendo a importância de proteger a privacidade e segurança dos dados pessoais
+                      dos pacientes.
+                    </p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="accept-terms"
+                      onclick="loginUser()">Aceitar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    window.onload = function () {
+      fetch("http://localhost:4567/hospital")
+        .then(response => response.json())
+        .then(data => {
+          let hospitalSelect = document.getElementById("options-hospital");
+          data.forEach(hospital => {
+            let option = document.createElement("option");
+            option.value = hospital.id;
+            option.text = hospital.nome;
+            hospitalSelect.add(option);
+          });
+        })
+        .catch(error => console.error('Erro ao carregar hospitais:', error));
+    };
+
+
+    function loginUser() {
+      //event.preventDefault(); // Evita o envio automático do formulário
+
+      var cpf = 0;
+
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;
+      var setor = document.getElementById("options-setor").value;
+      var hospital = document.getElementById("options-hospital").value;
+
+      if (!username || username.trim() === "") {
+        alert("Por favor, insira seu codigo de usuario.");
+        return;
+      }
+
+      // Validação
+      let url = "http://localhost:4567/login";
+
+      // Verificação de CRM/CRF com o setor correto
+      fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          crf: username,
+          senha: password,
+          setor: setor,
+          idHospital: hospital,
+        })
+      })
+        .then(response => {
+          // Verifica se o status da resposta é 200 (OK)
+          if (response.ok) {
+            return response.json();  // Converte a resposta para JSON
+          } else if (response.status === 401) {
+            return response.json().then(errorResponse => {
+             throw new Error(errorResponse.message);  // Usa a mensagem recebida na resposta
+            });// Credenciais incorretas
+          } else if (response.status === 400) {
+            throw new Error("Setor inválido.");  // Setor inválido
+          } else {
+            throw new Error("Erro inesperado na autenticação.");  // Outros erros
+          }
+        })
+        .then(data => {
+
+          cpf = data.cpf;
+
+          console.log(cpf);
+
+          if (setor === "option1") {
+            window.location.href = "index.html"; // Verifica CRF
+          }
+          if (setor === "option2") {
+            window.location.href = "index.html";
+          }
+          if (setor === "option3") {
+            window.location.href = "administrador.html";
+          }
+          if (setor === "option4") {
+            window.location.href = `paciente.html?cpf=${cpf}`;
+          }
+            // Página para farmacêuticos
+
+        })
+        .catch(error => {
+          // Exibe uma mensagem de erro para o usuário
+          alert(error.message);
+        });
+
+      document.getElementById("open-consent").addEventListener("click", function () {
+        var setor = document.getElementById("options-setor").value;
+        var hospital = document.getElementById("options-hospital").value;
+
+        if (setor === "option" || hospital === "option") {
+          alert("Por favor, selecione seu setor e hospital.");
+          return;
+        }
+
+        $('#consentModal').modal('show');
+      });
+    }
+  </script>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
+  <script>
+    document.getElementById("open-consent").addEventListener("click", function () {
+      $('#consentModal').modal('show');
+    });
+  </script>
+
+</body>
+
+</html>

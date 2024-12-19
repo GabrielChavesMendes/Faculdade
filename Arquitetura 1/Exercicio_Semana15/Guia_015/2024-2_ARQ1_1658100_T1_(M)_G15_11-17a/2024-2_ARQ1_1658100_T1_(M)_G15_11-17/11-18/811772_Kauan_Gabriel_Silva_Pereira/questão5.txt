@@ -1,0 +1,21 @@
+; Programa para calcular dado03 = dado01 * 8 + dado02 / 2
+
+START:
+    ; Multiplicar dado01 por 8 (deslocar para a esquerda 3 vezes)
+    MOV A, dado01      ; A = dado01
+    RLC                ; A = A << 1 (primeiro deslocamento)
+    RLC                ; A = A << 2 (segundo deslocamento)
+    RLC                ; A = A << 3 (terceiro deslocamento)
+    MOV B, A           ; B = dado01 * 8
+
+    ; Dividir dado02 por 2 (deslocar para a direita 1 vez)
+    MOV A, dado02      ; A = dado02
+    RRC                ; A = A >> 1 (divisão por 2)
+    MOV C, A           ; C = dado02 / 2
+
+    ; Somar os resultados
+    ADD B              ; A = A + B (dado01 * 8)
+    ADD C              ; A = A + C (dado02 / 2)
+    MOV dado03, A      ; Armazenar o resultado em dado03
+
+    HLT                ; Fim do programa

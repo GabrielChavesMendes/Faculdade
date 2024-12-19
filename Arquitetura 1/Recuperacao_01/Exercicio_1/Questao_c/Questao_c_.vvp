@@ -1,0 +1,127 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "C:\Users\Gabriel\OneDrive\DOCUME~2\ARQUIT~1\2024-2~1\2024-2~3\ICARUS~1\lib\ivl\system.vpi";
+:vpi_module "C:\Users\Gabriel\OneDrive\DOCUME~2\ARQUIT~1\2024-2~1\2024-2~3\ICARUS~1\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\Users\Gabriel\OneDrive\DOCUME~2\ARQUIT~1\2024-2~1\2024-2~3\ICARUS~1\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\Users\Gabriel\OneDrive\DOCUME~2\ARQUIT~1\2024-2~1\2024-2~3\ICARUS~1\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\Users\Gabriel\OneDrive\DOCUME~2\ARQUIT~1\2024-2~1\2024-2~3\ICARUS~1\lib\ivl\va_math.vpi";
+S_000002070152bb60 .scope module, "testbench_Simplified" "testbench_Simplified" 2 12;
+ .timescale 0 0;
+v0000020701542650_0 .var "a", 0 0;
+v00000207015426f0_0 .var "b", 0 0;
+v0000020701542790_0 .var "c", 0 0;
+v0000020701542830_0 .var "d", 0 0;
+v00000207015428d0_0 .net "f", 0 0, L_0000020701542fd0;  1 drivers
+S_00000207015293a0 .scope module, "uut" "Simplified_Circuit" 2 17, 2 3 0, S_000002070152bb60;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /INPUT 1 "b";
+    .port_info 2 /INPUT 1 "c";
+    .port_info 3 /INPUT 1 "d";
+    .port_info 4 /OUTPUT 1 "f";
+L_0000020701575740 .functor NOT 1, v0000020701542790_0, C4<0>, C4<0>, C4<0>;
+L_0000020701542b90 .functor AND 1, L_0000020701575740, v0000020701542830_0, C4<1>, C4<1>;
+L_0000020701542dd0 .functor AND 1, v0000020701542790_0, v0000020701542830_0, C4<1>, C4<1>;
+L_0000020701542fd0 .functor OR 1, L_0000020701542b90, L_0000020701542dd0, C4<0>, C4<0>;
+v000002070152bcf0_0 .net *"_ivl_0", 0 0, L_0000020701575740;  1 drivers
+v000002070152bd90_0 .net *"_ivl_2", 0 0, L_0000020701542b90;  1 drivers
+v0000020701528f90_0 .net *"_ivl_4", 0 0, L_0000020701542dd0;  1 drivers
+v0000020701529030_0 .net "a", 0 0, v0000020701542650_0;  1 drivers
+v0000020701529530_0 .net "b", 0 0, v00000207015426f0_0;  1 drivers
+v00000207015295d0_0 .net "c", 0 0, v0000020701542790_0;  1 drivers
+v0000020701542510_0 .net "d", 0 0, v0000020701542830_0;  1 drivers
+v00000207015425b0_0 .net "f", 0 0, L_0000020701542fd0;  alias, 1 drivers
+    .scope S_000002070152bb60;
+T_0 ;
+    %vpi_call 2 26 "$display", "a b c d | f" {0 0 0};
+    %vpi_call 2 27 "$display", "---------" {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000020701542650_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000207015426f0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000020701542790_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000020701542830_0, 0, 1;
+    %delay 10, 0;
+    %vpi_call 2 29 "$display", "%b %b %b %b | %b", v0000020701542650_0, v00000207015426f0_0, v0000020701542790_0, v0000020701542830_0, v00000207015428d0_0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000020701542650_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000207015426f0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000020701542790_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000020701542830_0, 0, 1;
+    %delay 10, 0;
+    %vpi_call 2 30 "$display", "%b %b %b %b | %b", v0000020701542650_0, v00000207015426f0_0, v0000020701542790_0, v0000020701542830_0, v00000207015428d0_0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000020701542650_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000207015426f0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000020701542790_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000020701542830_0, 0, 1;
+    %delay 10, 0;
+    %vpi_call 2 31 "$display", "%b %b %b %b | %b", v0000020701542650_0, v00000207015426f0_0, v0000020701542790_0, v0000020701542830_0, v00000207015428d0_0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000020701542650_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000207015426f0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000020701542790_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000020701542830_0, 0, 1;
+    %delay 10, 0;
+    %vpi_call 2 32 "$display", "%b %b %b %b | %b", v0000020701542650_0, v00000207015426f0_0, v0000020701542790_0, v0000020701542830_0, v00000207015428d0_0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000020701542650_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000207015426f0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000020701542790_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000020701542830_0, 0, 1;
+    %delay 10, 0;
+    %vpi_call 2 33 "$display", "%b %b %b %b | %b", v0000020701542650_0, v00000207015426f0_0, v0000020701542790_0, v0000020701542830_0, v00000207015428d0_0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000020701542650_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000207015426f0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000020701542790_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000020701542830_0, 0, 1;
+    %delay 10, 0;
+    %vpi_call 2 34 "$display", "%b %b %b %b | %b", v0000020701542650_0, v00000207015426f0_0, v0000020701542790_0, v0000020701542830_0, v00000207015428d0_0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000020701542650_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000207015426f0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000020701542790_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000020701542830_0, 0, 1;
+    %delay 10, 0;
+    %vpi_call 2 35 "$display", "%b %b %b %b | %b", v0000020701542650_0, v00000207015426f0_0, v0000020701542790_0, v0000020701542830_0, v00000207015428d0_0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000020701542650_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000207015426f0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000020701542790_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000020701542830_0, 0, 1;
+    %delay 10, 0;
+    %vpi_call 2 36 "$display", "%b %b %b %b | %b", v0000020701542650_0, v00000207015426f0_0, v0000020701542790_0, v0000020701542830_0, v00000207015428d0_0 {0 0 0};
+    %vpi_call 2 38 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Questao_c.v";

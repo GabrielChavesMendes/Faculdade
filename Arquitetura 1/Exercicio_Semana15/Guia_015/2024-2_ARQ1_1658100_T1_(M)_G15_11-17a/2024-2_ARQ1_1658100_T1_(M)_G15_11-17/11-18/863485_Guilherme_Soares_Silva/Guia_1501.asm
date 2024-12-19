@@ -1,0 +1,35 @@
+; Matricula: 863485
+; Nome: Guilherme Soares Silva
+
+MVI B,45H
+LXI H,C120
+MOV M,B
+
+MVI B,A8H
+LXI H,C121
+MOV M,B
+
+MVI B,6AH
+LXI H,C122
+MOV M,B
+
+MVI B,A8H
+LXI H,C121
+MOV M,B
+
+LXI H,C120
+MOV B,M
+ADD B
+
+LXI H,C121
+MOV B,M
+ADD B
+
+LXI H,C122
+MOV B,M
+SUB B
+
+LXI H,C123
+MOV M,A
+
+HLT

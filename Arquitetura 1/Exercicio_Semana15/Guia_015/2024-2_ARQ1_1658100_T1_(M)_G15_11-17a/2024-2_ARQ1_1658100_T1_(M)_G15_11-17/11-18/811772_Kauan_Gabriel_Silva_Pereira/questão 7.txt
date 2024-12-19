@@ -1,0 +1,19 @@
+; Programa para calcular dado03 = dado01 % 2 + dado02 / 4
+
+START:
+    ; Calcular dado01 % 2 (verificar o bit menos significativo de dado01)
+    MOV A, dado01      ; A = dado01
+    RAR                ; Rar, desloca para a direita (dado01 % 2 é o LSB)
+    MOV B, A           ; B = dado01 % 2 (valor de A após o RAR)
+
+    ; Calcular dado02 / 4 (deslocar para a direita 2 vezes)
+    MOV A, dado02      ; A = dado02
+    RRC                ; A = A >> 1 (primeiro deslocamento)
+    RRC                ; A = A >> 1 (segundo deslocamento)
+    MOV C, A           ; C = dado02 / 4
+
+    ; Somar os resultados
+    ADD B              ; A = A + B (dado01 % 2 + dado02 / 4)
+    MOV dado03, A      ; Armazenar o resultado em dado03
+
+    HLT                ; Fim do programa

@@ -1,0 +1,2 @@
+Fila sem o primeiro valor: 
+2 4 6 8 10 

@@ -1,0 +1,39 @@
+// Guia_1505.txt
+// 834358 - Gabriela de Assis dos Reis
+//
+
+; Area de dados
+; dado01 em 0300h (8 bits, com sinal)
+; dado02 em 0301h (8 bits, com sinal)
+; Resultado dado03 em 0302h (8 bits, com sinal)
+
+START:
+    ; ===== Carregar dado01 =====
+    LXI H, 0300h       ; HL aponta para dado01
+    MOV A, M           ; A <- dado01
+    MOV B, A           ; B <- dado01 (armazenar em B para multiplicação)
+
+    ; ===== Multiplicação por 8 (3 somas) =====
+    ADD A              ; A <- A + A (dado01 * 2)
+    ADD A              ; A <- A + A (dado01 * 4)
+    ADD B              ; A <- A + B (dado01 * 8)
+
+    ; ===== Armazenar resultado parcial =====
+    MOV C, A           ; C <- dado01 * 8 (armazenar em C)
+
+    ; ===== Carregar dado02 =====
+    LXI H, 0301h       ; HL aponta para dado02
+    MOV A, M           ; A <- dado02
+
+    ; ===== Divisão por 2 =====
+    RAR                ; A <- A / 2 (considerando o sinal, bit 7 ajustado)
+
+    ; ===== Somar resultado parcial =====
+    ADD C              ; A <- A + C (dado01 * 8 + dado02 / 2)
+
+    ; ===== Armazenar resultado final =====
+    LXI H, 0302h       ; HL aponta para dado03
+    MOV M, A           ; MEM[0302h] <- A (armazenar resultado)
+
+    ; ===== Finalizar execução =====
+    HLT                ; Parar execução

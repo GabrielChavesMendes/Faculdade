@@ -1,0 +1,28 @@
+Exercício 3a:
+
+a)61(10) = X(4)
+61/4 = 15, resto 1
+15/4 = 3, resto 3
+3/4 = 0, resto 3
+Resposta = 331(4)
+
+b)53(10) = X(8)
+53/8 = 6, resto 5
+6/8 = 0, resto 6
+Resposta = 65(8)
+
+c)77(10) = X(16)
+77/16 = 4, resto 13
+4/16 = 0, resto 4
+Resposta = 4D(16)
+
+d)153(10) = X(16)
+153/16 = 9, resto 9
+9/16 = 0, resto 9
+Resposta = 99(16)
+
+e)753(10) = X(16)
+753/16 = 47, resto 1
+47/16 = 2, resto 15
+2/16 = 0, resto 2
+Resposta = 2F1(16)

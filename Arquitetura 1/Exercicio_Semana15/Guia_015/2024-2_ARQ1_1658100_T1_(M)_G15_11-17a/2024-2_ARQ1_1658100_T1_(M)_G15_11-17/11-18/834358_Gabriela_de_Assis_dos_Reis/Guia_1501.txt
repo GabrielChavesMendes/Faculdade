@@ -1,0 +1,24 @@
+// Guia_1501.txt
+// 834358 - Gabriela de Assis dos Reis
+//
+// Somar dois numeros de 8 bits
+// Armazenar o primeiro dado em 0100, por exemplo e atualizar as instrucoes
+// Armazenar o segundo dado em 0101
+// Armazenar o terceiro dado em 0102
+// Armazenar o resultado em 0104
+
+// Area de código ; Significado // Comentário
+ LXI H,dado1      ; HL <- addr(dado1) // endereco do dado1
+ MOV A,M          ; A <- MEM [HL] // A = MEM [dado1]
+ INX H 		  ; HL <- HL+1 // endereco do dado2
+ ADD M 		  ; A <- A + MEM [HL] // A = A + MEM [dado2]
+ INX H 		  ; HL <- HL+1 // endereco do dado3
+ SUB M            ; A <- A - MEM [HL] // A = A - MEM [dado3]
+ STA dado3 	  ; MEM [dado4] <- A // MEM [dado4] = A
+ HLT 		  ; halt // parar
+
+; Area de dados
+; dado1: 02h ; primeiro dado em hexadecimal
+; dado2: 03h ; segundo dado em hexadecimal
+; dado3: 04h ; terceiro dado em hexadecimal
+; dado4: 01h ; resultado em hexadecimal

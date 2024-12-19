@@ -1,0 +1,315 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "C:\Users\Gabriel\OneDrive\DOCUME~2\ARQUIT~1\2024-2~1\2024-2~3\ICARUS~1\lib\ivl\system.vpi";
+:vpi_module "C:\Users\Gabriel\OneDrive\DOCUME~2\ARQUIT~1\2024-2~1\2024-2~3\ICARUS~1\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\Users\Gabriel\OneDrive\DOCUME~2\ARQUIT~1\2024-2~1\2024-2~3\ICARUS~1\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\Users\Gabriel\OneDrive\DOCUME~2\ARQUIT~1\2024-2~1\2024-2~3\ICARUS~1\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\Users\Gabriel\OneDrive\DOCUME~2\ARQUIT~1\2024-2~1\2024-2~3\ICARUS~1\lib\ivl\va_math.vpi";
+S_000001cb5b34b0f0 .scope module, "test_AU_5bits_sub" "test_AU_5bits_sub" 2 55;
+ .timescale 0 0;
+v000001cb5b3a4c50_0 .net "borrowOut", 0 0, L_000001cb5b4b80e0;  1 drivers
+v000001cb5b3a4e30_0 .net "diff", 4 0, L_000001cb5b3aaae0;  1 drivers
+v000001cb5b3a4ed0_0 .var "x", 4 0;
+v000001cb5b3a5830_0 .var "y", 4 0;
+S_000001cb5b33a450 .scope module, "AU_sub" "AU_5bits_sub" 2 62, 2 39 0, S_000001cb5b34b0f0;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 5 "diff";
+    .port_info 1 /OUTPUT 1 "borrowOut";
+    .port_info 2 /INPUT 5 "a";
+    .port_info 3 /INPUT 5 "b";
+v000001cb5b3a6870_0 .net "a", 4 0, v000001cb5b3a4ed0_0;  1 drivers
+v000001cb5b3a6910_0 .net "b", 4 0, v000001cb5b3a5830_0;  1 drivers
+v000001cb5b3a69b0_0 .net "borrow", 3 0, L_000001cb5b3abda0;  1 drivers
+v000001cb5b3a6a50_0 .net "borrowOut", 0 0, L_000001cb5b4b80e0;  alias, 1 drivers
+v000001cb5b3a5790_0 .net "diff", 4 0, L_000001cb5b3aaae0;  alias, 1 drivers
+L_000001cb5b3a5a10 .part v000001cb5b3a4ed0_0, 0, 1;
+L_000001cb5b3a5010 .part v000001cb5b3a5830_0, 0, 1;
+L_000001cb5b3a58d0 .part v000001cb5b3a4ed0_0, 1, 1;
+L_000001cb5b3a5510 .part v000001cb5b3a5830_0, 1, 1;
+L_000001cb5b3a55b0 .part L_000001cb5b3abda0, 0, 1;
+L_000001cb5b3a5650 .part v000001cb5b3a4ed0_0, 2, 1;
+L_000001cb5b3aa360 .part v000001cb5b3a5830_0, 2, 1;
+L_000001cb5b3aa2c0 .part L_000001cb5b3abda0, 1, 1;
+L_000001cb5b3abda0 .concat8 [ 1 1 1 1], L_000001cb5b347520, L_000001cb5b347750, L_000001cb5b347830, L_000001cb5b4b8770;
+L_000001cb5b3abe40 .part v000001cb5b3a4ed0_0, 3, 1;
+L_000001cb5b3ab4e0 .part v000001cb5b3a5830_0, 3, 1;
+L_000001cb5b3ab760 .part L_000001cb5b3abda0, 2, 1;
+LS_000001cb5b3aaae0_0_0 .concat8 [ 1 1 1 1], L_000001cb5b3478a0, L_000001cb5b346bf0, L_000001cb5b347600, L_000001cb5b347130;
+LS_000001cb5b3aaae0_0_4 .concat8 [ 1 0 0 0], L_000001cb5b4b88c0;
+L_000001cb5b3aaae0 .concat8 [ 4 1 0 0], LS_000001cb5b3aaae0_0_0, LS_000001cb5b3aaae0_0_4;
+L_000001cb5b3aa220 .part v000001cb5b3a4ed0_0, 4, 1;
+L_000001cb5b3ac0c0 .part v000001cb5b3a5830_0, 4, 1;
+L_000001cb5b3ab9e0 .part L_000001cb5b3abda0, 3, 1;
+S_000001cb5b33a5e0 .scope module, "FS0" "fullSubtractor" 2 45, 2 23 0, S_000001cb5b33a450;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "borrowOut";
+    .port_info 1 /OUTPUT 1 "diff";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+    .port_info 4 /INPUT 1 "borrowIn";
+L_000001cb5b347520 .functor OR 1, L_000001cb5b3479f0, L_000001cb5b347360, C4<0>, C4<0>;
+v000001cb5b3413c0_0 .net "a", 0 0, L_000001cb5b3a5a10;  1 drivers
+v000001cb5b340ce0_0 .net "b", 0 0, L_000001cb5b3a5010;  1 drivers
+v000001cb5b340e20_0 .net "b1", 0 0, L_000001cb5b3479f0;  1 drivers
+v000001cb5b3a3410_0 .net "b2", 0 0, L_000001cb5b347360;  1 drivers
+L_000001cb5b470088 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+v000001cb5b3a32d0_0 .net "borrowIn", 0 0, L_000001cb5b470088;  1 drivers
+v000001cb5b3a3eb0_0 .net "borrowOut", 0 0, L_000001cb5b347520;  1 drivers
+v000001cb5b3a4090_0 .net "d1", 0 0, L_000001cb5b346cd0;  1 drivers
+v000001cb5b3a23d0_0 .net "diff", 0 0, L_000001cb5b3478a0;  1 drivers
+S_000001cb5b3359f0 .scope module, "HS1" "halfSubtractor" 2 30, 2 10 0, S_000001cb5b33a5e0;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "borrowOut";
+    .port_info 1 /OUTPUT 1 "diff";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+L_000001cb5b346cd0 .functor XOR 1, L_000001cb5b3a5a10, L_000001cb5b3a5010, C4<0>, C4<0>;
+L_000001cb5b346d40 .functor AND 1, L_000001cb5b3472f0, L_000001cb5b3a5010, C4<1>, C4<1>;
+L_000001cb5b3472f0 .functor NOT 1, L_000001cb5b3a5a10, C4<0>, C4<0>, C4<0>;
+L_000001cb5b3479f0 .functor BUFZ 1, L_000001cb5b346d40, C4<0>, C4<0>, C4<0>;
+v000001cb5b344f40_0 .net *"_ivl_0", 0 0, L_000001cb5b3472f0;  1 drivers
+v000001cb5b3456c0_0 .net "a", 0 0, L_000001cb5b3a5a10;  alias, 1 drivers
+v000001cb5b344fe0_0 .net "b", 0 0, L_000001cb5b3a5010;  alias, 1 drivers
+v000001cb5b345080_0 .net "borrowOut", 0 0, L_000001cb5b3479f0;  alias, 1 drivers
+v000001cb5b3451c0_0 .net "diff", 0 0, L_000001cb5b346cd0;  alias, 1 drivers
+v000001cb5b345300_0 .net "temp_borrow", 0 0, L_000001cb5b346d40;  1 drivers
+S_000001cb5b335b80 .scope module, "HS2" "halfSubtractor" 2 31, 2 10 0, S_000001cb5b33a5e0;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "borrowOut";
+    .port_info 1 /OUTPUT 1 "diff";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+L_000001cb5b3478a0 .functor XOR 1, L_000001cb5b346cd0, L_000001cb5b470088, C4<0>, C4<0>;
+L_000001cb5b346b10 .functor AND 1, L_000001cb5b346e90, L_000001cb5b470088, C4<1>, C4<1>;
+L_000001cb5b346e90 .functor NOT 1, L_000001cb5b346cd0, C4<0>, C4<0>, C4<0>;
+L_000001cb5b347360 .functor BUFZ 1, L_000001cb5b346b10, C4<0>, C4<0>, C4<0>;
+v000001cb5b3454e0_0 .net *"_ivl_0", 0 0, L_000001cb5b346e90;  1 drivers
+v000001cb5b345620_0 .net "a", 0 0, L_000001cb5b346cd0;  alias, 1 drivers
+v000001cb5b345760_0 .net "b", 0 0, L_000001cb5b470088;  alias, 1 drivers
+v000001cb5b3458a0_0 .net "borrowOut", 0 0, L_000001cb5b347360;  alias, 1 drivers
+v000001cb5b345940_0 .net "diff", 0 0, L_000001cb5b3478a0;  alias, 1 drivers
+v000001cb5b341140_0 .net "temp_borrow", 0 0, L_000001cb5b346b10;  1 drivers
+S_000001cb5b302510 .scope module, "FS1" "fullSubtractor" 2 46, 2 23 0, S_000001cb5b33a450;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "borrowOut";
+    .port_info 1 /OUTPUT 1 "diff";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+    .port_info 4 /INPUT 1 "borrowIn";
+L_000001cb5b347750 .functor OR 1, L_000001cb5b347280, L_000001cb5b346fe0, C4<0>, C4<0>;
+v000001cb5b3a3230_0 .net "a", 0 0, L_000001cb5b3a58d0;  1 drivers
+v000001cb5b3a39b0_0 .net "b", 0 0, L_000001cb5b3a5510;  1 drivers
+v000001cb5b3a3a50_0 .net "b1", 0 0, L_000001cb5b347280;  1 drivers
+v000001cb5b3a25b0_0 .net "b2", 0 0, L_000001cb5b346fe0;  1 drivers
+v000001cb5b3a3cd0_0 .net "borrowIn", 0 0, L_000001cb5b3a55b0;  1 drivers
+v000001cb5b3a34b0_0 .net "borrowOut", 0 0, L_000001cb5b347750;  1 drivers
+v000001cb5b3a2ab0_0 .net "d1", 0 0, L_000001cb5b347210;  1 drivers
+v000001cb5b3a2e70_0 .net "diff", 0 0, L_000001cb5b346bf0;  1 drivers
+S_000001cb5b3026a0 .scope module, "HS1" "halfSubtractor" 2 30, 2 10 0, S_000001cb5b302510;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "borrowOut";
+    .port_info 1 /OUTPUT 1 "diff";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+L_000001cb5b347210 .functor XOR 1, L_000001cb5b3a58d0, L_000001cb5b3a5510, C4<0>, C4<0>;
+L_000001cb5b3471a0 .functor AND 1, L_000001cb5b347590, L_000001cb5b3a5510, C4<1>, C4<1>;
+L_000001cb5b347590 .functor NOT 1, L_000001cb5b3a58d0, C4<0>, C4<0>, C4<0>;
+L_000001cb5b347280 .functor BUFZ 1, L_000001cb5b3471a0, C4<0>, C4<0>, C4<0>;
+v000001cb5b3a2bf0_0 .net *"_ivl_0", 0 0, L_000001cb5b347590;  1 drivers
+v000001cb5b3a2d30_0 .net "a", 0 0, L_000001cb5b3a58d0;  alias, 1 drivers
+v000001cb5b3a3c30_0 .net "b", 0 0, L_000001cb5b3a5510;  alias, 1 drivers
+v000001cb5b3a2dd0_0 .net "borrowOut", 0 0, L_000001cb5b347280;  alias, 1 drivers
+v000001cb5b3a2fb0_0 .net "diff", 0 0, L_000001cb5b347210;  alias, 1 drivers
+v000001cb5b3a26f0_0 .net "temp_borrow", 0 0, L_000001cb5b3471a0;  1 drivers
+S_000001cb5b302830 .scope module, "HS2" "halfSubtractor" 2 31, 2 10 0, S_000001cb5b302510;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "borrowOut";
+    .port_info 1 /OUTPUT 1 "diff";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+L_000001cb5b346bf0 .functor XOR 1, L_000001cb5b347210, L_000001cb5b3a55b0, C4<0>, C4<0>;
+L_000001cb5b347980 .functor AND 1, L_000001cb5b346b80, L_000001cb5b3a55b0, C4<1>, C4<1>;
+L_000001cb5b346b80 .functor NOT 1, L_000001cb5b347210, C4<0>, C4<0>, C4<0>;
+L_000001cb5b346fe0 .functor BUFZ 1, L_000001cb5b347980, C4<0>, C4<0>, C4<0>;
+v000001cb5b3a3370_0 .net *"_ivl_0", 0 0, L_000001cb5b346b80;  1 drivers
+v000001cb5b3a4270_0 .net "a", 0 0, L_000001cb5b347210;  alias, 1 drivers
+v000001cb5b3a2830_0 .net "b", 0 0, L_000001cb5b3a55b0;  alias, 1 drivers
+v000001cb5b3a3af0_0 .net "borrowOut", 0 0, L_000001cb5b346fe0;  alias, 1 drivers
+v000001cb5b3a2f10_0 .net "diff", 0 0, L_000001cb5b346bf0;  alias, 1 drivers
+v000001cb5b3a2510_0 .net "temp_borrow", 0 0, L_000001cb5b347980;  1 drivers
+S_000001cb5b3a4390 .scope module, "FS2" "fullSubtractor" 2 47, 2 23 0, S_000001cb5b33a450;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "borrowOut";
+    .port_info 1 /OUTPUT 1 "diff";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+    .port_info 4 /INPUT 1 "borrowIn";
+L_000001cb5b347830 .functor OR 1, L_000001cb5b347440, L_000001cb5b347670, C4<0>, C4<0>;
+v000001cb5b3a3d70_0 .net "a", 0 0, L_000001cb5b3a5650;  1 drivers
+v000001cb5b3a3690_0 .net "b", 0 0, L_000001cb5b3aa360;  1 drivers
+v000001cb5b3a37d0_0 .net "b1", 0 0, L_000001cb5b347440;  1 drivers
+v000001cb5b3a3e10_0 .net "b2", 0 0, L_000001cb5b347670;  1 drivers
+v000001cb5b3a3870_0 .net "borrowIn", 0 0, L_000001cb5b3aa2c0;  1 drivers
+v000001cb5b3a3f50_0 .net "borrowOut", 0 0, L_000001cb5b347830;  1 drivers
+v000001cb5b3a4130_0 .net "d1", 0 0, L_000001cb5b3473d0;  1 drivers
+v000001cb5b3a41d0_0 .net "diff", 0 0, L_000001cb5b347600;  1 drivers
+S_000001cb5b3a4520 .scope module, "HS1" "halfSubtractor" 2 30, 2 10 0, S_000001cb5b3a4390;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "borrowOut";
+    .port_info 1 /OUTPUT 1 "diff";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+L_000001cb5b3473d0 .functor XOR 1, L_000001cb5b3a5650, L_000001cb5b3aa360, C4<0>, C4<0>;
+L_000001cb5b3477c0 .functor AND 1, L_000001cb5b346f00, L_000001cb5b3aa360, C4<1>, C4<1>;
+L_000001cb5b346f00 .functor NOT 1, L_000001cb5b3a5650, C4<0>, C4<0>, C4<0>;
+L_000001cb5b347440 .functor BUFZ 1, L_000001cb5b3477c0, C4<0>, C4<0>, C4<0>;
+v000001cb5b3a2650_0 .net *"_ivl_0", 0 0, L_000001cb5b346f00;  1 drivers
+v000001cb5b3a3910_0 .net "a", 0 0, L_000001cb5b3a5650;  alias, 1 drivers
+v000001cb5b3a3050_0 .net "b", 0 0, L_000001cb5b3aa360;  alias, 1 drivers
+v000001cb5b3a2790_0 .net "borrowOut", 0 0, L_000001cb5b347440;  alias, 1 drivers
+v000001cb5b3a30f0_0 .net "diff", 0 0, L_000001cb5b3473d0;  alias, 1 drivers
+v000001cb5b3a28d0_0 .net "temp_borrow", 0 0, L_000001cb5b3477c0;  1 drivers
+S_000001cb5b3a46b0 .scope module, "HS2" "halfSubtractor" 2 31, 2 10 0, S_000001cb5b3a4390;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "borrowOut";
+    .port_info 1 /OUTPUT 1 "diff";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+L_000001cb5b347600 .functor XOR 1, L_000001cb5b3473d0, L_000001cb5b3aa2c0, C4<0>, C4<0>;
+L_000001cb5b3474b0 .functor AND 1, L_000001cb5b346db0, L_000001cb5b3aa2c0, C4<1>, C4<1>;
+L_000001cb5b346db0 .functor NOT 1, L_000001cb5b3473d0, C4<0>, C4<0>, C4<0>;
+L_000001cb5b347670 .functor BUFZ 1, L_000001cb5b3474b0, C4<0>, C4<0>, C4<0>;
+v000001cb5b3a3550_0 .net *"_ivl_0", 0 0, L_000001cb5b346db0;  1 drivers
+v000001cb5b3a3ff0_0 .net "a", 0 0, L_000001cb5b3473d0;  alias, 1 drivers
+v000001cb5b3a3730_0 .net "b", 0 0, L_000001cb5b3aa2c0;  alias, 1 drivers
+v000001cb5b3a3b90_0 .net "borrowOut", 0 0, L_000001cb5b347670;  alias, 1 drivers
+v000001cb5b3a3190_0 .net "diff", 0 0, L_000001cb5b347600;  alias, 1 drivers
+v000001cb5b3a35f0_0 .net "temp_borrow", 0 0, L_000001cb5b3474b0;  1 drivers
+S_000001cb5b3a4840 .scope module, "FS3" "fullSubtractor" 2 48, 2 23 0, S_000001cb5b33a450;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "borrowOut";
+    .port_info 1 /OUTPUT 1 "diff";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+    .port_info 4 /INPUT 1 "borrowIn";
+L_000001cb5b4b8770 .functor OR 1, L_000001cb5b3470c0, L_000001cb5b4b8f50, C4<0>, C4<0>;
+v000001cb5b3a65f0_0 .net "a", 0 0, L_000001cb5b3abe40;  1 drivers
+v000001cb5b3a51f0_0 .net "b", 0 0, L_000001cb5b3ab4e0;  1 drivers
+v000001cb5b3a6050_0 .net "b1", 0 0, L_000001cb5b3470c0;  1 drivers
+v000001cb5b3a5d30_0 .net "b2", 0 0, L_000001cb5b4b8f50;  1 drivers
+v000001cb5b3a5150_0 .net "borrowIn", 0 0, L_000001cb5b3ab760;  1 drivers
+v000001cb5b3a5fb0_0 .net "borrowOut", 0 0, L_000001cb5b4b8770;  1 drivers
+v000001cb5b3a5330_0 .net "d1", 0 0, L_000001cb5b347910;  1 drivers
+v000001cb5b3a6730_0 .net "diff", 0 0, L_000001cb5b347130;  1 drivers
+S_000001cb5b3a49d0 .scope module, "HS1" "halfSubtractor" 2 30, 2 10 0, S_000001cb5b3a4840;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "borrowOut";
+    .port_info 1 /OUTPUT 1 "diff";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+L_000001cb5b347910 .functor XOR 1, L_000001cb5b3abe40, L_000001cb5b3ab4e0, C4<0>, C4<0>;
+L_000001cb5b346e20 .functor AND 1, L_000001cb5b347050, L_000001cb5b3ab4e0, C4<1>, C4<1>;
+L_000001cb5b347050 .functor NOT 1, L_000001cb5b3abe40, C4<0>, C4<0>, C4<0>;
+L_000001cb5b3470c0 .functor BUFZ 1, L_000001cb5b346e20, C4<0>, C4<0>, C4<0>;
+v000001cb5b3a2470_0 .net *"_ivl_0", 0 0, L_000001cb5b347050;  1 drivers
+v000001cb5b3a2970_0 .net "a", 0 0, L_000001cb5b3abe40;  alias, 1 drivers
+v000001cb5b3a2a10_0 .net "b", 0 0, L_000001cb5b3ab4e0;  alias, 1 drivers
+v000001cb5b3a2b50_0 .net "borrowOut", 0 0, L_000001cb5b3470c0;  alias, 1 drivers
+v000001cb5b3a2c90_0 .net "diff", 0 0, L_000001cb5b347910;  alias, 1 drivers
+v000001cb5b3a4bb0_0 .net "temp_borrow", 0 0, L_000001cb5b346e20;  1 drivers
+S_000001cb5b3a6b70 .scope module, "HS2" "halfSubtractor" 2 31, 2 10 0, S_000001cb5b3a4840;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "borrowOut";
+    .port_info 1 /OUTPUT 1 "diff";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+L_000001cb5b347130 .functor XOR 1, L_000001cb5b347910, L_000001cb5b3ab760, C4<0>, C4<0>;
+L_000001cb5b4b8380 .functor AND 1, L_000001cb5b4b8a80, L_000001cb5b3ab760, C4<1>, C4<1>;
+L_000001cb5b4b8a80 .functor NOT 1, L_000001cb5b347910, C4<0>, C4<0>, C4<0>;
+L_000001cb5b4b8f50 .functor BUFZ 1, L_000001cb5b4b8380, C4<0>, C4<0>, C4<0>;
+v000001cb5b3a4cf0_0 .net *"_ivl_0", 0 0, L_000001cb5b4b8a80;  1 drivers
+v000001cb5b3a6190_0 .net "a", 0 0, L_000001cb5b347910;  alias, 1 drivers
+v000001cb5b3a6230_0 .net "b", 0 0, L_000001cb5b3ab760;  alias, 1 drivers
+v000001cb5b3a4d90_0 .net "borrowOut", 0 0, L_000001cb5b4b8f50;  alias, 1 drivers
+v000001cb5b3a6410_0 .net "diff", 0 0, L_000001cb5b347130;  alias, 1 drivers
+v000001cb5b3a5c90_0 .net "temp_borrow", 0 0, L_000001cb5b4b8380;  1 drivers
+S_000001cb5b3a6d00 .scope module, "FS4" "fullSubtractor" 2 49, 2 23 0, S_000001cb5b33a450;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "borrowOut";
+    .port_info 1 /OUTPUT 1 "diff";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+    .port_info 4 /INPUT 1 "borrowIn";
+L_000001cb5b4b80e0 .functor OR 1, L_000001cb5b4b89a0, L_000001cb5b4b8e70, C4<0>, C4<0>;
+v000001cb5b3a67d0_0 .net "a", 0 0, L_000001cb5b3aa220;  1 drivers
+v000001cb5b3a50b0_0 .net "b", 0 0, L_000001cb5b3ac0c0;  1 drivers
+v000001cb5b3a6370_0 .net "b1", 0 0, L_000001cb5b4b89a0;  1 drivers
+v000001cb5b3a6550_0 .net "b2", 0 0, L_000001cb5b4b8e70;  1 drivers
+v000001cb5b3a4f70_0 .net "borrowIn", 0 0, L_000001cb5b3ab9e0;  1 drivers
+v000001cb5b3a6690_0 .net "borrowOut", 0 0, L_000001cb5b4b80e0;  alias, 1 drivers
+v000001cb5b3a5970_0 .net "d1", 0 0, L_000001cb5b4b8930;  1 drivers
+v000001cb5b3a5470_0 .net "diff", 0 0, L_000001cb5b4b88c0;  1 drivers
+S_000001cb5b3a6e90 .scope module, "HS1" "halfSubtractor" 2 30, 2 10 0, S_000001cb5b3a6d00;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "borrowOut";
+    .port_info 1 /OUTPUT 1 "diff";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+L_000001cb5b4b8930 .functor XOR 1, L_000001cb5b3aa220, L_000001cb5b3ac0c0, C4<0>, C4<0>;
+L_000001cb5b4b8fc0 .functor AND 1, L_000001cb5b4b82a0, L_000001cb5b3ac0c0, C4<1>, C4<1>;
+L_000001cb5b4b82a0 .functor NOT 1, L_000001cb5b3aa220, C4<0>, C4<0>, C4<0>;
+L_000001cb5b4b89a0 .functor BUFZ 1, L_000001cb5b4b8fc0, C4<0>, C4<0>, C4<0>;
+v000001cb5b3a56f0_0 .net *"_ivl_0", 0 0, L_000001cb5b4b82a0;  1 drivers
+v000001cb5b3a5b50_0 .net "a", 0 0, L_000001cb5b3aa220;  alias, 1 drivers
+v000001cb5b3a5290_0 .net "b", 0 0, L_000001cb5b3ac0c0;  alias, 1 drivers
+v000001cb5b3a5bf0_0 .net "borrowOut", 0 0, L_000001cb5b4b89a0;  alias, 1 drivers
+v000001cb5b3a5f10_0 .net "diff", 0 0, L_000001cb5b4b8930;  alias, 1 drivers
+v000001cb5b3a62d0_0 .net "temp_borrow", 0 0, L_000001cb5b4b8fc0;  1 drivers
+S_000001cb5b3a7020 .scope module, "HS2" "halfSubtractor" 2 31, 2 10 0, S_000001cb5b3a6d00;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "borrowOut";
+    .port_info 1 /OUTPUT 1 "diff";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+L_000001cb5b4b88c0 .functor XOR 1, L_000001cb5b4b8930, L_000001cb5b3ab9e0, C4<0>, C4<0>;
+L_000001cb5b4b8150 .functor AND 1, L_000001cb5b4b8540, L_000001cb5b3ab9e0, C4<1>, C4<1>;
+L_000001cb5b4b8540 .functor NOT 1, L_000001cb5b4b8930, C4<0>, C4<0>, C4<0>;
+L_000001cb5b4b8e70 .functor BUFZ 1, L_000001cb5b4b8150, C4<0>, C4<0>, C4<0>;
+v000001cb5b3a53d0_0 .net *"_ivl_0", 0 0, L_000001cb5b4b8540;  1 drivers
+v000001cb5b3a5ab0_0 .net "a", 0 0, L_000001cb5b4b8930;  alias, 1 drivers
+v000001cb5b3a5dd0_0 .net "b", 0 0, L_000001cb5b3ab9e0;  alias, 1 drivers
+v000001cb5b3a64b0_0 .net "borrowOut", 0 0, L_000001cb5b4b8e70;  alias, 1 drivers
+v000001cb5b3a5e70_0 .net "diff", 0 0, L_000001cb5b4b88c0;  alias, 1 drivers
+v000001cb5b3a60f0_0 .net "temp_borrow", 0 0, L_000001cb5b4b8150;  1 drivers
+    .scope S_000001cb5b34b0f0;
+T_0 ;
+    %vpi_call 2 67 "$display", "Guia_0802" {0 0 0};
+    %vpi_call 2 68 "$display", "Testes da AU com Subtrator Completo" {0 0 0};
+    %vpi_call 2 69 "$display", "x      - y      = diff   BorrowOut" {0 0 0};
+    %pushi/vec4 13, 0, 5;
+    %store/vec4 v000001cb5b3a4ed0_0, 0, 5;
+    %pushi/vec4 11, 0, 5;
+    %store/vec4 v000001cb5b3a5830_0, 0, 5;
+    %delay 1, 0;
+    %vpi_call 2 75 "$display", "%b - %b = %b   %b", v000001cb5b3a4ed0_0, v000001cb5b3a5830_0, v000001cb5b3a4e30_0, v000001cb5b3a4c50_0 {0 0 0};
+    %pushi/vec4 21, 0, 5;
+    %store/vec4 v000001cb5b3a4ed0_0, 0, 5;
+    %pushi/vec4 7, 0, 5;
+    %store/vec4 v000001cb5b3a5830_0, 0, 5;
+    %delay 1, 0;
+    %vpi_call 2 81 "$display", "%b - %b = %b   %b", v000001cb5b3a4ed0_0, v000001cb5b3a5830_0, v000001cb5b3a4e30_0, v000001cb5b3a4c50_0 {0 0 0};
+    %pushi/vec4 29, 0, 5;
+    %store/vec4 v000001cb5b3a4ed0_0, 0, 5;
+    %pushi/vec4 19, 0, 5;
+    %store/vec4 v000001cb5b3a5830_0, 0, 5;
+    %delay 1, 0;
+    %vpi_call 2 87 "$display", "%b - %b = %b   %b", v000001cb5b3a4ed0_0, v000001cb5b3a5830_0, v000001cb5b3a4e30_0, v000001cb5b3a4c50_0 {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Guia_0802.v";

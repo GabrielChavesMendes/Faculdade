@@ -1,0 +1,6 @@
+ hr {
+     border: dark;
+     height: 6px;
+     background-color: #000000; /* Cor da linha */
+     margin: 30px 0; /* Espaço acima e abaixo da linha */
+    } 

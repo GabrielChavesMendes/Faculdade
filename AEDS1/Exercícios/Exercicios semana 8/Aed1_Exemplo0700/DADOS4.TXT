@@ -1,0 +1,11 @@
+10
+5
+84
+56
+13
+25
+Algoritmo
+Estrutura
+de
+Dados
+PARAR

@@ -1,0 +1,21 @@
+// Guia_1505.txt
+//793605 - Caio Faria Diniz
+// Implementar um programa (Guia_1505.txt) para calcular a expressão abaixo
+// usando dados com 8 bits.
+// dado03 = dado01 * 8 + dado02 / 2
+
+LXI H, dado1        ; HL <- addr(dado01)
+MOV A, M            ; A <- MEM[dado01]
+
+MOV B, A            ; B <- A (backup de dado01)
+ADD A               ; A <- A + A (dado01 * 2)
+ADD A               ; A <- A + A (dado01 * 4)
+ADD A               ; A <- A + A (dado01 * 8)
+
+INX H               ; HL <- HL + 1 (dado02)
+MOV C, M            ; C <- MEM[dado02]
+RRC                 ; Rotaciona C para dividir por 2 (dado02 / 2)
+
+ADD C               ; A <- A + (dado02 / 2)
+STA dado3           ; MEM[dado03] <- A
+HLT                 ; halt

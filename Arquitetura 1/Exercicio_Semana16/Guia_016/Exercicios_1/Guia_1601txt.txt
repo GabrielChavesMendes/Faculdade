@@ -1,0 +1,14 @@
+//Guia_1601
+
+LXI H,0100H    ; Carrega o endereço do dado01
+MOV B,M        ; Move dado01 para B
+INX H          ; Incrementa para apontar para dado02
+MOV C,M        ; Move dado02 para C
+MVI A,00H      ; Inicializa o acumulador (resultado parcial)
+LXI D,0000H    ; Inicializa DE com 0 para o resultado final
+LOOP: ADD B    ; Soma dado01 ao acumulador
+DCR C          ; Decrementa dado02 (contador)
+JNZ LOOP       ; Continua o loop enquanto dado02 != 0
+MOV E,A        ; Move o resultado final para E
+STA 0102H      ; Armazena o resultado em dado03
+HLT            ; Finaliza o programa

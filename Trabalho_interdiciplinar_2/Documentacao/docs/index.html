@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+  <link href="assets/images/favicon.png" rel="icon">
+  <title>Trabalho Interdisciplinar - Documentação</title>
+  <meta name="description" content="Documentação do projeto da disciplina de Trabalho Interdisciplinar">
+  <meta name="author" content="Rommel Carneiro (WebTech)">
+
+  <!-- Stylesheet ========================= -->
+  <link rel="stylesheet" type="text/css" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/vendor/font-awesome/css/all.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/vendor/magnific-popup/magnific-popup.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/vendor/highlight.js/styles/github.css">
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" type="text/css" href="assets/css/stylesheet.css">
+</head>
+
+<body data-spy="scroll" data-target=".idocs-navigation" data-offset="125" ">
+  <!-- Preloader -->
+  <div class="preloader">
+    <div class="lds-ellipsis">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+
+  <!-- Document Wrapper  =============================== -->
+  <div id="main-wrapper">
+
+    <!-- Header  ============================ -->
+    <header id="header" class="sticky-top">
+      <!-- Navbar -->
+      <nav class="primary-menu navbar navbar-expand-lg navbar-dropdown-dark">
+        <div class="container-fluid">
+          <!-- Sidebar Toggler -->
+          <button type="button" id="sidebarCollapse" class="navbar-toggler d-block d-md-none"><span></span><span
+              class="w-75"></span><span class="w-50"></span></button>
+
+          <!-- Logo -->
+          <a class="logo ml-md-3" href="index.html" title="iDocs Medilog"> <img src="assets/images/logo.png"
+              alt="iDocs Template"> </a>
+          <span class="text-2 ml-2">v2.0</span>
+          <!-- Logo End -->
+        </div>
+      </nav>
+    </header>
+    <!-- Header End -->
+
+    <!-- Content ============================ -->
+    <main id="content">
+
+      <!-- Sidebar Navigation	============================ -->
+      <div class="idocs-navigation bg-light">
+        <ul class="nav flex-column ">
+          <li class="nav-item"><a class="nav-link active" href="#ti_intro">Introdução</a> </li>
+          <li class="nav-item"><a class="nav-link" href="#ti_contexto">Contexto</a></li>
+          <li class="nav-item"><a class="nav-link" href="#ti_concepcao">Concepção</a>
+            <ul class="nav flex-column">
+              <li class="nav-item"><a class="nav-link" href="#ti_processo_dt">Design Thinking</a></li>
+              <li class="nav-item"><a class="nav-link" href="#ti_especificacoes">Especificações</a></li>
+              <li class="nav-item"><a class="nav-link" href="#ti_projeto_interfaces">Projeto de Interfaces</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="#ti_metodologia">Metodologia</a>
+            <ul class="nav flex-column">
+              <li class="nav-item"><a class="nav-link" href="#ti_ferramentas">Ferramentas</a></li>
+              <li class="nav-item"><a class="nav-link" href="#ti_gestao_projeto">Gestao do Projeto</a></li>
+              <li class="nav-item"><a class="nav-link" href="#ti_controle_versao">Controle de Versão</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="#ti_solucao">Solução</a>
+            <ul class="nav flex-column">
+              <li class="nav-item"><a class="nav-link" href="#ti_video">Vídeo do Projeto</a></li>
+              <li class="nav-item"><a class="nav-link" href="#ti_funcionalidades">Funcionalidades</a></li>
+              <li class="nav-item"><a class="nav-link" href="#ti_estruturas_dados">Estruturas de Dados</a></li>
+              <li class="nav-item"><a class="nav-link" href="#ti_modulos_apis">Módulos e APIs</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Docs Content ============================ -->
+      <div class="idocs-content">
+        <div class="container">
+
+          <!-- Introdução ============================ -->
+          <section id="ti_intro">
+            <h2>Introdução</h2>
+            <section id="ti_intro_info">
+              <h4>Informações Gerais</h4>
+              <div class="row">
+                <div class="col-12">
+                  <ul class="list-unstyled">
+                    <li><strong>Nome do Projeto:</strong> Medilog</li>
+                    <li><strong>Repositório GitHub:</strong> <a
+                        href="https://github.com/orgs/ICEI-PUC-Minas-CC-TI/teams/g37-medilog">Repositorio Medilog</a>
+                    </li>
+                    <li><strong>Membros da equipe:</strong>
+                      <ul>
+                        <li><a href="https://github.com/AayaA1a505">Raphael Oliveira de Araujo</a></li>
+                        <li><a href="https://github.com/GogotaSZ">Guilherme Henrique da Silva Teodoro</a></li>
+                        <li><a href="https://github.com/Arthx21">Arthur Souza Carvalho</a></li>
+                        <li><a href="https://github.com/GabrielChavesMendes">Gabriel Chaves Mendes</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+
+          </section>
+          <hr class="divider">
+
+          <!-- Contexto ============================ -->
+          <section id="ti_contexto">
+            <h2>Contexto</h2>
+            <section>
+              <h5>Problema</h5> 
+              <p>no Brasil erros humanos na area da saude principalmente em hospitais, anualmente geram mais de um milhão de efeitos colaterais por ano. </p>
+            </section>
+            <section>
+              <h5>Objetivos</h5>
+              <p>temos como objetivo implementar um sistema unificado para hospitais privados para agilizar o atendimento e facilitar a 
+                consulta de dados referentes a pacientes e medicamentos do hospital.</p>
+            </section>
+            <section>
+              <h5>
+                Justificativa
+              </h5>
+              <p>No brasil ainda não existe um sistema que atenda tal necessidade para hospitais, com exceção da rede publica q possui o sus, então buscamos implementar uma nova solução para reduzir os erros humanos.
+              </p>
+            </section>
+            <section>
+              <h5>Público-alvo</h5>
+              <p>Redes hospitalares de iniciativa privada.</p>
+            </section>
+          </section>
+          <hr class="divider">
+
+          <!-- Concepção ============================ -->
+          <section id="ti_concepcao">
+            <h2>Concepção</h2>
+
+            <section id="ti_especificacoes">
+              <h4>Especificações do Projeto</h4> 
+              <section>
+                <h5>Requisitos</h5>
+                <p>As tabelas a seguir apresentam os Requisitos Funcionais, Requisitos Não Funcionais e Regras de Negocio, que detalham o escopo
+                  do projeto. </p>              
+                <p><strong>Requisitos Funcionais</strong></p>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">ID</th>
+                      <th scope="col">Descrição do Requisito</th>
+                      <th scope="col">Dependencias</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">RF-01</th>
+                      <td>Pagina e sistema de Login</td>
+                      <td>...</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">RF-02</th>
+                      <td>Pagina Principal (para cada função)</td>
+                      <td>...</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">RF-03</th>
+                      <td>CRUD para administração dos pacientes</td>
+                      <td>RF-02</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">RF-04</th>
+                      <td>CRUD para administração dos funcionarios</td>
+                      <td>RF-02</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">RF-05</th>
+                      <td>CRUD para controle dos medicamentos</td>
+                      <td>RF-02</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">RF-06</th>
+                      <td>Pagina de listagem dos pacientes e suas informações</td>
+                      <td>RF-02 RF-03</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">RF-07</th>
+                      <td>Pagina para listagem dos remedios presentes na farmacia e suas informações</td>
+                      <td>RF-02 RF-05</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">RF-08</th>
+                      <td>Sistema de busca de medicamentos no sistema por fotos utilizando IA</td>
+                      <td>RF-02 RF-05</td>
+                    </tr>  
+                  </tbody>
+                </table>
+
+                <p><strong>Requisitos Não-Funcionais</strong></p>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">ID</th>
+                      <th scope="col">Descrição do Requisito</th>
+                    
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">RNF-01</th>
+                      <td>software codificado em linguagem HTML, CSS, JS e Java </td>                    
+                    </tr>
+                    <tr>
+                      <th scope="row">RNF-02</th>
+                      <td>Software ser codificado para WINDOWS.</td>
+                     
+                    </tr>
+                    <tr>
+                      <th scope="row">RNF-03</th>
+                      <td>Dados devem ser criptografados e descriptografados ao serem manipulados</td>
+                     
+                    </tr>
+                    <tr>
+                      <th scope="row">RNF-04</th>
+                      <td>Software deve utilizar o sistema de gerenciamento de banco de dados PostgreSQL</td>
+                     
+                    </tr>
+                    <tr>
+                      <th scope="row">RNF-05</th>
+                      <td>devem ser utilizadas APIs fornecidas por meio da Microsoft AZURE</td>
+                      
+                    </tr>
+                    <tr>
+                      <th scope="row">RNF-06</th>
+                      <td>O Website e seu Banco de dados devem ser hospedados por meio da plataforma Microsoft AZURE </td>
+                  
+                    </tr>
+                  </tbody>
+                </table>
+
+                <p><strong>Regras de Negocio</strong></p>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">ID</th>
+                      <th scope="col">Descrição do Normativo</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">RN-01</th>
+                      <td>Novos funcionários devem ser cadastrados por um usuário administrador. </td>
+                      </tr>
+                    <tr>
+                      <th scope="row">RN-02</th>
+                      <td>Médicos não devem poder alterar os dados dos medicamentos, apenas visualizá-los.</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">RN-03</th>
+                      <td>Usuario deve aderir aos termos com assinatura por escrito</td>
+                   </tr>
+                  </tbody>
+                </table>
+              </section>
+            </section>
+
+            <section id="ti_projeto_interfaces">
+              <h4>Projeto de Interface</h4>
+              <section>
+                <h5>User/Screen Flow do prototipo</h5>               
+                <img src="assets/images/UserFlowTI2.png" width="1000" height="600"  alt="User Flow Screen">
+              </section>
+
+              <section>
+                <h5>Wireframes</h5>
+                <p>Protótipo de telas do sistema em baixa fidelidade (rascunhos).
+                  <button type="button" class="btn btn-light btn-sm float-right" data-toggle="collapse"
+                    href="#collapseWireframes">Info</button>
+                </p>
+                <div class="alert alert-warning collapse" role="alert" id="collapseWireframes">
+                  <p>Os Wireframes são protótipos das telas da aplicação usados em design de interface para sugerir a
+                    estrutura de um site web e seu relacionamentos entre suas páginas. Um wireframe web é uma ilustração
+                    semelhante ao layout de elementos fundamentais na interface. <img class="img-fluid"
+                      src="assets/images/exemplo-wireframe.png" alt="Exemplo de wireframe"></p>
+                </div>
+                <img src="assets/images/Wireframeti2.png" width="1073" height="600" alt="Wireframe">
+              </section>
+
+            </section>
+          </section>
+
+          <hr class="divider">
+
+          <!-- Metodologia ============================ -->
+          <section id="ti_metodologia">
+            <h2>Metodologia</h2>
+            <section>
+              <h4 id="ti_ferramentas">Ferramentas</h4>
+
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Ambiente</th>
+                    <th scope="col">Plataforma</th>
+                    <th scope="col">Link de Acesso</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Criação do Userflow</td>
+                    <td>MarvelApp</td>
+                    <td><a
+                        href="https://marvelapp.com/project/7203030">https://marvelapp.com/project/7203030</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Repositório de código</td>
+                    <td>GitHub</td>
+                    <td><a
+                        href="https://github.com/orgs/ICEI-PUC-Minas-CC-TI/teams/g37-medilog">https://github.com/orgs/ICEI-PUC-Minas-CC-TI/teams/g37-medilog</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Serviços de Armazenamento em nuvem e Inteligencia Artificial</td>
+                    <td>AZURE</td>
+                    <td><a
+                        href="https://azure.microsoft.com/en-us">https://azure.microsoft.com/en-us</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+
+            <section id="ti_gestao_projeto">
+              <h4>Gestão do Projeto</h4>
+              <p>No inicio de cada Sprint é realizada uma reunião, definindo os papéis de cada membro para a proxima entrega, permitindo assim que cada integrante do grupo possa realizar multiplas tarefas em diferentes
+                pontos do trabalho, permitindo um aprendizado em diferentes topicos como front end, backend, banco de dados, integração de IAs, utilização de APIs entre outros.  </p>
+              <p>O grupo possui um servidor dedicado no Discord para gerenciamento das atividades, marcando no mesmo as informações relevantes para cada sprint e armazenando informações para consultas futuras</p>              
+            </section>
+
+
+            <section id="ti_controle_versao">
+              <h4>Controle de Versão</h4>
+            
+              <p>Os integrantes do grupo antes de cada entrega realizavam reuniões exibindo as mudanças a serem implementadas, em caso de problemas no desenvolvimento,
+                 o mesmo realizaria um proximo commit nos dias subsequentes, ao chegar em um ponto considerado satisfatório,
+                  era realizado o commit na master, concluindo a sprint recebendo apenas pequenos ajustes caso necessario.
+              </p>
+            </section>
+          </section>
+          <hr class="divider">
+
+          <!-- Funcionalidades ==================== -->
+          <section id="ti_solucao">
+            <h1>Solução</h1>
+            <p class="lead">Esta seção apresenta todos os detalhes da solução criada no projeto.</p>
+              <section id="ti_video">
+              <h4>Video do Projeto</h4>
+              <p>O vídeo a seguir traz uma apresentação da solução implementada pela equipe. </p>
+              <p>...... COLOQUE AQUI O SEU VIDEO ......</p>
+            </section>
+
+            <!-- Estruturas de dados =============== -->
+            <section id="Diagramas">
+              <h4>Diagramas do projeto</h4>
+
+              <h3>Diagrama de Entidade relacionamento (DER)<h3>
+              <img src="assets/images/DER TI2.png" width="1073" height="600" alt="DER_TI2">
+
+              <h3>Diagrama de entidades relacionamento do banco de dados em notação pé de galinha <h3>
+                <img src="assets/images/DER BD.png" width="1100" height="600" alt="DERBD_TI2">
+
+                <h3>Modelo relacional</h3>
+                <img src="assets/images/Modelo_Relacional.png" width="1073" height="400" alt="Modelo_Relacional">
+
+                <h3>Intelligent System Canvas</h3>
+                <img src="assets/images/Intelligent System Canvas (Ia_Ideia).png" width="1073" height="400" alt="Modelo_Relacional">
+            </section>
+
+            <!-- Módulos e APIs ================= -->
+            <section id="ti_modulos_apis">
+              <h4>Módulos e APIs</h4>
+              <p>Esta seção apresenta os módulos e APIs utilizados na solução.
+               
+
+              <section>
+                <h5>Imagens:</h5>
+                <ul>
+                  <li>Pinterest - <a target="_blank" href="https://br.pinterest.com">https://br.pinterest.com</a></li>
+                </ul>
+              </section>
+
+              <section>
+                <h5>APIs de inteligencia artifical:</h5>
+                <ul>
+                  <li>Tratametno de imagens- <a target="_blank"
+                      href="https://azure.microsoft.com/pt-br/products/ai-services/ai-vision">https://azure.microsoft.com/pt-br/products/ai-services/ai-vision</a>
+                  </li>
+                  <li>Tratametno de texto- <a target="_blank"
+                    href="https://azure.microsoft.com/pt-br/products/ai-services/openai-service/">https://azure.microsoft.com/pt-br/products/ai-services/openai-service/</a>
+                </li>
+                </ul>
+              </section>
+
+              <section>
+                <h5>Armazenamento de dados:</h5>
+                <ul>
+                  <li>Blob storage- <a target="_blank" href="https://azure.microsoft.com/pt-br/products/storage/blobs/">https://azure.microsoft.com/pt-br/products/storage/blobs/</a></li>
+                  <li>pgAdmin PostgreeSQL- <a target="_blank" href="https://www.pgadmin.org">https://www.pgadmin.org</a></li>
+                </ul>
+              </section>
+            </section>
+          </section>
+        </div>
+      </div>
+      <!-- Content end -->
+    </main>
+
+    <!-- Footer
+  ============================ -->
+    <footer id="footer" class="section bg-dark footer-text-light">
+      <div class="container">
+        <p class="text-center"><strong>Trabalho Interdisciplinar - ICEI PUC Minas</strong><br>Modelo adaptado de <a
+            href="http://www.harnishdesign.net/idocs-one-page-documentation-html-template/">iDocs</a> - Design &amp;
+          Develop by <a class="btn-link" target="_blank" href="http://www.harnishdesign.net/">HarnishDesign</a></p>
+      </div>
+    </footer>
+    <!-- Footer end -->
+
+    <!-- Document Wrapper end -->
+  </div>
+
+  <!-- Back To Top -->
+  <a id="back-to-top" data-toggle="tooltip" title="Topo" href="javascript:void(0)"><i class="fa fa-chevron-up"></i></a>
+
+  <!-- JavaScript ============================ -->
+  <script src="assets/vendor/jquery/jquery.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Highlight JS -->
+  <script src="assets/vendor/highlight.js/highlight.min.js"></script>
+  <!-- Easing -->
+  <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <!-- Magnific Popup -->
+  <script src="assets/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+  <!-- Custom Script -->
+  <script src="assets/js/theme.js"></script>
+</body>
+
+</html>

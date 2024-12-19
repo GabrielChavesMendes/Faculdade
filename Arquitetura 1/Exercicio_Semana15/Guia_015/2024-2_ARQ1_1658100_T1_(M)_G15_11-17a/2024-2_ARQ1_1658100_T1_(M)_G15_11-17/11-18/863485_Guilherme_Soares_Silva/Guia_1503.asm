@@ -1,0 +1,34 @@
+; Matricula: 863485
+; Nome: Guilherme Soares Silva
+
+JMP MAIN
+
+LOADER:LXI H,C0E0
+MVI M,22H
+
+LXI H,C0F0
+MVI M,BBH
+
+LXI H,C100
+MVI M,13H
+
+LXI H,C110
+MVI M,49H
+
+RET
+
+
+MAIN:	CALL LOADER 
+	LDA C0E0
+	LXI H,C0F0
+	SUB M
+
+	LXI H,C100
+	ADD M
+
+	LXI H,C110
+	SUB M
+
+	STA C0E2
+	
+HLT

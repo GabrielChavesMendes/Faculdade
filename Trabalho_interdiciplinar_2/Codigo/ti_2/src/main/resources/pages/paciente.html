@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <link rel="stylesheet" href="../assets/css/stylereceitas.css" />
+    <title>Página do Usuário</title>
+</head>
+
+<body style="background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(83,83,83,1) 100%);">
+
+    <!-- Background container 
+    <div class="background">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>-->
+
+    <div class="container mt-4">
+        <div class="row">
+            <!-- Container à esquerda -->
+            <div class="col-12 col-md-5 mb-4">
+                <div class="bg-light rounded-3 p-3">
+                    <h3 class="text-center mb-4 mt-3 border-bottom border-success">Informações Pessoais</h3>
+                <!--    <img src="imagem.jpg" alt="Imagem do paciente" class="img-fluid mb-3 mx-auto d-block"> -->
+                    <p><strong>Nome:</strong> <span id="nome"></span></p>
+                    <p><strong>Idade:</strong> <span id="idade"></span></p>
+                    <p><strong>Peso:</strong> <span id="peso"></span></p>
+                    <p><strong>Altura:</strong> <span id="altura"></span></p>
+                    <div class="row">
+                        <div class="col-12">
+                            <p><strong>Tipo Sanguíneo:</strong> <span id="tipoSanguineo"></span></p>
+                        </div>
+                        <div class="col-12">
+                            <p><strong>alergias:</strong> <span id="alergias"></span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+           
+
+            <!-- Espaço entre os dois containers -->
+            <div class="col-12 col-md-1"></div>
+
+            <!-- Container à direita (Prontuários Médicos) -->
+            <div class="col-12 col-md-6 mb-4">
+                <div class="bg-light rounded-3 p-3">
+                    <h3 class="text-center mb-4 mt-3 border-bottom border-success">Prontuários</h3>
+                    <div class="prontuarios" id="prontuarios"></div>
+
+                    <div class="modal fade" id="detalhesModal" tabindex="-1" aria-labelledby="detalhesModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="detalhesModalLabel">Detalhes do Prontuário</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div id="modal-detalhes-conteudo"></div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Fechar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div id="footer_content">
+            <div id="footer_contacts">
+                <a href="../pages/index.html"><img src="../assets/images/logMediLog.png" id="logo" alt="Logo" /></a>
+                <div id="footer_social_media">
+                    <a href="#" class="footer-link" id="instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="footer-link" id="facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="footer-link" id="whatsapp"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <ul class="footer-list">
+                <li>
+                    <h3>Blog</h3>
+                </li>
+                <li><a href="#" class="footer-link">Tech</a></li>
+                <li><a href="#" class="footer-link">Adventures</a></li>
+                <li><a href="#" class="footer-link">Music</a></li>
+            </ul>
+            <ul class="footer-list">
+                <li>
+                    <h3>Products</h3>
+                </li>
+                <li><a href="#" class="footer-link">App</a></li>
+                <li><a href="#" class="footer-link">Desktop</a></li>
+                <li><a href="#" class="footer-link">Cloud</a></li>
+            </ul>
+            <div id="footer_subscribe">
+                <h3>Subscribe</h3>
+                <p>Enter your e-mail to get notified about our news solutions</p>
+                <div id="input_group">
+                    <input type="email" id="email" />
+                    <button><i class="fa-regular fa-envelope"></i></button>
+                </div>
+            </div>
+        </div>
+        <div id="footer_copyright">
+            &#169; 2024 all rights reserved
+        </div>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/4e1bc412de.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="./assets/js/responses.js"></script>
+    <script src="./assets/js/chat.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="./assets/js/nav.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+
+        // Função para buscar os prontuários e gerar os elementos HTML
+        function carregarProntuarios() {
+            const params = new URLSearchParams(window.location.search);
+            var cpf1 = params.get('cpf');
+
+            const dados = { cpf: cpf1 };
+            fetch('http://localhost:4567/prontuarios-get-especifico', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(dados)
+            }) // Altere para o seu endpoint correto
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Erro ao carregar prontuários');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const prontuariosContainer = document.getElementById('prontuarios');
+
+                    // Limpa o container antes de adicionar novos elementos
+                    prontuariosContainer.innerHTML = '';
+
+                    // Itera sobre os prontuários recebidos
+                    data.forEach(prontuario => {
+                        const { cpf, nome, medicoResp, tipoSanguineo, dataAtendimento, status, descricao, alergia, peso, altura, idade, nomeHospital } = prontuario;
+
+                        // Cria o elemento HTML
+                        const prontuarioElement = document.createElement('div');
+                        prontuarioElement.className = 'prontuarios';
+                        prontuarioElement.setAttribute('data-cpf', cpf);
+                        prontuarioElement.innerHTML = `
+                    <div class="card mb-3" style="cursor: pointer;" onclick="mostrarDetalhes('${nome}', '${medicoResp}', ${tipoSanguineo}, '${dataAtendimento}', '${status}', '${descricao}', '${alergia}', '${peso}', '${altura}', '${nomeHospital}')">
+                        <div class="row g-0">
+                            <div class="col-md-2.5">
+                            <!--    <img src="https://randomuser.me/api/portraits/men/${idade}.jpg" class="img-fluid rounded-start" alt="${nome}" /> -->
+                            </div>
+                            <div class="col-md-9">
+  <div class="card-body">
+    <h5 class="card-title mb-3">${nome}</h5>
+    <h6 class="card-subtitle text-muted mb-4">CPF: ${cpf}</h6>
+
+    <div class="mb-3">
+      <strong>Médico:</strong> ${medicoResp}
+    </div>
+
+    <div class="mb-3">
+      <strong>Status:</strong> ${status}
+    </div>
+
+    <div>
+      <strong>Hospital:</strong> ${nomeHospital}
+    </div>
+  </div>
+</div>
+                        </div>
+                    </div>
+                `;
+
+                        // Adiciona o novo elemento ao container
+                        prontuariosContainer.appendChild(prontuarioElement);
+                    });
+                })
+                .catch(error => {
+                    console.error('Erro:', error);
+                    alert('Erro ao carregar prontuários.');
+                });
+        }
+
+        // Adiciona um evento para carregar os prontuários quando a página estiver pronta
+        document.addEventListener('DOMContentLoaded', carregarProntuarios);
+
+
+        function carregarInformacoesPessoais() {
+            const params = new URLSearchParams(window.location.search);
+            var cpf1 = params.get('cpf');
+
+            const dados = { cpf: cpf1 };
+
+            // Altere o URL abaixo para o seu endpoint que retorna as informações do paciente
+            fetch('http://localhost:4567/prontuarios-get', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(dados)
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Erro ao carregar informações pessoais');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+
+                    // Supondo que 'data' contém as informações pessoais do paciente
+                    const { cpf, nome, idade, tipoSanguineo, alergia, peso, altura } = data;
+
+                    var A;
+                    switch (tipoSanguineo) {
+                        case 1:
+                            var A = "A+";
+                            break;
+                        case 2:
+                            var A = "A-";
+                            break;
+                        case 3:
+                            var A = "B+";
+                            break;
+                        case 4:
+                            var A = "B-";
+                            break;
+                        case 5:
+                            var A = "AB+";
+                            break;
+                        case 6:
+                            var A = "AB-";
+                            break;
+                        case 7:
+                            var A = "O+";
+                            break;
+                        case 8:
+                            var A = "O-";
+                            break;
+                        default:
+                            System.out.println("Tipo Sanguíneo inválido.");
+                            break;
+                    }
+
+
+                    // Gera o HTML para as informações pessoais
+                    const informacoesHTML = `
+            <h3 class="text-center mb-4 mt-3 border-bottom border-success">Informações Pessoais</h3>
+          <!--  <img src="https://randomuser.me/api/portraits/men/${idade}.jpg" alt="Imagem do paciente" class="img-fluid mb-3 mx-auto d-block"> -->
+            <p><strong>Nome:</strong> <span id="nome" style="font-weight 600;">${nome}</span></p>
+            <p><strong>Idade:</strong> <span id="idade">${idade}</span></p>
+            <p><strong>Peso:</strong> <span id="peso">${peso}</span></p>
+            <p><strong>Altura:</strong> <span id="altura">${altura}</span></p>
+            <div class="row">
+                <div class="col-12">
+                    <p><strong>Tipo Sanguíneo:</strong> <span id="tipoSanguineo">${A}</span></p>
+                </div>
+                <div class="col-12">
+                    <p><strong>Alergias:</strong> <span id="alergias">${alergia}</span></p>
+                </div>
+            </div>
+        `;
+
+                    // Insere o HTML gerado na div correspondente
+                    const container = document.querySelector('.col-12.col-md-5.mb-4 .bg-light');
+                    container.innerHTML = informacoesHTML;
+                })
+                .catch(error => {
+                    console.error('Erro:', error);
+                    alert('Erro ao carregar informações pessoais.');
+                });
+        }
+
+        // Adiciona um evento para carregar as informações quando a página estiver pronta
+        document.addEventListener('DOMContentLoaded', carregarInformacoesPessoais);
+
+
+        function mostrarDetalhes(nome, medico, tipoSanguineo, dataInternacao, status, descricao, alergia, peso, altura, nomeHospital) {
+
+            var A;
+            switch (tipoSanguineo) {
+                case 1:
+                    var A = "A+";
+                    break;
+                case 2:
+                    var A = "A-";
+                    break;
+                case 3:
+                    var A = "B+";
+                    break;
+                case 4:
+                    var A = "B-";
+                    break;
+                case 5:
+                    var A = "AB+";
+                    break;
+                case 6:
+                    var A = "AB-";
+                    break;
+                case 7:
+                    var A = "O+";
+                    break;
+                case 8:
+                    var A = "O-";
+                    break;
+                default:
+                    System.out.println("Tipo Sanguíneo inválido.");
+                    break;
+            }
+
+            let detalhes = `
+            <p><strong>Nome:</strong> ${nome}</p>
+            <p><strong>Médico:</strong> ${medico}</p>
+            <p><strong>Tipo Sanguíneo:</strong> ${A}</p>
+            <p><strong>Alergias:</strong> ${alergia}</p>
+            <p><strong>Altura:</strong> ${altura}m</p>
+            <p><strong>Peso:</strong> ${peso}kg</p>
+            <p><strong>Status:</strong> ${status}</p>
+            <p><strong>Data de Internação:</strong> ${dataInternacao}</p>
+            <p><strong>Descrição:</strong> ${descricao}</p>
+            <p><strong>Hospital:</strong> ${nomeHospital}</p>
+        `;
+
+            // Insere o conteúdo no corpo do modal
+            document.getElementById('modal-detalhes-conteudo').innerHTML = detalhes;
+
+            // Abre o modal
+            var modal = new bootstrap.Modal(document.getElementById('detalhesModal'));
+            modal.show();
+        }
+    </script>
+
+</body>
+
+</html>

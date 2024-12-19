@@ -1,0 +1,13 @@
+
+    MVI H, 20H         
+    
+  
+    MOV L, 00H        
+    MOV A, M           
+    
+ 
+    MOV L, 01H         
+    MOV B, M           
+    CMP B             
+    JNC SKIP_BCD_ADJ   
+    CMA                

@@ -1,0 +1,28 @@
+
+// Guia_1504.txt 
+// 855842 - Mateus Resende Ottoni
+//
+// Objetivo: dado03 = 2 * (dado01 - 2 * dado02) 
+// Subtrair o dobro de um número de 8 bits do primeiro e dobrar o resultado
+//
+// Armazenar o primeiro dado	em 0100, por exemplo e atualizar as instruções 
+// Armazenar o segundo dado	em 0101
+// Armazenar o resultado	em 0103
+ 
+// Área de código	; Significado		// Comentário
+  LXI	H,dado1		; HL <- addr(dado1)	// Endereço do dado1
+  MOV	A,M		; A  <- MEM [HL]	// A = MEM [dado1]
+  INX	H		; HL <- HL+1		// Endereço do dado2
+  SUB	M		; A  <- A - MEM [HL]	// A = A - MEM [dado2]
+  SUB	M		; A  <- A - MEM [HL]	// A = A - MEM [dado2]
+  STA	dado3		; MEM [dado3] <- A	// MEM [dado3] = A
+  LXI	H,dado3		; HL <- addr(dado3)	// Endereço do dado3
+  MOV	A,M		; A  <- MEM [HL]	// A = MEM [dado3]
+  ADD	M		; A  <- A + MEM [HL]	// A = A + MEM [dado3]
+  STA	dado3		; MEM [dado3] <- A	// MEM [dado3] = A
+  HLT			; halt			// Parar
+ 
+; Área de dados 
+; dado1:  22h  ; primeiro dado	em hexadecimal
+; dado2:  23h  ; segundo dado	em hexadecimal
+; dado3:  20h  ; resultado	em hexadecimal

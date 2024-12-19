@@ -1,0 +1,45 @@
+// Guia_1503.txt
+// 834358 - Gabriela de Assis dos Reis
+//
+; Area de dados
+; dado01 em 0300h (8 bits, BCD)
+; dado02 em 0301h (8 bits, BCD)
+; dado03 em 0302h (8 bits, BCD)
+; dado04 em 0303h (8 bits, BCD)
+; Resultado dado05 em 0304h (8 bits, BCD)
+; ==========================
+
+START:
+    LXI H, 0300h       ; HL aponta para dado01
+    MOV A, M           ; A <- dado01 (carregar dado01 no acumulador)
+
+    
+    INX H              ; HL aponta para dado02
+    MOV B, M           ; B <- dado02
+    SUB B              ; A <- A - dado02
+    JNC ADJUST_BCD     ; Pula para ajuste se não houver underflow
+    ADD A, 0A0h        ; Ajustar para complemento de 10 BCD se houver underflow
+
+ADJUST_BCD:
+    DAA                ; Ajustar resultado para formato BCD
+
+    INX H              ; HL aponta para dado03
+    MOV B, M           ; B <- dado03
+    ADD B              ; A <- A + dado03
+    DAA                ; Ajustar resultado para formato BCD
+
+    INX H              ; HL aponta para dado04
+    MOV B, M           ; B <- dado04
+    SUB B              ; A <- A - dado04
+    JNC ADJUST_BCD2    ; Pula para ajuste se não houver underflow
+    ADD A, 0A0h        ; Ajustar para complemento de 10 BCD se houver underflow
+
+ADJUST_BCD2:
+    DAA                ; Ajustar resultado para formato BCD
+
+    
+    LXI H, 0304h       ; HL aponta para dado05
+    MOV M, A           ; MEM[0304h] <- A (armazenar resultado)
+
+    
+    HLT                ; Parar execução

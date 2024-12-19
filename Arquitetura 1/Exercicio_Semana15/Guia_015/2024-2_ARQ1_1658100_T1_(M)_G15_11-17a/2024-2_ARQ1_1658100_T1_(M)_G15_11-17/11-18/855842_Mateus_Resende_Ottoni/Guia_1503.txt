@@ -1,0 +1,31 @@
+
+// Guia_1503.txt 
+// 855842 - Mateus Resende Ottoni
+//
+// Objetivo: dado05 = dado01 - dado02 + dado03 - dado04 
+// Subtrair um número de 8 bits do primeiro, somar um terceiro e subtrair um quarto
+//
+// Armazenar o primeiro dado	em 0100, por exemplo e atualizar as instruções 
+// Armazenar o segundo dado	em 0101
+// Armazenar o terceiro dado	em 0102
+// Armazenar o quarto dado	em 0103
+// Armazenar o resultado	em 0105
+ 
+// Área de código	; Significado		// Comentário
+  LXI	H,dado1		; HL <- addr(dado1)	// Endereço do dado1
+  MOV	A,M		; A  <- MEM [HL]	// A = MEM [dado1]
+  INX	H		; HL <- HL+1		// Endereço do dado2
+  SUB	M		; A  <- A - MEM [HL]	// A = A - MEM [dado2]
+  INX	H		; HL <- HL+1		// Endereço do dado3
+  ADD	M		; A  <- A + MEM [HL]	// A = A + MEM [dado3]
+  INX	H		; HL <- HL+1		// Endereço do dado4
+  SUB	M		; A  <- A - MEM [HL]	// A = A - MEM [dado4]
+  STA	dado5		; MEM [dado5] <- A	// MEM [dado5] = A
+  HLT			; halt			// Parar
+ 
+; Área de dados 
+; dado1:  22h  ; primeiro dado	em hexadecimal
+; dado2:  23h  ; segundo dado	em hexadecimal
+; dado3:  24h  ; terceiro dado	em hexadecimal
+; dado3:  25h  ; quarto dado	em hexadecimal
+; dado4:  20h  ; resultado	em hexadecimal

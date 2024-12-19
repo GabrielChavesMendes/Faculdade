@@ -1,0 +1,32 @@
+Exercício recuperação_02
+Gabriel Chaves Mendes _ 1453522
+
+a) 
+Mintermos: 7, 9, 10, 11, 13, 14
+
+Simplificação: (a.c'.d) + (a.c.d') + (a'.b.c) + (a'.b.c.d)  
+
+b)
+Maxtermos: 0, 1, 2, 4, 7, 8, 9, A, C, F
+
+Simplificação: (A'+B') . (A'+D') . (B'+D') . (A+B+D)
+
+c)
+Mintermos: 1, 2, 3, 5, 6, 7, A, B, D, E
+
+Simplificação: (c.d') + (a'.d) + (b'.c) + (b.c'.d)
+
+d)
+Mintermos: 7, 8, C, F
+
+Simplificação: (b.c.d) + (a.c'.d')
+
+e)
+Maxtermos: 0, 1, 2, 5, 6, 8, 9, A, D, E
+
+Simplificação: (C'+D) . (C+D') . (B'+C')
+
+f)
+Mintermos: 5, 9, D, F
+
+Simplificação: (c'.d) + (a.b.d)

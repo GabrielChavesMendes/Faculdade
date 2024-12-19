@@ -1,0 +1,11 @@
+10 numeros aleatorios entre o intervalo de [1:100]:
+[6]
+[46]
+[82]
+[28]
+[62]
+[92]
+[96]
+[43]
+[28]
+[37]

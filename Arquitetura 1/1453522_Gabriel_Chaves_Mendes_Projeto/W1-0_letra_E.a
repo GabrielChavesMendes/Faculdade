@@ -1,0 +1,28 @@
+; Quadrado de N usando soma de ímpares
+Main: load n           ; acc <- N
+      store counter    ; counter <- N
+      load zero        ; acc <- 0 (resultado acumulado)
+      store result     ; result <- 0
+      load one         ; acc <- 1 (primeiro ímpar)
+      store odd        ; odd <- 1
+loop: load result      ; acc <- result
+      add odd          ; acc <- result + odd
+      store result     ; result <- acc
+      load odd         ; acc <- odd
+      add two          ; acc <- odd + 2 (próximo ímpar)
+      store odd        ; odd <- acc
+      load counter     ; acc <- counter
+      sub one          ; counter--
+      store counter    ; Atualizar counter
+      jz done          ; Se counter == 0, sair
+      jmp loop         ; Continuar somando ímpares
+done: load result      ; acc <- resultado final
+      write            ; output <- acc
+      stop             ; Finalizar
+zero: .data 2 0
+one: .data 2 1
+two: .data 2 2
+n: .data 2 4           ; Valor de N (exemplo: 4)
+counter: .data 2 0
+odd: .data 2 0
+result: .data 2 0

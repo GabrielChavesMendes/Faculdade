@@ -1,0 +1,46 @@
+; Guia_1502.txt
+; 1641880 - Matheus Felipe Cavalcanti Xavier
+; Calcular dado05 = dado01 + dado02 + dado03 - dado04 (16 bits)
+
+; Área de código
+LXI H, dado01      ; HL <- addr(dado01)   // Carrega o endereço de dado01
+MOV A, M           ; A <- MEM[HL]         // Carrega parte baixa de dado01 em A
+INX H              ; HL <- HL+1           // Aponta para parte alta de dado01
+MOV B, M           ; B <- MEM[HL]         // Carrega parte alta de dado01 em B
+
+; Somar dado02
+LXI H, dado02      ; HL <- addr(dado02)   // Carrega o endereço de dado02
+ADD M              ; A <- A + parte baixa de dado02
+INX H              ; Aponta para parte alta de dado02
+ADC M              ; A <- A + M + carry   // Somar parte alta com carry para B
+
+; Somar dado03
+LXI H, dado03      ; HL <- addr(dado03)
+ADD M              ; A <- A + parte baixa de dado03
+INX H
+ADC M              ; A <- A + M + carry
+
+; Subtrair dado04 usando complemento de 2
+LXI H, dado04      ; HL <- addr(dado04)
+CMA                ; Complemento de 1 da parte baixa de dado04
+MOV C, M           ; Carregar em C
+INR C              ; Complemento de 2 (incremento)
+ADD C              ; A <- A + complemento de 2 da parte baixa de dado04
+
+INX H
+CMA                ; Complemento de 1 da parte alta de dado04
+MOV C, M
+INR C
+ADC C              ; A <- A + complemento de 2 da parte alta de dado04 + carry
+
+; Armazenar resultado em dado05
+STA dado05         ; Armazenar parte baixa do resultado
+MOV M, B           ; Armazenar parte alta do resultado
+HLT                ; Parar execução
+
+; Área de dados
+dado01: DW 0002h   ; Primeiro dado em hexadecimal (16 bits)
+dado02: DW 0003h   ; Segundo dado em hexadecimal (16 bits)
+dado03: DW 0001h   ; Terceiro dado em hexadecimal (16 bits)
+dado04: DW 0004h   ; Quarto dado em hexadecimal (16 bits, para subtrair)
+dado05: DW 0000h   ; Resultado (16 bits)

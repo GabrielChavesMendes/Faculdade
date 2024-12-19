@@ -1,0 +1,104 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "C:\Users\Gabriel\OneDrive\DOCUME~2\ARQUIT~1\2024-2~1\2024-2~3\ICARUS~1\lib\ivl\system.vpi";
+:vpi_module "C:\Users\Gabriel\OneDrive\DOCUME~2\ARQUIT~1\2024-2~1\2024-2~3\ICARUS~1\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\Users\Gabriel\OneDrive\DOCUME~2\ARQUIT~1\2024-2~1\2024-2~3\ICARUS~1\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\Users\Gabriel\OneDrive\DOCUME~2\ARQUIT~1\2024-2~1\2024-2~3\ICARUS~1\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\Users\Gabriel\OneDrive\DOCUME~2\ARQUIT~1\2024-2~1\2024-2~3\ICARUS~1\lib\ivl\va_math.vpi";
+S_0000013e4c3cbcc0 .scope module, "contador_modulo7" "contador_modulo7" 2 1;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "clk";
+    .port_info 1 /INPUT 1 "reset";
+    .port_info 2 /OUTPUT 3 "count";
+L_0000013e4c3ceba0 .functor AND 1, L_0000013e4c2a3570, L_0000013e4c2a4100, C4<1>, C4<1>;
+L_0000013e4c3c9790 .functor BUFZ 3, v0000013e4c3ceb00_0, C4<000>, C4<000>, C4<000>;
+v0000013e4c272d90_0 .net *"_ivl_5", 0 0, L_0000013e4c2a3570;  1 drivers
+v0000013e4c272910_0 .net *"_ivl_7", 0 0, L_0000013e4c2a4100;  1 drivers
+o0000013e4c2a7008 .functor BUFZ 1, C4<z>; HiZ drive
+v0000013e4c3c8640_0 .net "clk", 0 0, o0000013e4c2a7008;  0 drivers
+v0000013e4c3c96f0_0 .net "count", 2 0, L_0000013e4c3c9790;  1 drivers
+v0000013e4c3ceb00_0 .var "q", 2 0;
+o0000013e4c2a7098 .functor BUFZ 1, C4<z>; HiZ drive
+v0000013e4c2a3250_0 .net "reset", 0 0, o0000013e4c2a7098;  0 drivers
+L_0000013e4c2ea028 .functor BUFT 1, C4<1>, C4<0>, C4<0>, C4<0>;
+v0000013e4c2a32f0_0 .net "t0", 0 0, L_0000013e4c2ea028;  1 drivers
+v0000013e4c2a3390_0 .net "t1", 0 0, L_0000013e4c2a34d0;  1 drivers
+v0000013e4c2a3430_0 .net "t2", 0 0, L_0000013e4c3ceba0;  1 drivers
+E_0000013e4c3ca690 .event posedge, v0000013e4c3c8640_0;
+L_0000013e4c2a34d0 .part v0000013e4c3ceb00_0, 0, 1;
+L_0000013e4c2a3570 .part v0000013e4c3ceb00_0, 1, 1;
+L_0000013e4c2a4100 .part v0000013e4c3ceb00_0, 0, 1;
+    .scope S_0000013e4c3cbcc0;
+T_0 ;
+    %wait E_0000013e4c3ca690;
+    %load/vec4 v0000013e4c2a3250_0;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_0.0, 8;
+    %pushi/vec4 0, 0, 3;
+    %assign/vec4 v0000013e4c3ceb00_0, 0;
+    %jmp T_0.1;
+T_0.0 ;
+    %load/vec4 v0000013e4c2a32f0_0;
+    %flag_set/vec4 8;
+    %jmp/0 T_0.2, 8;
+    %load/vec4 v0000013e4c3ceb00_0;
+    %parti/s 1, 0, 2;
+    %inv;
+    %jmp/1 T_0.3, 8;
+T_0.2 ; End of true expr.
+    %load/vec4 v0000013e4c3ceb00_0;
+    %parti/s 1, 0, 2;
+    %jmp/0 T_0.3, 8;
+ ; End of false expr.
+    %blend;
+T_0.3;
+    %ix/load 4, 0, 0;
+    %ix/load 5, 0, 0;
+    %flag_set/imm 4, 0;
+    %assign/vec4/off/d v0000013e4c3ceb00_0, 4, 5;
+    %load/vec4 v0000013e4c2a3390_0;
+    %flag_set/vec4 8;
+    %jmp/0 T_0.4, 8;
+    %load/vec4 v0000013e4c3ceb00_0;
+    %parti/s 1, 1, 2;
+    %inv;
+    %jmp/1 T_0.5, 8;
+T_0.4 ; End of true expr.
+    %load/vec4 v0000013e4c3ceb00_0;
+    %parti/s 1, 1, 2;
+    %jmp/0 T_0.5, 8;
+ ; End of false expr.
+    %blend;
+T_0.5;
+    %ix/load 4, 1, 0;
+    %ix/load 5, 0, 0;
+    %flag_set/imm 4, 0;
+    %assign/vec4/off/d v0000013e4c3ceb00_0, 4, 5;
+    %load/vec4 v0000013e4c2a3430_0;
+    %flag_set/vec4 8;
+    %jmp/0 T_0.6, 8;
+    %load/vec4 v0000013e4c3ceb00_0;
+    %parti/s 1, 2, 3;
+    %inv;
+    %jmp/1 T_0.7, 8;
+T_0.6 ; End of true expr.
+    %load/vec4 v0000013e4c3ceb00_0;
+    %parti/s 1, 2, 3;
+    %jmp/0 T_0.7, 8;
+ ; End of false expr.
+    %blend;
+T_0.7;
+    %ix/load 4, 2, 0;
+    %ix/load 5, 0, 0;
+    %flag_set/imm 4, 0;
+    %assign/vec4/off/d v0000013e4c3ceb00_0, 4, 5;
+T_0.1 ;
+    %jmp T_0;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Questao_1305.v";

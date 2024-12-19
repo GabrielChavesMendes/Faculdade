@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style> 
+    hr {
+        border: dark;
+        height: 6px;
+        background-color: #000000;
+        margin: 30px 0;
+    }     
+    </style>
+    <title>Projeto Bootstrap</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body class="bg-success bg-gradient">
+    <main class="mx-3">
+
+    <!-- CABEÇALHO --> 
+    <nav class="navbar navbar-expand-lg navbar-light bg-light border border-4 border border-danger-subtle">
+        <img src="https://i.ibb.co/FqpL0ZZ/Imagem-2023-09-29-153705619.png" alt="imagem" border="0">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto fw-bold position-absolute end-0 fs-5 text-dark">
+                <li class="nav-item active">
+                    <a class="nav-link " href="index.html">Página Inicial</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Álbuns</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Mapa</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Sobre</a>
+                </li>
+            </ul>
+        </div>
+    </nav>  
+
+    <!-- DETALHE DO ÁLBUM -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 imagem-col">
+                <img src="https://i.ibb.co/NCx9JwT/download.jpg" alt="download" border="0" class="card-img-top mt-3">
+            </div>
+            <div class="col-md-4 texto-col">
+                <h2 class="fs-3 text-primary-emphasis">Descrição</h2>
+                <p>Rio de Janeiro, capital do estado do Rio de Janeiro, uma das cidades dentro do território brasileiro mais procuradas pelos turistas. Oferecendo inúmeras opções de diversão, passeios, momentos únicos através de suas belas praias, sua energia calorosa, suas paisagens únicas e claro, uma das principais atrações, o Cristo Redentor, que atrai muitos visitantes durante o ano todo.</p>
+            </div>
+            <div class="col-md-4 espaco-em-branco"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 espaco-em-branco"></div>
+            <div class="col-md-4 texto-col">
+                <h2 class="fs-3 text-primary-emphasis">Localização</h2>
+                <p>Rio de Janeiro, Rio de Janeiro</p>
+            </div>
+            <div class="col-md-4 texto-col">
+                <h2 class="fs-3 text-primary-emphasis">Data de Registro</h2>
+                <p>29/09/2023</p>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <h3 class="mt-5 text-uppercase fw-bold">Ítens</h3>
+
+    <hr>
+
+    <!-- ITENS -->
+
+    <div class="container">
+        <div class="row mb-3">
+            <!-- Primeiro -->
+            <div class="col-md-3 mb-4">
+                <div class="card">
+                    <a data-bs-toggle="modal" href="#itemModal1">
+                        <img src="https://i.ibb.co/hHv3cDd/age20200815033.webp" border="0" alt="Cristo" class="card-img-top" height="230">
+                    </a>
+                    <div class="card-body">
+                        <p class="card-text">O Cristo Redentor, uma das principais atrações do Rio de Janeiro e uma das 7 Maravilhas do Mundo</p>
+                    </div>
+                </div>
+            </div>
+             <!-- Segundo -->
+             <div class="col-md-3">
+                <div class="card">
+                <a data-bs-toggle="modal" href="#itemModal1">
+                    <img src="https://i.ibb.co/tXDtnbB/download.jpg" border="0" alt="Pão de Açucar" class="card-img-top" height="230">
+                </a>
+                    <div class="card-body">
+                        <p class="card-text">Um dos mais famosos cartões postais do Brasil, o Pão de Açucar é um lindo complexo de morros</p>
+                </div>
+                </div>
+            </div>
+             <!-- Terceiro -->
+             <div class="col-md-3">
+                <div class="card">
+                    <a data-bs-toggle="modal" href="#itemModal1">
+                        <img src="https://i.ibb.co/CW91cP3/download.jpg" border="0" alt="Copacabana" class="card-img-top" height="230">
+                    </a>
+                    <div class="card-body">
+                        <p class="card-text">A famosa praia de Copacabana, uma das mais belas e procuradas pelos turistas que visitam o Rio de Janeiro</p>
+                    </div>
+                </div>
+            </div>
+             <!-- Quarto -->
+             <div class="col-md-3">
+                <div class="card">
+                    <a data-bs-toggle="modal" href="#itemModal1">
+                        <img src="https://i.ibb.co/Zz47hNj/download.jpg" border="0" alt="Jardim" class="card-img-top" height="230">
+                    </a>
+                    <div class="card-body">
+                    <p class="card-text">Jardim Botânico do Rio de Janeiro, um dos mais ricos e diversos do mundo com diversas atrações</p>
+                    </div>
+                </div>
+            </div>
+             <!-- Quinto -->
+             <div class="col-md-3 mb-4">
+                <div class="card">
+                    <a data-bs-toggle="modal" href="#itemModal1">
+                        <img src="https://i.ibb.co/cyD7VSk/download.jpg" border="0" alt="Arcos" class="card-img-top" height="230">
+                    </a>
+                    <div class="card-body">
+                    <p class="card-text">Os Arcos da Lapa, a mais importante construção colonial do Brasil em estilo Romano</p>
+                    </div>
+                </div>
+            </div>
+             <!-- Sexto -->
+             <div class="col-md-3">
+                <div class="card">
+                    <a data-bs-toggle="modal" href="#itemModal1">
+                        <img src="https://i.ibb.co/HNXJ0r4/download.jpg" border="0" alt="Maracanã" class="card-img-top" height="230">
+                    </a>
+                    <div class="card-body">
+                    <p class="card-text">O famoso estádio do Maracanã, no Rio de Janeiro, sendo o principal estádio do Brasil</p>
+                    </div>
+                </div>
+            </div>
+             <!-- Setimo -->
+             <div class="col-md-3">
+                <div class="card">
+                    <a data-bs-toggle="modal" href="#itemModal1">
+                        <img src="https://i.ibb.co/r0XYy1r/download.jpg" border="0" alt="Escadaria" class="card-img-top" height="230">
+                    </a>
+                    <div class="card-body">
+                    <p class="card-text">A Escadaria de Salarón, um dos principais e mais procurados cartões postais do Rio de Janeiro</p>
+                    </div>
+                </div>
+            </div>
+             <!-- Oitavo -->
+             <div class="col-md-3">
+                <div class="card">
+                    <a data-bs-toggle="modal" href="#itemModal1">
+                        <img src="https://i.ibb.co/VQZD5B1/download.jpg" border="0" alt="Parque Lage" class="card-img-top" height="230">
+                    </a>
+                    <div class="card-body">
+                    <p class="card-text">O Parque Lage, um conjunto arquitetônico junto a Natureza, possui lindas trilhas e quedas d'água</p>
+                    </div>
+                </div>
+            </div>
+             <!-- Nono -->
+             <div class="col-md-3">
+                <div class="card">
+                    <a data-bs-toggle="modal" href="#itemModal1">
+                        <img src="https://i.ibb.co/T4LFBNQ/download.jpg" border="0" alt="Arpoador" class="card-img-top" height="230">
+                    </a>
+                    <div class="card-body">
+                    <p class="card-text">A praia do Arpoador, recebe visitantes o ano todo para vislumbrarem sua linda paisagem rochosa</p>
+                    </div>              
+                  </div>
+            </div>
+             <!-- Decimo -->
+             <div class="col-md-3">
+                <div class="card">
+                    <a data-bs-toggle="modal" href="#itemModal1">
+                        <img src="https://i.ibb.co/0sDKGjH/download.jpg" border="0" alt="Museu" class="card-img-top" height="230">
+                    </a>
+                    <div class="card-body">
+                    <p class="card-text">O Museu do Amanhã, é um museu de ciências que tem como objetivo explorar o futuro por meio de ambientes audiovisuais</p>
+                    </div>
+                </div>
+            </div>
+             <!-- Decimo Prim -->
+             <div class="col-md-3">
+                <div class="card">
+                    <a data-bs-toggle="modal" href="#itemModal1">
+                        <img src="https://i.ibb.co/PzNQDc5/download.jpg" border="0" alt="Mirante" class="card-img-top" height="230">
+                    </a>
+                    <div class="card-body">
+                    <p class="card-text">O Mirante Dona Marta proporciona uma das vistas mais incríveis da cidade, sendo um dos pontos mais procurados</p>
+                    </div>
+                </div>
+            </div>
+             <!-- Decimp Seg -->
+             <div class="col-md-3">
+                <div class="card">
+                    <a data-bs-toggle="modal" href="#itemModal1">
+                        <img src="https://i.ibb.co/3v27gyh/download.jpg" border="0" alt="Santa Tereza" class="card-img-top" height="230">
+                    </a>
+                    <div class="card-body">
+                    <p class="card-text">Semelhante a uma vila, o Bairro Santa Tereza tem uma atmosfera única, se localizando no topo de uma colina</p>
+                    </div>                
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+<div class="modal fade" id="itemModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Galeria de Imagens</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+          </div>
+          <div class="modal-body">
+              <!-- Carrossel (Carousel) -->
+              <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+                  <div class="carousel-inner">
+                      <!-- Adicione 12 imagens para o carrossel aqui -->
+                      <div class="carousel-item active">
+                          <img src="https://i.ibb.co/hHv3cDd/age20200815033.webp" class="d-block w-100" alt="Imagem 1">
+                      </div>
+                      <div class="carousel-item">
+                          <img src="https://i.ibb.co/tXDtnbB/download.jpg" class="d-block w-100" alt="Imagem 2">
+                      </div>
+                      <div class="carousel-item">
+                          <img src="https://i.ibb.co/CW91cP3/download.jpg" class="d-block w-100" alt="Imagem 2">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="https://i.ibb.co/Zz47hNj/download.jpg" class="d-block w-100" alt="Imagem 2">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="https://i.ibb.co/cyD7VSk/download.jpg" class="d-block w-100" alt="Imagem 2">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="https://i.ibb.co/HNXJ0r4/download.jpg" class="d-block w-100" alt="Imagem 2">
+                      </div>
+                      <!-- METADE -->
+                      <div class="carousel-item">
+                        <img src="https://i.ibb.co/r0XYy1r/download.jpg" class="d-block w-100" alt="Imagem 2">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="https://i.ibb.co/VQZD5B1/download.jpg" class="d-block w-100" alt="Imagem 2">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="https://i.ibb.co/T4LFBNQ/download.jpg" class="d-block w-100" alt="Imagem 2">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="https://i.ibb.co/0sDKGjH/download.jpg" class="d-block w-100" alt="Imagem 2">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="https://i.ibb.co/PzNQDc5/download.jpg" class="d-block w-100" alt="Imagem 2">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="https://i.ibb.co/3v27gyh/download.jpg" class="d-block w-100" alt="Imagem 2">
+                      </div>
+                      <!-- Adicione mais imagens conforme necessário -->
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Anterior</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Próximo</span>
+                  </button>
+              </div>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+</body>
+</html>

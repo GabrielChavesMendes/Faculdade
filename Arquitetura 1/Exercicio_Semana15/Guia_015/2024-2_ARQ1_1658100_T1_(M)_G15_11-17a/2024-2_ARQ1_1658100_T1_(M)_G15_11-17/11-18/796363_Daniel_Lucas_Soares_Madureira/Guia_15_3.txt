@@ -1,0 +1,36 @@
+ORG 1000H          ; Origem do programa na memória
+
+; --- Inicialização ---
+LDA dado01          ; Carrega dado01 no acumulador
+MOV B, A            ; Armazena dado01 no registrador B
+
+LDA dado02          ; Carrega dado02 no acumulador
+CPI 00H             ; Garante carry para complemento
+CMA                 ; Calcula o complemento de 1 de dado02
+ADI 01H             ; Adiciona 1 para formar complemento de dois
+ADD B               ; Subtrai dado02 de dado01
+DAA                 ; Ajusta para formato BCD
+MOV B, A            ; Armazena o resultado parcial em B
+
+LDA dado03          ; Carrega dado03 no acumulador
+ADD B               ; Soma dado03 ao resultado parcial
+DAA                 ; Ajusta para formato BCD
+MOV B, A            ; Armazena o novo resultado parcial em B
+
+LDA dado04          ; Carrega dado04 no acumulador
+CMA                 ; Calcula complemento de 1 de dado04
+ADI 01H             ; Adiciona 1 para formar complemento de dois
+ADD B               ; Subtrai dado04 do resultado parcial
+DAA                 ; Ajusta para formato BCD
+
+; --- Armazenar o resultado ---
+STA dado05          ; Armazena o resultado em dado05
+
+HLT                 ; Finaliza o programa
+
+; --- Dados na memória ---
+dado01: DB 25H      ; Exemplo: dado01 = 25 em BCD
+dado02: DB 18H      ; Exemplo: dado02 = 18 em BCD
+dado03: DB 37H      ; Exemplo: dado03 = 37 em BCD
+dado04: DB 14H      ; Exemplo: dado04 = 14 em BCD
+dado05: DB 00H      ; Resultado inicializado como 0

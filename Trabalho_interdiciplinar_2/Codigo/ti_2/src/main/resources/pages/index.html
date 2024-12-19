@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../assets/css/stylehome.css" />
+  <link rel="stylesheet" href="../assets/css/nav.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+  <link rel="stylesheet" href="../assets/css/footer.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+  <title>Mea Health - Home</title>
+</head>
+
+<body>
+  <header>
+    <nav class="nav-bar">
+        <div class="logo">
+            <a href="/"><img src="../assets/images/logMediLog.png" id="logo" alt=""></a>
+        </div>
+        <div class="nav-list">
+            <ul>
+                <li class="nav-item"><a href="#inicio" class="nav-link">Início</a></li>
+                <li class="nav-item"><a href="#albuns" class="nav-link">Projetos</a></li>
+                <li class="nav-item"><a href="#footer" class="nav-link"> Sobre</a></li>
+            </ul>
+        </div>
+
+        <div class="mobile-menu-icon">
+            <button onclick="menuShow()"><img class="icon" src="../assets/images/open-menu-white.svg" alt=""></button>
+        </div>
+    </nav>
+    <div class="mobile-menu">
+        <ul>
+            <li class="nav-item"><a href="#inicio" class="nav-link">Início</a></li>
+            <li class="nav-item"><a href="#albuns" class="nav-link">Projetos</a></li>
+            <li class="nav-item"><a href="#footer" class="nav-link">Sobre</a></li>
+        </ul>
+
+        <div class="login-button">
+            <button><a href="login.html">Entrar</a></button>
+        </div>
+    </div>
+</header>
+  <section> 
+    <div class="container-fluid">
+      <div class="row bg-light mt-5 rounded p-5 ml-3">
+        <div class="col-12 mb-5">
+          <div id="carouselExampleFade" class="carousel slide carousel-fade">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="../assets/images/foto1.avif" class="d-block w-100 rounded-2" alt="..." style="height: 400px" />
+              </div>
+              <div class="carousel-item">
+                <img src="../assets/images/foto2.avif" class="d-block w-100 rounded-2" alt="..." style="height: 400px" />
+              </div>
+              <div class="carousel-item">
+                <img src="../assets/images/foto3.avif" class="d-block w-100 rounded-2" alt="..." style="height: 400px" />
+              </div>
+              <div class="carousel-item">
+                <img src="../assets/images/foto10.avif" class="d-block w-100 rounded-2" alt="..."
+                  style="height: 400px" />
+              </div>
+              <div class="carousel-item">
+                <img src="../assets/images/foto7.avif" class="d-block w-100 rounded-2" alt="..." style="height: 400px" />
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade"
+              data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade"
+              data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        </div>
+        <section>
+          <div class="container mt-5">
+            <div class="row">
+              <!-- Card Prontuários -->
+              <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100">
+                  <img src="../assets/images/Prontuario.png" class="card-img-top" alt="Prontuário">
+                  <div class="card-body">
+                    <h5 class="card-title">Prontuários</h5>
+                    <p class="card-text">Acesse e gerencie prontuários médicos de maneira prática e segura.</p>
+                    <a href="../pages/prontuarios.html" class="btn btn-primary">Ver Prontuários</a>
+                  </div>
+                </div>
+              </div>
+        
+              <!-- Card Cadastrar Medicamentos -->
+              <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100">
+                  <img src="../assets/images/med.jpg" class="card-img-top" alt="Cadastrar Medicamentos">
+                  <div class="card-body">
+                    <h5 class="card-title">Cadastrar Medicamentos</h5>
+                    <p class="card-text">Adicione novos medicamentos ao sistema de forma rápida e eficiente.</p>
+                    <a href="../pages/cad-medicamentos.html" class="btn btn-primary">Cadastrar Medicamentos</a>
+                  </div>
+                </div>
+              </div>
+        
+              <!-- Card Lista de Medicamentos -->
+              <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100">
+                  <img src="../assets/images/lista.png" class="card-img-top" alt="Lista de Medicamentos">
+                  <div class="card-body">
+                    <h5 class="card-title">Lista de Medicamentos</h5>
+                    <p class="card-text">Veja a lista completa de medicamentos disponíveis no sistema.</p>
+                    <a href="../pages/lista-medicamentos.html" class="btn btn-primary">Ver Lista</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>        
+  </section>
+  <footer>
+    <div id="footer_content">
+        <div id="footer_contacts">
+          <a href="/"><img src="./assets/images/logoMed.png" id="logo" alt=""></a>
+
+            <div id="footer_social_media">
+                <a href="#" class="footer-link" id="instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+
+                <a href="#" class="footer-link" id="facebook">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+
+                <a href="#" class="footer-link" id="whatsapp">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+            </div>
+        </div>
+        
+        <ul class="footer-list">
+            <li>
+                <h3>Blog</h3>
+            </li>
+            <li>
+                <a href="#" class="footer-link">Tech</a>
+            </li>
+            <li>
+                <a href="#" class="footer-link">Adventures</a>
+            </li>
+            <li>
+                <a href="#" class="footer-link">Music</a>
+            </li>
+        </ul>
+
+        <ul class="footer-list">
+            <li>
+                <h3>Products</h3>
+            </li>
+            <li>
+                <a href="#" class="footer-link">App</a>
+            </li>
+            <li>
+                <a href="#" class="footer-link">Desktop</a>
+            </li>
+            <li>
+                <a href="#" class="footer-link">Cloud</a>
+            </li>
+        </ul>
+
+        <div id="footer_subscribe">
+            <h3>Subscribe</h3>
+
+            <p>
+                Enter your e-mail to get notified about
+                our news solutions
+            </p>
+
+            <div id="input_group">
+                <input type="email" id="email">
+                <button>
+                    <i class="fa-regular fa-envelope"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer_copyright">
+        &#169
+        2024 all rights reserved
+    </div>
+</footer>
+<script src="https://kit.fontawesome.com/4e1bc412de.js" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="./assets/js/responses.js"></script>
+  <script src="./assets/js/chat.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <script src="./assets/js/nav.js"></script>
+</body>
+
+</html>

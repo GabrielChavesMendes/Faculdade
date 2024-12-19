@@ -1,0 +1,88 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "C:\Users\Gabriel\OneDrive\DOCUME~2\ARQUIT~1\2024-2~1\2024-2~3\ICARUS~1\lib\ivl\system.vpi";
+:vpi_module "C:\Users\Gabriel\OneDrive\DOCUME~2\ARQUIT~1\2024-2~1\2024-2~3\ICARUS~1\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\Users\Gabriel\OneDrive\DOCUME~2\ARQUIT~1\2024-2~1\2024-2~3\ICARUS~1\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\Users\Gabriel\OneDrive\DOCUME~2\ARQUIT~1\2024-2~1\2024-2~3\ICARUS~1\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\Users\Gabriel\OneDrive\DOCUME~2\ARQUIT~1\2024-2~1\2024-2~3\ICARUS~1\lib\ivl\va_math.vpi";
+S_0000021727ecbcf0 .scope module, "tb_shift_register_left_ld" "tb_shift_register_left_ld" 2 16;
+ .timescale 0 0;
+v0000021727f16240_0 .var "clk", 0 0;
+v0000021727f59820_0 .var "in_bit", 0 0;
+v0000021727f598c0_0 .var "ld", 0 0;
+v0000021727f59960_0 .net "out", 5 0, v0000021727f16100_0;  1 drivers
+v0000021727f59a00_0 .var "rst", 0 0;
+S_0000021727f15ed0 .scope module, "uut" "shift_register_left_ld" 2 19, 2 1 0, S_0000021727ecbcf0;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "clk";
+    .port_info 1 /INPUT 1 "rst";
+    .port_info 2 /INPUT 1 "ld";
+    .port_info 3 /INPUT 1 "in_bit";
+    .port_info 4 /OUTPUT 6 "out";
+v0000021727ee2b70_0 .net "clk", 0 0, v0000021727f16240_0;  1 drivers
+v0000021727ee2910_0 .net "in_bit", 0 0, v0000021727f59820_0;  1 drivers
+v0000021727f16060_0 .net "ld", 0 0, v0000021727f598c0_0;  1 drivers
+v0000021727f16100_0 .var "out", 5 0;
+v0000021727f161a0_0 .net "rst", 0 0, v0000021727f59a00_0;  1 drivers
+E_0000021727ecc7a0 .event posedge, v0000021727f161a0_0, v0000021727ee2b70_0;
+    .scope S_0000021727f15ed0;
+T_0 ;
+    %wait E_0000021727ecc7a0;
+    %load/vec4 v0000021727f161a0_0;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_0.0, 8;
+    %pushi/vec4 0, 0, 6;
+    %assign/vec4 v0000021727f16100_0, 0;
+    %jmp T_0.1;
+T_0.0 ;
+    %load/vec4 v0000021727f16060_0;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_0.2, 8;
+    %load/vec4 v0000021727f16100_0;
+    %parti/s 5, 0, 2;
+    %load/vec4 v0000021727ee2910_0;
+    %concat/vec4; draw_concat_vec4
+    %assign/vec4 v0000021727f16100_0, 0;
+T_0.2 ;
+T_0.1 ;
+    %jmp T_0;
+    .thread T_0;
+    .scope S_0000021727ecbcf0;
+T_1 ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000021727f16240_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000021727f59a00_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000021727f598c0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000021727f59820_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000021727f59a00_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000021727f598c0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000021727f59820_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000021727f598c0_0, 0, 1;
+    %delay 30, 0;
+    %vpi_call 2 24 "$stop" {0 0 0};
+    %end;
+    .thread T_1;
+    .scope S_0000021727ecbcf0;
+T_2 ;
+    %delay 5, 0;
+    %load/vec4 v0000021727f16240_0;
+    %inv;
+    %store/vec4 v0000021727f16240_0, 0, 1;
+    %jmp T_2;
+    .thread T_2;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Questao_1401.v";

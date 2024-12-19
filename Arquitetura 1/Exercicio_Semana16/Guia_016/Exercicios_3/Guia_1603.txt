@@ -1,0 +1,14 @@
+//Guia_1603
+
+LXI H,0100H    ; Carrega o endereço do dado01
+MOV B,M        ; Move dado01 para B
+INX H          ; Incrementa para apontar para dado02
+MOV C,M        ; Move dado02 para C
+MVI A,00H      ; Inicializa o acumulador (resto)
+LOOP: CMP C    ; Compara A com dado02
+JC DONE        ; Sai do loop se A < dado02
+SUB C          ; Subtrai dado02 de A
+JMP LOOP       ; Continua o loop
+DONE: MOV A,B  ; Move o resto final para o acumulador
+STA 0102H      ; Armazena o resultado em dado03
+HLT            ; Finaliza o programa

@@ -1,0 +1,1 @@
+Os divisores impares de 25 sao: [1] [5] [25] 

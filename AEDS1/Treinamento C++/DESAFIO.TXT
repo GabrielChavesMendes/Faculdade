@@ -1,0 +1,2 @@
+O somatorio e: 55
+O fatorial e: 120

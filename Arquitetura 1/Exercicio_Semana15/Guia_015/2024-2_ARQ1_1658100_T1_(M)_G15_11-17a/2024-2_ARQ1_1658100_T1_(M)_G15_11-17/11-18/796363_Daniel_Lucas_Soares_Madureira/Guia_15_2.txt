@@ -1,0 +1,55 @@
+ORG 1000H          ; Origem do programa na memória
+
+; Inicializações
+MVI E, 00H          ; Inicializa E com 0 (parte baixa de DE)
+MVI D, 00H          ; Inicializa D com 0 (parte alta de DE)
+
+; --- Soma dado01 + dado02 ---
+LDA dado01          ; Carrega parte baixa de dado01
+MOV E, A            ; Move parte baixa para E
+LDA dado01+1        ; Carrega parte alta de dado01
+MOV D, A            ; Move parte alta para D
+
+LDA dado02          ; Carrega parte baixa de dado02
+ADD E               ; Soma parte baixa
+MOV E, A            ; Armazena resultado parcial da parte baixa
+
+LDA dado02+1        ; Carrega parte alta de dado02
+ADC D               ; Soma parte alta com carry
+MOV D, A            ; Armazena resultado parcial da parte alta
+
+; --- Soma (dado01 + dado02) + dado03 ---
+LDA dado03          ; Carrega parte baixa de dado03
+ADD E               ; Soma parte baixa
+MOV E, A            ; Atualiza resultado parcial
+
+LDA dado03+1        ; Carrega parte alta de dado03
+ADC D               ; Soma parte alta com carry
+MOV D, A            ; Atualiza resultado parcial
+
+; --- Subtração por complemento de dois (resultado - dado04) ---
+LDA dado04          ; Carrega parte baixa de dado04
+CMA                 ; Calcula o complemento de 1 da parte baixa
+ADI 01H             ; Adiciona 1 para completar o complemento de dois
+ADD E               ; Subtrai (parte baixa) usando complemento de dois
+MOV E, A            ; Armazena o resultado da parte baixa
+
+LDA dado04+1        ; Carrega parte alta de dado04
+CMA                 ; Calcula o complemento de 1 da parte alta
+ACI 00H             ; Adiciona carry gerado pela subtração da parte baixa
+ADD D               ; Subtrai (parte alta) usando complemento de dois
+MOV D, A            ; Armazena o resultado da parte alta
+
+; --- Armazena o resultado em dado05 ---
+STA dado05          ; Armazena parte baixa de dado05
+MOV A, D            ; Move parte alta para o acumulador
+STA dado05+1        ; Armazena parte alta de dado05
+
+HLT                 ; Finaliza o programa
+
+; --- Dados na memória ---
+dado01: DW 1234H    ; Exemplo: 16 bits para dado01
+dado02: DW 5678H    ; Exemplo: 16 bits para dado02
+dado03: DW 9ABCH    ; Exemplo: 16 bits para dado03
+dado04: DW DEF0H    ; Exemplo: 16 bits para dado04
+dado05: DW 0000H    ; Resultado inicializado com 0

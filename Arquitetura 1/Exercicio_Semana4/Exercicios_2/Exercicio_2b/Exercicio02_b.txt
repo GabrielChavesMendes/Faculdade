@@ -1,0 +1,4 @@
+Exercicio02_b
+
+Simplificação:
+( x' + y ) + ( x' . y ) = (x' + y) + y = x' + y 

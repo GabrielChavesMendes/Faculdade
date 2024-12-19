@@ -1,0 +1,32 @@
+; Guia_1505.txt
+; 1641880 - Matheus Felipe Cavalcanti Xavier
+; Calcular dado03 = dado01 * 8 + dado02 / 2
+
+; Área de código
+LXI H, dado01       ; HL <- addr(dado01)
+MOV A, M            ; A <- MEM[HL] (Carregar dado01 em A)
+
+; Multiplicação por 8 usando somas sucessivas (A = dado01 * 8)
+ADD A               ; A = dado01 * 2
+ADD A               ; A = dado01 * 4
+ADD A               ; A = dado01 * 8
+
+; Salvar o resultado parcial
+MOV B, A            ; B <- dado01 * 8
+
+; Carregar dado02 e dividir por 2
+LXI H, dado02       ; HL <- addr(dado02)
+MOV A, M            ; A <- dado02
+RRC                 ; Rotaciona A para a direita (divisão por 2)
+
+; Somar dado01 * 8 com dado02 / 2
+ADD B               ; A = dado01 * 8 + dado02 / 2
+
+; Armazenar o resultado final em dado03
+STA dado03          ; Armazenar o resultado em dado03
+HLT                 ; Parar execução
+
+; Área de dados
+dado01: DB 04h      ; Primeiro dado em hexadecimal (exemplo: 04)
+dado02: DB 06h      ; Segundo dado em hexadecimal (exemplo: 06)
+dado03: DB 00h      ; Resultado (em hexadecimal)

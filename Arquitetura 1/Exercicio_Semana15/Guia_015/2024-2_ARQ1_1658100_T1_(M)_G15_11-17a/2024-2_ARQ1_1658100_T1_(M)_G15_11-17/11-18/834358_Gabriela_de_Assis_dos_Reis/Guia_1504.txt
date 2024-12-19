@@ -1,0 +1,30 @@
+// Guia_1504.txt
+// 834358 - Gabriela de Assis dos Reis
+//
+; Configuração dos dados:
+; dado01 em 0200h (8 bits)
+; dado02 em 0201h (8 bits)
+; Resultado dado03 em 0202h (8 bits)
+
+
+START:
+    LXI H, 0201h       ; HL aponta para dado02
+    MOV A, M           ; A <- dado02
+    ADD A              ; A <- A + A (2 * dado02)
+    MOV B, A           ; B <- 2 * dado02 (armazenar em B)
+
+    
+    LXI H, 0200h       ; HL aponta para dado01
+    MOV A, M           ; A <- dado01
+
+    SUB B              ; A <- A - B (dado01 - 2 * dado02)
+
+    ; ===== Dobrar o resultado =====
+    ADD A              ; A <- A + A (dobro do resultado)
+
+    ; ===== Armazenar dado03 =====
+    LXI H, 0202h       ; HL aponta para dado03
+    MOV M, A           ; MEM[0202h] <- A (armazenar resultado)
+
+    ; ===== Finalizar execução =====
+    HLT                ; Parar execução

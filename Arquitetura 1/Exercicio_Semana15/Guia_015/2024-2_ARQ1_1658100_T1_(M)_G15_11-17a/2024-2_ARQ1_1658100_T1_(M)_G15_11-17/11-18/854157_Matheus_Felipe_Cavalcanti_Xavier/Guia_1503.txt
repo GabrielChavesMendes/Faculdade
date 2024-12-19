@@ -1,0 +1,36 @@
+; Guia_1503.txt
+; 1641880 - Matheus Felipe Cavalcanti Xavier
+; Calcular dado05 = dado01 - dado02 + dado03 - dado04 (8 bits em BCD)
+
+; Área de código
+LXI H, dado01       ; HL <- addr(dado01)
+MOV A, M            ; A <- MEM[HL] (Carregar dado01 em A)
+
+; Subtrair dado02
+LXI H, dado02       ; HL <- addr(dado02)
+MOV B, M            ; B <- dado02
+SUB B               ; A = A - dado02
+DAA                 ; Ajuste decimal após a subtração (BCD)
+
+; Adicionar dado03
+LXI H, dado03       ; HL <- addr(dado03)
+MOV B, M            ; B <- dado03
+ADD B               ; A = A + dado03
+DAA                 ; Ajuste decimal após a adição (BCD)
+
+; Subtrair dado04
+LXI H, dado04       ; HL <- addr(dado04)
+MOV B, M            ; B <- dado04
+SUB B               ; A = A - dado04
+DAA                 ; Ajuste decimal após a subtração (BCD)
+
+; Armazenar o resultado em dado05
+STA dado05          ; Armazenar o resultado final em dado05
+HLT                 ; Parar execução
+
+; Área de dados
+dado01: DB 05h      ; Primeiro dado em BCD (exemplo: 05)
+dado02: DB 02h      ; Segundo dado em BCD (exemplo: 02)
+dado03: DB 04h      ; Terceiro dado em BCD (exemplo: 04)
+dado04: DB 01h      ; Quarto dado em BCD (exemplo: 01)
+dado05: DB 00h      ; Resultado (em BCD)

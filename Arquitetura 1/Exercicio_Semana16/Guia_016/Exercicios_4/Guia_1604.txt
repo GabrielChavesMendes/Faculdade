@@ -1,0 +1,14 @@
+//Guia_1604
+
+LXI H,0100H    ; Carrega o endereço do arranjo
+MOV A,M        ; Move o primeiro valor para o acumulador
+INX H          ; Incrementa o ponteiro
+MVI B,05H      ; Define o tamanho do arranjo (5 elementos, por exemplo)
+LOOP: CMP M    ; Compara o acumulador com o próximo valor
+JC SKIP        ; Pula se o acumulador for maior
+MOV A,M        ; Atualiza o acumulador com o novo maior valor
+SKIP: INX H    ; Incrementa o ponteiro
+DCR B          ; Decrementa o contador
+JNZ LOOP       ; Continua o loop enquanto houver valores
+STA 0106H      ; Armazena o maior valor em dado03
+HLT            ; Finaliza o programa

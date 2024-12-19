@@ -1,0 +1,2 @@
+Pilha com topo trocado: 
+0 5 10 20 15 

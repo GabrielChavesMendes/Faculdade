@@ -1,0 +1,10 @@
+Questão 1
+a- ab' + ac' + c , bc+b'c
+b- ab+b' , a'bc+bc'
+c- bc , a'c + bc +ac
+
+Questão 2
+
+a- A'B' +A'C' +C , A'C'+BC'+AB'
+b- BC+A' , A'C'+BC'
+c- A'B'+A'C'+BC'+AB+AB'

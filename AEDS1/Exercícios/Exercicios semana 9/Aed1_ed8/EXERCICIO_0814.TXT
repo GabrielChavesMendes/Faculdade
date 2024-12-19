@@ -1,0 +1,2 @@
+O menor valor impar e: [27]
+O menor valor par e: [28]

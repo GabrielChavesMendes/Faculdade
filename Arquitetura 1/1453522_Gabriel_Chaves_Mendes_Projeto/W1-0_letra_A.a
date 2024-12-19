@@ -1,0 +1,10 @@
+; Testar NOT
+Main: load zero     ; acc <- 0
+      NOT           ; acc <- NOT acc (NOT 0 = 1)
+      write         ; output <- acc
+      load one      ; acc <- 1
+      NOT           ; acc <- NOT acc (NOT 1 = 0)
+      write         ; output <- acc
+      stop          ; stop program
+zero: .data 2 0     ; Constante zero
+one: .data 2 1      ; Constante um

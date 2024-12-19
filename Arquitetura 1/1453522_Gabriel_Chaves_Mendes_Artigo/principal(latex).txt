@@ -1,0 +1,124 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%% Template de Artigo Adaptado para Trabalho de Diplomação do ICEI %%%%%%%%%%%%%%%%%%%%%%%%
+%% codificação UTF-8 - Abntex - Latex -  							     %%
+%% Autor:    Fábio Leandro Rodrigues Cordeiro  (fabioleandro@pucminas.br)                            %% 
+%% Co-autor: Prof. João Paulo Domingos Silva, Harison da Silva e Anderson Carvalho                   %%
+%% Revisores normas NBR (Padrão PUC Minas): Helenice Rego Cunha e Prof. Theldo Cruz                  %%
+%% Versão: 1.1     18 de dezembro 2015                     	                                     %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\documentclass[a4paper,12pt,Times]{article}
+\usepackage{abakos}  %pacote com padrão da Abakos baseado no padrão da PUC
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Capa da revista
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\setcounter{page}{80} %iniciar contador de pagina de valor especificado
+\newcommand{\monog}{Modelo de artigo do Instituto de Ciências Exatas e de Informática}
+\newcommand{\monogES}{Article template Institute of Mathematical Sciences and Informatics}
+\newcommand{\tipo}{Artigo }  % Especificar a seção tipo do trabalho: Artigo, Resumo, Tese, Dociê etc
+\newcommand{\origem}{Brasil }
+\newcommand{\editorial}{Belo Horizonte, p. 16-10, out. 2024}  % p. xx-xx – páginas inicial-final do artigo
+\newcommand{\lcc}{\scriptsize{Licença Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported}}
+
+%%%%%%%%%%%%%%%%%INFORMAÇÕES SOBRE AUTOR PRINCIPAL %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\AutorA}{Gabriel Chaves Mendes}
+\newcommand{\funcaoA}{}
+\newcommand{\emailA}{gabrielchavesmendes@pucminas.br}
+\newcommand{\cursA}{Aluno do Programa de Graduação em Ciência da Computação}
+
+\newcommand{\AutorB}{Theldo Cruz}
+\newcommand{\funcaoB}{}
+\newcommand{\emailB}{@pucminas.br}
+\newcommand{\cursB}{Professor do Programa de Graduação em Ciência da Computação}
+% 
+% Definir macros para o nome da Instituição, da Faculdade, etc.
+\newcommand{\univ}{Pontifícia Universidade Católica de Minas Gerais}
+
+\newcommand{\keyword}[1]{\textsf{#1}}
+
+\begin{document}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %% Pagina de titulo
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{center}
+\includegraphics[scale=0.2]{figuras/brasao.jpg} \\
+PONTIFÍCIA UNIVERSIDADE CATÓLICA DE MINAS GERAIS \\
+Instituto de Ciências Exatas e de Informática
+
+% \vspace{1.0cm}
+
+\end{center}
+
+ \vspace{0cm} {
+ \singlespacing \Large{\monog \symbolfootnote[1]{Artigo apresentado ao Instituto de Ciências Exatas e Informática da Pontifícia Universidade Católica de Minas Gerais como pré-requisito para obtenção do título de Bacharel em Ciência da Computação.} \\ }
+  \normalsize{\monogES}
+ }
+
+\vspace{1.0cm}
+
+\begin{flushright}
+\singlespacing 
+\normalsize{\AutorA \footnote{\funcaoA \cursA, \origem -- \emailA . }} \\
+\normalsize{\AutorB \footnote{\funcaoB \cursB, \origem -- \emailB . }} \\
+%\normalsize{\AutorC \footnote{\funcaoC \cursC, \origem -- \emailC . }} \\
+%\normalsize{\AutorD \footnote{\funcaD \cursD, \origem -- \emailD . }} \\
+%deixar com o valor `0` e usar o '*' no inicio da frase
+% \symbolfootnote[0]{Artigo recebido em 10 de julho de 1983 e aprovado em 29 de maio 2012}
+\end{flushright}
+\thispagestyle{empty}
+
+\vspace{1.0cm}
+
+\begin{abstract}
+\noindent
+Este artigo apresenta uma visão geral sobre diferentes tipos de circuitos integrados, incluindo ASICs, ASSPs, SPLDs, CPLDs, SoCs e FPGAs. A comparação entre essas tecnologias destaca suas características, aplicações e limitações. Os ASICs são circuitos projetados para uma função específica, enquanto os ASSPs oferecem maior versatilidade em múltiplas aplicações. Os SPLDs são dispositivos simples, adequados para lógicas básicas, enquanto os CPLDs oferecem maior complexidade e flexibilidade. O conceito de SoC é explorado como uma integração de múltiplos componentes em um único chip, enquanto os FPGAs se destacam pela sua programabilidade pós-fabricação, permitindo adaptações a diferentes necessidades. Através da análise dessas tecnologias, discutimos as tendências atuais e futuras no design de circuitos integrados, suas aplicações em diversas indústrias e suas implicações para o desenvolvimento tecnológico.
+\\\textbf{\keyword{Palavras-chave: }} Circuitos Integrados. ASIC. FPGA. Programabilidade. Desempenho Energético.
+\end{abstract}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ \newpage    %%%% CASO QUEIRA QUE O RESUMO FIQUE EM UMA PAGINA E O ABSTRACT EM OUTRA
+\selectlanguage{english}
+\begin{abstract}
+\noindent
+This article presents an overview of different types of integrated circuits, including ASICs, ASSPs, SPLDs, CPLDs, SoCs, and FPGAs. The comparison between these technologies highlights their characteristics, applications, and limitations. ASICs are circuits designed for a specific function, while ASSPs offer greater versatility in multiple applications. SPLDs are simple devices, suitable for basic logic, while CPLDs offer greater complexity and flexibility. The SoC concept is explored as an integration of multiple components on a single chip, while FPGAs stand out for their post-fabrication programmability, allowing adaptations to different needs. Through the analysis of these technologies, we discuss current and future trends in integrated circuit design, their applications in various industries, and their implications for technological development.
+\\\textbf{\keyword{Keywords: }} Integrated Circuits. ASIC. FPGA. Programmability. Energy Performance.
+\end{abstract}
+
+\selectlanguage{brazilian}
+ \onehalfspace  % espaçamento 1.5 entre linhas
+ \setlength{\parindent}{1.25cm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% INICIO DO TEXTO
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\include{textos}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% FIM DO TEXTO
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \selectlanguage{brazil}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Inicio bibliografia
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ \newpage
+\singlespace{
+\renewcommand\refname{REFERÊNCIAS}
+\bibliographystyle{abntex2-alf}
+\cite{asic}
+\cite{cpld}
+\cite{logica}
+\bibliography{bibliografia}
+
+
+}
+
+\end{document}
+
+

@@ -1,0 +1,114 @@
+$date
+	Sun Nov 10 15:46:28 2024
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module Guia_1401 $end
+$var reg 1 ! data $end
+$upscope $end
+$scope module Guia_1401 $end
+$var reg 1 " load $end
+$upscope $end
+$scope module Guia_1401 $end
+$var reg 1 # clear $end
+$upscope $end
+$scope module Guia_1401 $end
+$var wire 1 $ clock $end
+$upscope $end
+$scope module Guia_1401 $end
+$var wire 6 % result [5:0] $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+b0 %
+0$
+1#
+0"
+1!
+$end
+#4
+0#
+#6
+1$
+#12
+0$
+#15
+0!
+#18
+b1 %
+1$
+#24
+0$
+#27
+1"
+#30
+b10 %
+1$
+#36
+0$
+#39
+0"
+1!
+#42
+b101 %
+1$
+#48
+0$
+#51
+0!
+#54
+b1011 %
+1$
+#60
+0$
+#66
+b10110 %
+1$
+#72
+0$
+#78
+b101100 %
+1$
+#84
+0$
+#90
+b11000 %
+1$
+#96
+0$
+#102
+b110000 %
+1$
+#108
+0$
+#114
+b100000 %
+1$
+#120
+0$
+#126
+b0 %
+1$
+#132
+0$
+#138
+1$
+#144
+0$
+#150
+1$
+#156
+0$
+#162
+1$
+#168
+0$
+#171

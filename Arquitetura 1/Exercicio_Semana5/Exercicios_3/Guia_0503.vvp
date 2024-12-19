@@ -1,0 +1,66 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "C:\Users\gabri\OneDrive\DOCUME~2\ARQUIT~1\2024-2~1\2024-2~3\ICARUS~1\lib\ivl\system.vpi";
+:vpi_module "C:\Users\gabri\OneDrive\DOCUME~2\ARQUIT~1\2024-2~1\2024-2~3\ICARUS~1\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\Users\gabri\OneDrive\DOCUME~2\ARQUIT~1\2024-2~1\2024-2~3\ICARUS~1\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\Users\gabri\OneDrive\DOCUME~2\ARQUIT~1\2024-2~1\2024-2~3\ICARUS~1\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\Users\gabri\OneDrive\DOCUME~2\ARQUIT~1\2024-2~1\2024-2~3\ICARUS~1\lib\ivl\va_math.vpi";
+S_0000021a85f05460 .scope module, "test_f5_nor" "test_f5_nor" 2 27;
+ .timescale 0 0;
+v0000021a85ed26a0_0 .net "s", 0 0, L_0000021a85ed2880;  1 drivers
+v0000021a85ed2740_0 .var "x", 0 0;
+v0000021a85ed27e0_0 .var "y", 0 0;
+S_0000021a85f055f0 .scope begin, "main" "main" 2 35, 2 35 0, S_0000021a85f05460;
+ .timescale 0 0;
+S_0000021a85ed2510 .scope module, "moduloNOR" "f5_nor" 2 32, 2 16 0, S_0000021a85f05460;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "s";
+    .port_info 1 /INPUT 1 "a";
+    .port_info 2 /INPUT 1 "b";
+L_0000021a85ed2fb0 .functor NOT 1, v0000021a85ed2740_0, C4<0>, C4<0>, C4<0>;
+L_0000021a85ed2880 .functor NOR 1, L_0000021a85ed2fb0, v0000021a85ed27e0_0, C4<0>, C4<0>;
+v0000021a85ed2d90_0 .net "a", 0 0, v0000021a85ed2740_0;  1 drivers
+v0000021a85ed2b70_0 .net "b", 0 0, v0000021a85ed27e0_0;  1 drivers
+v0000021a85f05780_0 .net "not_a", 0 0, L_0000021a85ed2fb0;  1 drivers
+v0000021a85f05820_0 .net "s", 0 0, L_0000021a85ed2880;  alias, 1 drivers
+    .scope S_0000021a85f05460;
+T_0 ;
+    %fork t_1, S_0000021a85f055f0;
+    %jmp t_0;
+    .scope S_0000021a85f055f0;
+t_1 ;
+    %vpi_call 2 36 "$display", "Guia_0503 - xxx yyy zzz - 999999" {0 0 0};
+    %vpi_call 2 37 "$display", "Teste modulo NOR portas" {0 0 0};
+    %vpi_call 2 38 "$display", "   x     y    s" {0 0 0};
+    %vpi_call 2 39 "$monitor", "%4b %4b %4b", v0000021a85ed2740_0, v0000021a85ed27e0_0, v0000021a85ed26a0_0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000021a85ed2740_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000021a85ed27e0_0, 0, 1;
+    %delay 1, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000021a85ed2740_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000021a85ed27e0_0, 0, 1;
+    %delay 1, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000021a85ed2740_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000021a85ed27e0_0, 0, 1;
+    %delay 1, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000021a85ed2740_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000021a85ed27e0_0, 0, 1;
+    %end;
+    .scope S_0000021a85f05460;
+t_0 %join;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Guia_0503.v";

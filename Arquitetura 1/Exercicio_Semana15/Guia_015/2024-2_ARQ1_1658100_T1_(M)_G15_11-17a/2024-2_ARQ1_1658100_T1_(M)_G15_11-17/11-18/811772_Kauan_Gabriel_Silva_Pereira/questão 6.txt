@@ -1,0 +1,19 @@
+; Programa para calcular dado03 = 3 * dado01 - 2 * dado02
+
+START:
+    ; Multiplicar dado01 por 3 (desloca para a esquerda e soma o valor original)
+    MOV A, dado01      ; A = dado01
+    RLC                ; A = A << 1 (multiplica por 2)
+    ADD dado01         ; A = A + dado01 (Agora A = 3 * dado01)
+    MOV B, A           ; B = 3 * dado01
+
+    ; Multiplicar dado02 por 2 (desloca para a esquerda)
+    MOV A, dado02      ; A = dado02
+    RLC                ; A = A << 1 (multiplica por 2)
+    MOV C, A           ; C = 2 * dado02
+
+    ; Subtrair o valor de C de B (3 * dado01 - 2 * dado02)
+    SUB C              ; A = B - C
+    MOV dado03, A      ; Armazenar o resultado em dado03
+
+    HLT                ; Fim do programa

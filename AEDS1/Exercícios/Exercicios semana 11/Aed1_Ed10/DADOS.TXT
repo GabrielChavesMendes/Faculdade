@@ -1,0 +1,11 @@
+10 numeros aleatorios entre o intervalo de [1:50]:
+[42]
+[18]
+[35]
+[1]
+[20]
+[25]
+[29]
+[9]
+[13]
+[15]

@@ -1,0 +1,14 @@
+LDA dado01
+ADD dado02
+SUB dado03
+STA dado04
+HLT
+
+dado01: DB 02H     
+dado02: DB 03H     
+dado03: DB 01H     
+dado04: DB 00H     
+
+
+
+

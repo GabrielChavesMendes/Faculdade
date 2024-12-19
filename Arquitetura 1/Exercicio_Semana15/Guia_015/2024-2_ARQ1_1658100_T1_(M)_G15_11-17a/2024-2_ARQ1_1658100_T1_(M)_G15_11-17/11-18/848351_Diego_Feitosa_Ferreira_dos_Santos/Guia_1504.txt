@@ -1,0 +1,22 @@
+
+
+    MVI H, 20H      
+
+    
+    MOV L, 01H        
+    MOV A, M          
+    ADD A             
+    
+    
+    MOV L, 00H        
+    MOV B, M          
+    SUB B            
+    
+    
+    ADD A             
+    
+  
+    MOV L, 02H       
+    MOV M, A        
+    
+    HLT               

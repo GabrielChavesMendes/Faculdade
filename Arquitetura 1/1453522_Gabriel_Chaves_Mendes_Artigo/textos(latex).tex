@@ -1,0 +1,77 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%% Template de Artigo Adaptado para Trabalho de Diplomação do ICEI %%%%%%%%%%%%%%%%%%%%%%%%
+%% codificação UTF-8 - Abntex - Latex -  							     %%
+%% Autor:    Fábio Leandro Rodrigues Cordeiro  (fabioleandro@pucminas.br)                            %% 
+%% Co-autores: Prof. João Paulo Domingos Silva, Harison da Silva e Anderson Carvalho		     %%
+%% Revisores normas NBR (Padrão PUC Minas): Helenice Rego Cunha e Prof. Theldo Cruz                  %%
+%% Versão: 1.1     18 de dezembro 2015                                                               %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{\esp Introdução}
+
+A evolução da eletrônica e dos circuitos integrados impulsiona a inovação tecnológica. Entre as principais categorias, estão os ASICs, ASSPs, SPLDs, CPLDs, SoCs e FPGAs, cada um com características distintas e aplicabilidades variadas.
+Os ASICs são projetados para funções específicas, oferecendo alto desempenho, enquanto os ASSPs são circuitos padronizados para diversas aplicações. SPLDs e CPLDs fornecem soluções programáveis, com os CPLDs permitindo maior complexidade. O SoC integra múltiplos componentes em um único chip, promovendo miniaturização e eficiência. Por outro lado, os FPGAs destacam-se pela flexibilidade, possibilitando reconfigurações após a fabricação.
+Este artigo explora as características e aplicações desses circuitos integrados, visando oferecer uma compreensão abrangente da tecnologia atual e suas tendências futuras.
+
+\section{\esp Dispositivo Complexo de Lógica Programação}
+
+Os Dispositivos Complexos de Lógica Programável (CPLDs) são componentes eletrônicos que permitem a implementação de circuitos digitais complexos de forma flexível e reprogramável. Com uma arquitetura que integra múltiplos blocos lógicos, os CPLDs oferecem uma solução eficiente para atender a necessidades específicas de aplicações, superando as limitações dos Dispositivos Simples de Lógica Programável (SPLDs). Sua capacidade de reconfiguração após a fabricação possibilita ajustes contínuos, refletindo a evolução em direção a sistemas eletrônicos mais dinâmicos.
+
+\subsection{\esp ASIC}
+
+Os ASICs são circuitos integrados projetados especificamente para realizar uma função ou tarefa particular. Isso significa que, ao contrário de circuitos genéricos, eles são desenvolvidos com um propósito definido em mente. Embora muitas pessoas associem ASICs a circuitos digitais, um ASIC pode ser qualquer tipo de chip customizado, seja ele analógico, digital ou uma combinação dos dois. Para simplificar, vamos focar no fato de que, na maioria dos casos, os ASICs são predominantemente digitais. Elementos analógicos ou de sinal misto geralmente ficam confinados a componentes como interfaces físicas ou loops de fase travada, que auxiliam na comunicação e sincronização dentro do chip.
+
+\subsection{\esp ASSP}
+
+Os ASSPs são circuitos integrados projetados de forma semelhante aos ASICs, utilizando os mesmos processos de desenvolvimento e implementação. A principal diferença entre eles é que, enquanto um ASIC é desenvolvido para uma aplicação muito específica, um ASSP é mais versátil e pode ser utilizado em diferentes projetos ou sistemas. Em vez de ser exclusivo para um único dispositivo ou função, o ASSP é voltado para um conjunto de aplicações que compartilham necessidades comuns. Um exemplo clássico de um ASSP é um chip de interface USB, que pode ser usado em uma ampla gama de produtos, mantendo a padronização da função de interface.
+
+\subsection{\esp SPLD}
+ 
+Os SPLDs(Simple Programmable Logic Device) são componentes eletrônicos básicos usados para implementar funções lógicas simples e específicas. Eles possuem uma arquitetura bastante limitada, composta por um número reduzido de blocos lógicos que podem ser programados para desempenhar uma tarefa específica. Esses dispositivos são indicados para aplicações que requerem um nível básico de lógica digital, como pequenas automações ou controladores simples. Devido à sua simplicidade, os SPLDs são fáceis de programar e possuem um custo baixo, o que os torna uma solução prática e econômica para circuitos que não demandam grande complexidade. Um exemplo comum de SPLD é o PAL (Programmable Array Logic), que permite ao usuário programar o chip para realizar determinadas operações lógicas conforme necessário. 
+
+ \subsection{\esp CPLD}
+ 
+Os CPLDs (Complex Programmable Logic Device) são mais avançados do que os SPLDs, oferecendo uma capacidade muito maior para realizar operações lógicas. Eles são usados quando há a necessidade de um dispositivo mais robusto, capaz de implementar circuitos com maior complexidade e flexibilidade. Diferente dos SPLDs, que lidam com funções mais simples, os CPLDs têm uma arquitetura que permite lidar com funções lógicas mais sofisticadas. Além de possuir mais blocos lógicos e interconexões programáveis, os CPLDs são conhecidos por oferecer um desempenho previsível, com tempos de resposta rápidos e confiáveis, tornando-os adequados para aplicações que exigem precisão e alta performance. Outra vantagem dos CPLDs é que, assim como os SPLDs, eles podem ser reprogramados, mas oferecem muito mais capacidade para funções complexas.
+
+ \subsection{\esp SOC}
+ 
+Um SoC (System-on-Chip) é um chip de silício que integra múltiplos componentes essenciais, como núcleos de processamento, sejam microprocessadores (MPUs), microcontroladores (MCUs) ou processadores digitais de sinais (DSPs), além de memória, aceleradores de funções específicas em hardware, funções periféricas e outros elementos diversos. Em essência, é um sistema completo em um único chip. Uma maneira de interpretar essa relação é pensar que, se um ASIC inclui um ou mais processadores, ele também pode ser considerado um SoC. Da mesma forma, se um ASSP tiver um ou mais núcleos de processamento, ele se torna um SoC. Isso cria uma perspectiva interessante: podemos ver o ASIC (ou ASSP) como um superconjunto que pode englobar o SoC, ou podemos ver o SoC como o verdadeiro superconjunto, pois contém tudo que um ASIC (ou ASSP) oferece, além de um ou mais núcleos de processamento.
+
+ \subsection{\esp FPGA}
+ 
+Os FPGAs (Field Programmable Gate Arrays) se destacam dos ASICs, ASSPs e SoCs porque, enquanto estes últimos oferecem alto desempenho e eficiência energética, seus algoritmos estão fixos no chip, ou seja, não podem ser alterados após a fabricação. Já os FPGAs têm uma arquitetura programável, o que significa que o hardware pode ser configurado pelo usuário após a fabricação para executar qualquer combinação de funções digitais desejadas. Nos primeiros FPGAs, a arquitetura era simples, composta por uma matriz de blocos programáveis interconectados por conexões que também podiam ser programadas. O diferencial chave dos FPGAs é essa flexibilidade, permitindo a implementação de algoritmos personalizados. Além disso, os FPGAs permitem a execução de algoritmos de forma paralela, o que possibilita o processamento rápido e eficiente de grandes volumes de dados, algo que os diferencia dos circuitos tradicionais com execução mais linear.
+
+
+\section{\esp Diferença (PROM, PLA, PAL)}
+
+\begin{figure}[ht]
+	\centering	
+	\caption[\hspace{0.1cm}Tabela]{Tabela de Comparação}
+	\vspace{-0.2cm}
+	\includegraphics[width=1\textwidth]{figuras/Tabela_1.png}
+	% Caption centralizada
+% 	\captionsetup{justification=centering}
+	% Caption e fonte 
+	 \vspace{-0.5cm}
+	\label{fig:figura1}
+\end{figure}
+\vspace{7cm}
+   
+\section{\esp Diferença (CPLD, FPGA)}
+
+\begin{figure}[ht]
+    \centering	
+    \caption[\hspace{0.1cm}Tabela]{Tabela de Comparação}
+    \vspace{-0.2cm}
+    \includegraphics[width=1\textwidth]{figuras/Tabela_2.png}
+    \vspace{-0.2cm}
+    \label{fig:figura1}
+\end{figure}
+\vspace{-0.5cm}
+
+\section{\esp Conclusão}
+Concluindo, a evolução dos circuitos integrados, incluindo ASICs, ASSPs, SPLDs, CPLDs, SoCs e FPGAs, reflete o constante avanço da eletrônica e suas aplicações. Cada tipo de dispositivo possui características e vantagens únicas que atendem a diferentes necessidades do mercado, desde a eficiência energética dos ASICs até a flexibilidade dos FPGAs. A compreensão desses circuitos é fundamental para o desenvolvimento de tecnologias inovadoras e para a criação de soluções que atendam às demandas de um mundo em rápida transformação. Assim, a contínua pesquisa e inovação nesta área prometem expandir ainda mais as fronteiras do que é possível na eletrônica moderna.
+
+
+% \subsection{\esp Trabalhos futuros}
+% 
+% Sugestões de estudos posteriores são ser adicionados subseção deste capítulo de conclusão.

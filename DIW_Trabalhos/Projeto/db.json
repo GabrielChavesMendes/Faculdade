@@ -1,0 +1,118 @@
+{
+  "albuns": [
+    {
+      "id": 1,
+      "titulo": "Rio de Janeiro",
+      "descricao": "UM dos lugares mais procurados pelos turistas no Brasil, Rio de Janeiro proporciona incríveis prais, paisagens e experiencias",
+      "localizacao": {
+        "longitude": -23.5505,
+        "latitude": -46.6333
+      },
+      "data": "2023-01-01",
+      "url_capa": "https://i.ibb.co/NCx9JwT/download.jpg"
+    },
+    {
+      "id": 2,
+      "titulo": "Bahia",
+      "descricao": "Um dos estados da região Nordeste do Brasil, com incríveis prais, paisagens e culturas",
+      "localizacao": {
+        "longitude": -19.9634,
+        "latitude": -44.1986
+      },
+      "data": "2023-02-15",
+      "url_capa": "https://i.ibb.co/jfRSkBW/Download.jpg"
+    },
+    {
+      "id": 3,
+      "titulo": "Gramado",
+      "descricao": "Um dos destinos mais buscados durante o inverno, ótimo passeio para famílias e casais, Gramado oferece uma experiencia única com muita gastronomia e diversão",
+      "localizacao": {
+        "longitude": -19.9634,
+        "latitude": -44.1986
+      },
+      "data": "2023-02-15",
+      "url_capa": "https://i.ibb.co/0q4h9jJ/download.jpg"
+    },
+    {
+      "id": 4,
+      "titulo": "São Paulo",
+      "descricao": "Uma das cidades mais procuradas no Brasil, oferece muitas oportunidades e diferentes estilos de roteiros para se divertir todas as noites em São Paulo pela sua imensa diversidade",
+      "localizacao": {
+        "longitude": -19.9634,
+        "latitude": -44.1986
+      },
+      "data": "2023-02-15",
+      "url_capa": "https://i.ibb.co/PjPcR8V/download.jpg"
+    },
+    {
+      "id": 5,
+      "titulo": "Europa",
+      "descricao": "A Europa é um ótimo destino para quem busca visitar a história e ao mesmo tempo conhecer diversas paisagens diferentes em vários países",
+      "localizacao": {
+        "longitude": -19.9634,
+        "latitude": -44.1986
+      },
+      "data": "2023-02-15",
+      "url_capa": "https://i.ibb.co/CMKSc9V/images.jpg"
+    },
+    {
+      "id": 6,
+      "titulo": "Estados Unidos",
+      "descricao": "Os Estados Unidos é um dos destinos mais procurados para uma viagem internacional, principalemnte entre os jovens que buscam aprender um novo idioma e ao mesmo tempo se divertir",
+      "localizacao": {
+        "longitude": -19.9634,
+        "latitude": -44.1986
+      },
+      "data": "2023-02-15",
+      "url_capa": "https://i.ibb.co/4VFcg2J/download.jpg"
+    },
+    {
+      "id": 7,
+      "titulo": "Egito",
+      "descricao": "Uma das opções de viagens internacionais mais peculiares mas oferece uma experienca inesquecível com uma cultura diferente, história e aventuras",
+      "localizacao": {
+        "longitude": -19.9634,
+        "latitude": -44.1986
+      },
+      "data": "2023-02-15",
+      "url_capa": "https://i.ibb.co/2WJy1xs/download.jpg"
+    },
+    {
+      "id": 8,
+      "titulo": "Japão",
+      "descricao": "Um destino um pouco diferente mas ao mesmo tempo apresentando um olhar diferente, com tecnologia e uma cultura própria, é um roteiro que oferece diversão a todo momento aos viajantes",
+      "localizacao": {
+        "longitude": -19.9634,
+        "latitude": -44.1986
+      },
+      "data": "2023-02-15",
+      "url_capa": "https://i.ibb.co/M72w5jH/download.jpg"
+    }
+  ],
+  "fotos": [
+    {
+      "id": 1,
+      "url_imagem": "https://exemplo.com/foto1.jpg",
+      "descricao": "Paisagem incrível durante a viagem.",
+      "id_album": 1
+    },
+    {
+      "id": 2,
+      "url_imagem": "https://exemplo.com/foto2.jpg",
+      "descricao": "Reunião familiar em Betim.",
+      "id_album": 2
+    }
+  ],
+  "destaques": [
+    {
+      "id": 1,
+      "id_album": 1,
+      "texto_destaque": "Aventuras inesquecíveis com amigos!"
+    },
+    {
+      "id": 2,
+      "id_album": 2,
+      "texto_destaque": "Momentos especiais em família."
+    }
+  ]
+}

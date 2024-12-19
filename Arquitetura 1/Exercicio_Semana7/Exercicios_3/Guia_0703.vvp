@@ -1,0 +1,156 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "C:\Users\gabri\OneDrive\DOCUME~2\ARQUIT~1\2024-2~1\2024-2~3\ICARUS~1\lib\ivl\system.vpi";
+:vpi_module "C:\Users\gabri\OneDrive\DOCUME~2\ARQUIT~1\2024-2~1\2024-2~3\ICARUS~1\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\Users\gabri\OneDrive\DOCUME~2\ARQUIT~1\2024-2~1\2024-2~3\ICARUS~1\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\Users\gabri\OneDrive\DOCUME~2\ARQUIT~1\2024-2~1\2024-2~3\ICARUS~1\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\Users\gabri\OneDrive\DOCUME~2\ARQUIT~1\2024-2~1\2024-2~3\ICARUS~1\lib\ivl\va_math.vpi";
+S_00000243bb54b1e0 .scope module, "test_lu" "test_lu" 2 63;
+ .timescale 0 0;
+v00000243bb5aa7a0_0 .var "select_gate", 0 0;
+v00000243bb5ab240_0 .var "select_group", 0 0;
+v00000243bb5aa340_0 .var "x", 0 0;
+v00000243bb5aa660_0 .var "y", 0 0;
+v00000243bb5a9bc0_0 .net "z", 0 0, L_00000243bb5ac1e0;  1 drivers
+S_00000243bb68ea90 .scope module, "LU1" "lu" 2 72, 2 10 0, S_00000243bb54b1e0;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "s";
+    .port_info 1 /INPUT 1 "a";
+    .port_info 2 /INPUT 1 "b";
+    .port_info 3 /INPUT 1 "select_group";
+    .port_info 4 /INPUT 1 "select_gate";
+L_00000243bb5485f0 .functor AND 1, v00000243bb5aa340_0, v00000243bb5aa660_0, C4<1>, C4<1>;
+L_00000243bb548190 .functor NAND 1, v00000243bb5aa340_0, v00000243bb5aa660_0, C4<1>, C4<1>;
+L_00000243bb548270 .functor OR 1, v00000243bb5aa340_0, v00000243bb5aa660_0, C4<0>, C4<0>;
+L_00000243bb5483c0 .functor NOR 1, v00000243bb5aa340_0, v00000243bb5aa660_0, C4<0>, C4<0>;
+v00000243bb553b50_0 .net "a", 0 0, v00000243bb5aa340_0;  1 drivers
+v00000243bb5531f0_0 .net "and_out", 0 0, L_00000243bb5485f0;  1 drivers
+v00000243bb553c90_0 .net "b", 0 0, v00000243bb5aa660_0;  1 drivers
+v00000243bb553dd0_0 .net "mux1_out", 0 0, L_00000243bb5ac6b0;  1 drivers
+v00000243bb553e70_0 .net "mux2_out", 0 0, L_00000243bb5ac2c0;  1 drivers
+v00000243bb5ab420_0 .net "nand_out", 0 0, L_00000243bb548190;  1 drivers
+v00000243bb5a9940_0 .net "nor_out", 0 0, L_00000243bb5483c0;  1 drivers
+v00000243bb5a9a80_0 .net "or_out", 0 0, L_00000243bb548270;  1 drivers
+v00000243bb5ab6a0_0 .net "s", 0 0, L_00000243bb5ac1e0;  alias, 1 drivers
+v00000243bb5aab60_0 .net "select_gate", 0 0, v00000243bb5aa7a0_0;  1 drivers
+v00000243bb5aa5c0_0 .net "select_group", 0 0, v00000243bb5ab240_0;  1 drivers
+S_00000243bb68ec20 .scope module, "mux1" "mux" 2 28, 2 42 0, S_00000243bb68ea90;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "s";
+    .port_info 1 /INPUT 1 "a";
+    .port_info 2 /INPUT 1 "b";
+    .port_info 3 /INPUT 1 "select";
+L_00000243bb548430 .functor NOT 1, v00000243bb5aa7a0_0, C4<0>, C4<0>, C4<0>;
+L_00000243bb548510 .functor AND 1, L_00000243bb5485f0, L_00000243bb548430, C4<1>, C4<1>;
+L_00000243bb548580 .functor AND 1, L_00000243bb548190, v00000243bb5aa7a0_0, C4<1>, C4<1>;
+L_00000243bb5ac6b0 .functor OR 1, L_00000243bb548510, L_00000243bb548580, C4<0>, C4<0>;
+v00000243bb686cb0_0 .net "a", 0 0, L_00000243bb5485f0;  alias, 1 drivers
+v00000243bb553a10_0 .net "b", 0 0, L_00000243bb548190;  alias, 1 drivers
+v00000243bb5536f0_0 .net "not_select", 0 0, L_00000243bb548430;  1 drivers
+v00000243bb553290_0 .net "s", 0 0, L_00000243bb5ac6b0;  alias, 1 drivers
+v00000243bb553510_0 .net "sa", 0 0, L_00000243bb548510;  1 drivers
+v00000243bb553d30_0 .net "sb", 0 0, L_00000243bb548580;  1 drivers
+v00000243bb553470_0 .net "select", 0 0, v00000243bb5aa7a0_0;  alias, 1 drivers
+S_00000243bb686430 .scope module, "mux2" "mux" 2 31, 2 42 0, S_00000243bb68ea90;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "s";
+    .port_info 1 /INPUT 1 "a";
+    .port_info 2 /INPUT 1 "b";
+    .port_info 3 /INPUT 1 "select";
+L_00000243bb5ac4f0 .functor NOT 1, v00000243bb5aa7a0_0, C4<0>, C4<0>, C4<0>;
+L_00000243bb5ac790 .functor AND 1, L_00000243bb548270, L_00000243bb5ac4f0, C4<1>, C4<1>;
+L_00000243bb5ab920 .functor AND 1, L_00000243bb5483c0, v00000243bb5aa7a0_0, C4<1>, C4<1>;
+L_00000243bb5ac2c0 .functor OR 1, L_00000243bb5ac790, L_00000243bb5ab920, C4<0>, C4<0>;
+v00000243bb553330_0 .net "a", 0 0, L_00000243bb548270;  alias, 1 drivers
+v00000243bb553bf0_0 .net "b", 0 0, L_00000243bb5483c0;  alias, 1 drivers
+v00000243bb5538d0_0 .net "not_select", 0 0, L_00000243bb5ac4f0;  1 drivers
+v00000243bb553150_0 .net "s", 0 0, L_00000243bb5ac2c0;  alias, 1 drivers
+v00000243bb553f10_0 .net "sa", 0 0, L_00000243bb5ac790;  1 drivers
+v00000243bb553ab0_0 .net "sb", 0 0, L_00000243bb5ab920;  1 drivers
+v00000243bb553010_0 .net "select", 0 0, v00000243bb5aa7a0_0;  alias, 1 drivers
+S_00000243bb6865c0 .scope module, "mux3" "mux" 2 34, 2 42 0, S_00000243bb68ea90;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "s";
+    .port_info 1 /INPUT 1 "a";
+    .port_info 2 /INPUT 1 "b";
+    .port_info 3 /INPUT 1 "select";
+L_00000243bb5ac250 .functor NOT 1, v00000243bb5ab240_0, C4<0>, C4<0>, C4<0>;
+L_00000243bb5abdf0 .functor AND 1, L_00000243bb5ac6b0, L_00000243bb5ac250, C4<1>, C4<1>;
+L_00000243bb5ac5d0 .functor AND 1, L_00000243bb5ac2c0, v00000243bb5ab240_0, C4<1>, C4<1>;
+L_00000243bb5ac1e0 .functor OR 1, L_00000243bb5abdf0, L_00000243bb5ac5d0, C4<0>, C4<0>;
+v00000243bb5535b0_0 .net "a", 0 0, L_00000243bb5ac6b0;  alias, 1 drivers
+v00000243bb5530b0_0 .net "b", 0 0, L_00000243bb5ac2c0;  alias, 1 drivers
+v00000243bb5533d0_0 .net "not_select", 0 0, L_00000243bb5ac250;  1 drivers
+v00000243bb553650_0 .net "s", 0 0, L_00000243bb5ac1e0;  alias, 1 drivers
+v00000243bb553790_0 .net "sa", 0 0, L_00000243bb5abdf0;  1 drivers
+v00000243bb553830_0 .net "sb", 0 0, L_00000243bb5ac5d0;  1 drivers
+v00000243bb553970_0 .net "select", 0 0, v00000243bb5ab240_0;  alias, 1 drivers
+S_00000243bb54a770 .scope begin, "main" "main" 2 76, 2 76 0, S_00000243bb54b1e0;
+ .timescale 0 0;
+    .scope S_00000243bb54b1e0;
+T_0 ;
+    %fork t_1, S_00000243bb54a770;
+    %jmp t_0;
+    .scope S_00000243bb54a770;
+t_1 ;
+    %vpi_call 2 77 "$display", "Guia_0703 - xxx yyy zzz - 999999" {0 0 0};
+    %vpi_call 2 78 "$display", "Test LU's module" {0 0 0};
+    %vpi_call 2 79 "$display", " x  y  select_group select_gate |  z " {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000243bb5aa340_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000243bb5aa660_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000243bb5ab240_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000243bb5aa7a0_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 2 83 "$monitor", "%2b %2b %10b %11b  |  %2b", v00000243bb5aa340_0, v00000243bb5aa660_0, v00000243bb5ab240_0, v00000243bb5aa7a0_0, v00000243bb5a9bc0_0 {0 0 0};
+    %delay 1, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000243bb5aa340_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000243bb5aa660_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000243bb5ab240_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000243bb5aa7a0_0, 0, 1;
+    %delay 1, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000243bb5aa340_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000243bb5aa660_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000243bb5ab240_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000243bb5aa7a0_0, 0, 1;
+    %delay 1, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000243bb5aa340_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000243bb5aa660_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000243bb5ab240_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000243bb5aa7a0_0, 0, 1;
+    %delay 1, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000243bb5aa340_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000243bb5aa660_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000243bb5ab240_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000243bb5aa7a0_0, 0, 1;
+    %end;
+    .scope S_00000243bb54b1e0;
+t_0 %join;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Guia_0703.v";

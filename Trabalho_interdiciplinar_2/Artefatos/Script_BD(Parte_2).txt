@@ -1,0 +1,181 @@
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS mydb;
+
+-- -----------------------------------------------------
+-- Table mydb.Medicos
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS mydb.Medicos (
+  CRM CHAR(8) PRIMARY KEY,
+  Nome VARCHAR(45) NOT NULL,
+  Senha VARCHAR(20) NOT NULL,
+  Especializacao VARCHAR(30),
+  ID_Hospital INT NOT NULL,
+  Email VARCHAR(45) NOT NULL,
+  table1_idtable1 INT NOT NULL
+);
+
+-- -----------------------------------------------------
+-- Table mydb.Farmaceutico
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS mydb.Farmaceutico (
+  CRF CHAR(8) PRIMARY KEY,
+  Nome VARCHAR(45) NOT NULL,
+  Senha VARCHAR(20) NOT NULL,
+  Email VARCHAR(45) NOT NULL,
+  ID_Hospital INT NOT NULL
+);
+
+-- -----------------------------------------------------
+-- Table mydb.Pessoas
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS mydb.Pessoas (
+  CPF CHAR(11) PRIMARY KEY,
+  Nome VARCHAR(45) NOT NULL,
+  Alergias VARCHAR(90),
+  Idade SMALLINT NOT NULL,
+  Tipo_Sanguineo SMALLINT NOT NULL,
+  Peso FLOAT NOT NULL,
+  Altura INT NOT NULL,
+  Senha VARCHAR(20) NOT NULL
+);
+
+-- -----------------------------------------------------
+-- Table mydb.Prontuario
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS mydb.Prontuario (
+  ID_CPF CHAR(11) NOT NULL,
+  Descricao VARCHAR(360) NOT NULL,
+  data_Prontuario DATE NOT NULL,
+  Status VARCHAR(45),
+  ID_Hospital INT NOT NULL,
+  Pessoas_CPF2 CHAR(11) NOT NULL,
+  PRIMARY KEY (ID_CPF, data_Prontuario),
+  FOREIGN KEY (Pessoas_CPF2)
+    REFERENCES mydb.Pessoas (CPF)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+);
+
+-- -----------------------------------------------------
+-- Table mydb.Hospital
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS mydb.Hospital (
+  ID SERIAL PRIMARY KEY,
+  Nome VARCHAR(45) NOT NULL,
+  Usuario VARCHAR(45),
+  Senha VARCHAR(45)
+);
+
+-- -----------------------------------------------------
+-- Table mydb.Remedio
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS mydb.Remedio (
+  ID SERIAL PRIMARY KEY,
+  ID_Hospital INT NOT NULL,
+  Nome VARCHAR(45) NOT NULL,
+  Quantidade INT
+);
+
+-- -----------------------------------------------------
+-- Table mydb.Lote
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS mydb.Lote (
+  Data_Fabricacao DATE NOT NULL,
+  Validade DATE NOT NULL,
+  ID_Remedio INT NOT NULL,
+  Codigo VARCHAR(45) NOT NULL,
+  Remedio_ID INT NOT NULL,
+  PRIMARY KEY (Remedio_ID),
+  FOREIGN KEY (ID_Remedio)
+    REFERENCES mydb.Remedio (ID)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+);
+
+-- -----------------------------------------------------
+-- Table mydb.Pessoas_has_Hospital
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS mydb.Pessoas_has_Hospital (
+  Pessoas_CPF CHAR(11) NOT NULL,
+  Hospital_ID INT NOT NULL,
+  PRIMARY KEY (Pessoas_CPF, Hospital_ID),
+  FOREIGN KEY (Pessoas_CPF)
+    REFERENCES mydb.Pessoas (CPF)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  FOREIGN KEY (Hospital_ID)
+    REFERENCES mydb.Hospital (ID)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+);
+
+-- -----------------------------------------------------
+-- Table mydb.Medicos_has_Hospital
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS mydb.Medicos_has_Hospital (
+  Medicos_CRM CHAR(8) NOT NULL,
+  Hospital_ID INT NOT NULL,
+  PRIMARY KEY (Medicos_CRM, Hospital_ID),
+  FOREIGN KEY (Medicos_CRM)
+    REFERENCES mydb.Medicos (CRM)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  FOREIGN KEY (Hospital_ID)
+    REFERENCES mydb.Hospital (ID)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+);
+
+-- -----------------------------------------------------
+-- Table mydb.Farmaceutico_has_Remedio
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS mydb.Farmaceutico_has_Remedio (
+  Farmaceutico_CRF CHAR(8) NOT NULL,
+  Remedio_ID INT NOT NULL,
+  Remedio_Hospital_ID INT NOT NULL,
+  PRIMARY KEY (Farmaceutico_CRF, Remedio_ID, Remedio_Hospital_ID),
+  FOREIGN KEY (Farmaceutico_CRF)
+    REFERENCES mydb.Farmaceutico (CRF)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  FOREIGN KEY (Remedio_ID)
+    REFERENCES mydb.Remedio (ID)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+);
+
+-- -----------------------------------------------------
+-- Table mydb.Farmaceutico_has_Hospital
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS mydb.Farmaceutico_has_Hospital (
+  Farmaceutico_CRF CHAR(8) NOT NULL,
+  Hospital_ID INT NOT NULL,
+  PRIMARY KEY (Farmaceutico_CRF, Hospital_ID),
+  FOREIGN KEY (Farmaceutico_CRF)
+    REFERENCES mydb.Farmaceutico (CRF)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  FOREIGN KEY (Hospital_ID)
+    REFERENCES mydb.Hospital (ID)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+);
+
+-- -----------------------------------------------------
+-- Table mydb.Medicos_has_Pessoas
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS mydb.Medicos_has_Pessoas (
+  Medicos_CRM CHAR(8) NOT NULL,
+  Pessoas_CPF CHAR(11) NOT NULL,
+  PRIMARY KEY (Medicos_CRM, Pessoas_CPF),
+  FOREIGN KEY (Medicos_CRM)
+    REFERENCES mydb.Medicos (CRM)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  FOREIGN KEY (Pessoas_CPF)
+    REFERENCES mydb.Pessoas (CPF)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+);

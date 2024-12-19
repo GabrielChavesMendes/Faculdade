@@ -1,0 +1,17 @@
+// Guia 1507 - 806937 - Felipe Pereira da Silva 
+
+LXI H, dado01
+MOV A, M
+ANI 01h
+INX H
+MOV B, M
+RRC
+RRC
+ADD B
+INX H
+MOV M, A
+HLT
+
+dado01: DB 05h
+dado02: DB 08h
+dado03: DB 00h

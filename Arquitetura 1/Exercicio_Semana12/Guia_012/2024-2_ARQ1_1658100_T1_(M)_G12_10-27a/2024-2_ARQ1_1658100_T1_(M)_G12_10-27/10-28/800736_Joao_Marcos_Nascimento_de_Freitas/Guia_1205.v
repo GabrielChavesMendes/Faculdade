@@ -1,0 +1,67 @@
+//------------------
+// Nome: João Marcos Nascimento de Freitas
+// Matrícula: 800736
+//___________________
+module RAM_8x8(
+    input wire clk,
+    input wire write_en,
+    input wire [7:0] address,
+    input wire [7:0] data_in,
+    output reg [7:0] data_out
+);
+
+reg [7:0] memory [7:0];
+
+always @(posedge clk) begin
+    if (write_en) begin
+        memory[address] <= data_in; 
+    end
+end
+
+always @(negedge clk) begin
+    data_out <= memory[address];  
+end
+
+endmodule
+
+module test;
+    reg clk, write_en;
+    reg [7:0] address;
+    reg [7:0] data_in;
+    wire [7:0] s;
+
+    RAM_8x8 moduleRam (clk, write_en, address, data_in, s);  
+
+    initial begin
+        $display("Test Module");
+        
+        $monitor ("%4d %4d %4d %4b | %4b", clk, write_en, address, data_in, s);
+        clk = 1'b1;
+        write_en = 1'b1;
+        address = 0;
+        data_in = 8'b10010100;  
+
+        #10 clk = 1'b0; write_en = 1'b1; address = 0; data_in = 8'bxxxxxxxx; 
+        #10 clk = 1'b1; write_en = 1'b1; address = 1; data_in = 8'b11110000;  
+        #10 clk = 1'b0; write_en = 1'b0; address = 1; data_in = 8'bxxxxxxxx;
+        #10 clk = 1'b1; write_en = 1'b1; address = 2; data_in = 8'b10101010;
+        #10 clk = 1'b0; write_en = 1'b0; address = 2; data_in = 8'bxxxxxxxx;
+        #10 clk = 1'b1; write_en = 1'b1; address = 3; data_in = 8'b10000011;
+        #10 clk = 1'b0; write_en = 1'b0; address = 3; data_in = 8'bxxxxxxxx;
+        #10 clk = 1'b1; write_en = 1'b1; address = 4; data_in = 8'b10000000;  
+        #10 clk = 1'b0; write_en = 1'b0; address = 4; data_in = 8'bxxxxxxxx;
+        #10 clk = 1'b1; write_en = 1'b1; address = 5; data_in = 8'b00000001;
+        #10 clk = 1'b0; write_en = 1'b0; address = 5; data_in = 8'bxxxxxxxx;
+        #10 clk = 1'b1; write_en = 1'b1; address = 6; data_in = 8'b10110011;
+        #10 clk = 1'b0; write_en = 1'b0; address = 6; data_in = 8'bxxxxxxxx;
+        #10 clk = 1'b1; write_en = 1'b1; address = 7; data_in = 8'b11111111;
+        #10 clk = 1'b0; write_en = 1'b0; address = 7; data_in = 8'bxxxxxxxx;
+        #10 clk = 1'b1;
+        #10 clk = 1'b0; write_en = 1'b0; address = 0; data_in = 8'bxxxxxxxx;  
+        #10 clk = 1'b1;
+        #10 clk = 1'b0; write_en = 1'b0; address = 4; data_in = 8'bxxxxxxxx;
+        #10 clk = 1'b1;
+        #10 clk = 1'b0; write_en = 1'b0; address = 2; data_in = 8'bxxxxxxxx;
+
+    end
+endmodule

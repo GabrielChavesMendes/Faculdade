@@ -1,0 +1,2 @@
+A media do vetor e: 42.20
+A mediana do vetor e: 34
