@@ -1,0 +1,16 @@
+// Guia 1603 - 806937 - Felipe Pereira da Silva 
+
+LDA dado01
+MOV B, A
+LDA dado02
+MOV C, A
+
+IMOD_LOOP:
+SUB C
+JC IMOD_DONE
+JMP IMOD_LOOP
+
+IMOD_DONE:
+MOV D, A
+STA dado03
+HLT

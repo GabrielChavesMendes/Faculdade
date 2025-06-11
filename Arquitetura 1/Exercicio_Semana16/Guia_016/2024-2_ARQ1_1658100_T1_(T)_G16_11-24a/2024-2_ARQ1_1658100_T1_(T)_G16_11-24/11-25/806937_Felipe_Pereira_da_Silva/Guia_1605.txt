@@ -1,0 +1,36 @@
+// Guia 1605 - 806937 - Felipe Pereira da Silva 
+
+LDA dado01
+MOV B, A
+ANI 0F0H
+RRC
+RRC
+RRC
+RRC
+MOV C, A
+
+LDA dado01
+ANI 0F
+MOV D, A
+
+MOV A, C
+MVI E, 0AH
+CALL MUL
+ADD D
+
+STA dado03
+HLT
+
+MUL:
+PUSH B
+MOV B, A
+MVI A, 00H
+MUL_LOOP:
+ADD B
+DCR E
+JNZ MUL_LOOP
+POP B
+RET
+
+dado01: DB 24H
+dado03: DB 00H

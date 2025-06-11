@@ -1,0 +1,19 @@
+ORG 8000H
+
+LXI H, 8000H
+MOV B, M          
+MVI A, 01H       
+
+FACTORIAL_LOOP:
+CMP B            
+JZ DONE          
+MOV C, B       
+MUL A, C          
+MOV A, L         
+DCR B            
+JMP FACTORIAL_LOOP 
+
+DONE:
+LXI H, 8001H      
+MOV M, A         
+HLT

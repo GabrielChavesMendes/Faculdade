@@ -1,0 +1,20 @@
+// Guia 1604 - 806937 - Felipe Pereira da Silva 
+
+LXI H, arranjo
+MOV A, M
+INX H
+
+MAIOR_LOOP:
+CMP M
+JC SKIP
+MOV A, M
+SKIP:
+INX H
+DCR B
+JNZ MAIOR_LOOP
+
+STA maior
+HLT
+
+arranjo: DB 10H, 20H, 05H, 30H, 18H
+maior:   DB 00H

@@ -1,0 +1,43 @@
+        ORG 2000H          ; Define o início do programa
+
+; Inicialização
+        LDA 2501H          ; Carrega o valor BCD do endereço 2501H no acumulador
+        MOV B, A           ; Armazena o valor em B para operações futuras
+        ANI 0F0H           ; Isola os 4 bits mais significativos (HI)
+        RRC                ; Roda o valor à direita 4 vezes para posicionar HI como unidade
+        RRC
+        RRC
+        RRC
+        MOV C, A           ; Armazena HI em C
+        MVI A, 0AH         ; Carrega o valor 10 no acumulador
+        MOV D, A           ; Armazena o valor 10 no registrador D
+
+; Multiplicação de HI por 10
+        MOV A, C           ; Carrega HI no acumulador
+        CALL MULTIPLY      ; Multiplica HI por 10 (resultado será em A)
+
+; Soma com LOW
+        MOV C, A           ; Armazena o resultado parcial (HI * 10) em C
+        MOV A, B           ; Restaura o valor original de BCD
+        ANI 0FH            ; Isola os 4 bits menos significativos (LOW)
+        ADD C              ; Soma LOW com (HI * 10)
+
+; Armazenamento do resultado
+        STA 2502H          ; Armazena o resultado hexadecimal em 2502H
+        HLT                ; Fim do programa
+
+; Sub-rotina para multiplicação (A = C * D)
+MULTIPLY:
+        MVI B, 00H         ; Inicializa o registrador B (acumulador da soma)
+MULT_LOOP:
+        ADD B              ; Soma A (parcial) no acumulador
+        DCR D              ; Decrementa o contador D
+        JNZ MULT_LOOP      ; Continua se D não for zero
+        RET                ; Retorna ao programa principal
+
+; Dados
+        ORG 2501H          ; Define a origem dos dados
+        DB 24H             ; Valor BCD (24 em decimal)
+
+        ORG 2502H          ; Espaço para o resultado
+        DB 00H             ; Resultado hexadecimal (será 18H)

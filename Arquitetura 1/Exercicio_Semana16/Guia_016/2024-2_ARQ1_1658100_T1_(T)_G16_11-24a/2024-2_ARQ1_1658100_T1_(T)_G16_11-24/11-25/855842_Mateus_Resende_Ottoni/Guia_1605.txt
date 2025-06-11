@@ -1,0 +1,44 @@
+
+// Guia_1605.txt 
+// 855842 - Mateus Resende Ottoni
+//
+// Objetivo: dado02 = HI (dado01) * 10 + LOW (dado02) 
+//
+ 
+// Área de código		// Comentário 
+
+	JMP	MAIN		// Ir para a função principal
+
+F_HEX:	
+	MVI	A,00		// A = 0
+
+	MOV	A,B		// A = B // Variável local
+	ANI	0F0h
+	MOV	D,A		// D = A
+
+	MOV	A,C		// A = C // Variável local
+	ANI	0Fh
+	MOV	E,A		// E = A // Variável local
+
+	ADD	D
+	RET
+
+
+MAIN:
+	MVI	A,00		// A = 0
+
+	LXI	H,0052h		// HL = 0052h // Dado 1
+	MOV	B,M		// B = MEM [HL]
+	INX	H		// HL = HL+1  // Dado 2
+	MOV	C,M		// C = MEM [HL]
+C_HEX:	CALL	F_HEX		// A = F_HEX(B, C)
+	STA	0050h		// MEM[0050] = A
+	HLT			//
+END: 
+
+
+; Área de dados 
+; dado1:  52h  ; primeiro dado	 em hexadecimal
+; dado2:  53h  ; segundo dado	 em hexadecimal
+...
+; dado3:  50h  ; resultado	 em hexadecimal

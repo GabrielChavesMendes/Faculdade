@@ -1,0 +1,43 @@
+// Guia_1607.txt
+// Andriel Mark da Silva Pinto
+// Matrícula: 859093
+//
+// Cálculo do fatorial de um número de 8 bits (dado01)
+// O fatorial será armazenado em dado02 (0052h)
+//
+// Função: CALCULAR_FATORIAL
+// Calcula o fatorial de dado01 utilizando multiplicação sucessiva
+// @retorna o fatorial no endereço 0052h
+// @parâmetro: dado01 (número de 8 bits)
+//
+//
+
+JMP MAIN   // Salta para o programa principal
+
+CALCULAR_FATORIAL:
+              MOV A, M     // Carrega o valor de dado01 em A
+              MOV B, A     // B = dado01 (o número de início)
+              MVI D, 01    // D = 1 (inicializa o acumulador de resultado)
+LOOP:         MOV A, D     // A = D (resultado acumulado)
+              MOV E, B     // E = B (o número atual)
+              CALL MULTIPLICAR // Chama a função de multiplicação
+              MOV D, A     // Armazena o novo resultado em D
+              DCR B        // Decrementa B
+              MOV A, B     // A = B
+              CPI 01       // Verifica se B == 1
+              JNZ LOOP     // Se B != 1, continua o loop
+              STA 0052h    // Armazena o resultado final em 0052h
+              RET          // Retorna ao programa principal
+
+MULTIPLICAR:
+              MOV A, M     // Carrega A com o valor de D
+              MOV B, E     // Carrega B com o valor de E (valor de multiplicação)
+LOOP_MUL:     ADD B        // A = A + B (multiplicação)
+              MOV B, A     // Atualiza B
+              MOV A, B     // Recarrega A para a operação
+              RET          // Retorna da função de multiplicação
+
+MAIN:         LXI H, 0050h   // Carrega o endereço de dado01 em HL
+              MOV A,M        // Carrega dado01 em A
+              CALL CALCULAR_FATORIAL  // Chama a função para calcular o fatorial
+              HLT             // Finaliza o programa

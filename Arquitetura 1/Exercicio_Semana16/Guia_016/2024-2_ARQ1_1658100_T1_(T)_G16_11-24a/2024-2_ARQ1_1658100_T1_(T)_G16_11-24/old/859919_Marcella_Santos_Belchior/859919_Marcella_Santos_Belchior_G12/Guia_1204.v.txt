@@ -1,0 +1,51 @@
+/*
+Guia_1204.v
+859919 - Marcella Santos Belchior
+*/
+module Guia_1204 (
+    input CLK,          // Clock
+    input R_W,          // Controle de leitura/escrita (1 para escrita, 0 para leitura)
+    input [1:0] ADDR,   // Endereço de 2 bits (00, 01, 10, 11)
+    input [7:0] _input, // Dados de entrada (8 bits)
+    output reg [7:0] _output, // Dados de saída (8 bits)
+    input CLR           // Sinal de reset
+);
+
+    // Definindo duas instâncias de RAM 2x8
+    reg [7:0] ram_data_0_0; // Memória 1 - Endereço 00
+    reg [7:0] ram_data_0_1; // Memória 1 - Endereço 01
+    reg [7:0] ram_data_1_0; // Memória 2 - Endereço 10
+    reg [7:0] ram_data_1_1; // Memória 2 - Endereço 11
+
+    // Escrever os dados na borda de subida do clock
+    always @(posedge CLK or posedge CLR) begin
+        if (CLR) begin
+            ram_data_0_0 <= 8'b00000000;  // Limpar a memória 1, endereço 00
+            ram_data_0_1 <= 8'b00000000;  // Limpar a memória 1, endereço 01
+            ram_data_1_0 <= 8'b00000000;  // Limpar a memória 2, endereço 10
+            ram_data_1_1 <= 8'b00000000;  // Limpar a memória 2, endereço 11
+        end else if (R_W) begin
+            // Escrever na memória correspondente
+            case (ADDR)
+                2'b00: ram_data_0_0 <= _input;  // Endereço 00
+                2'b01: ram_data_0_1 <= _input;  // Endereço 01
+                2'b10: ram_data_1_0 <= _input;  // Endereço 10
+                2'b11: ram_data_1_1 <= _input;  // Endereço 11
+            endcase
+        end
+    end
+
+    // Ler os dados na borda de descida do clock
+    always @(negedge CLK) begin
+        if (!R_W) begin
+            // Ler da memória correspondente
+            case (ADDR)
+                2'b00: _output <= ram_data_0_0;  // Endereço 00
+                2'b01: _output <= ram_data_0_1;  // Endereço 01
+                2'b10: _output <= ram_data_1_0;  // Endereço 10
+                2'b11: _output <= ram_data_1_1;  // Endereço 11
+            endcase
+        end
+    end
+
+endmodule

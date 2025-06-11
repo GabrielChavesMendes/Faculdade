@@ -1,0 +1,41 @@
+ORG 8000H
+
+
+LXI H, 8000H     
+MOV A, M         
+INX H            
+MOV B, M        
+
+
+MOV C, B         
+CPI 00H           
+JZ DIV_ZERO       
+
+
+MOV D, A        
+MVI A, 00H       
+MVI E, 00H      
+
+DIV_LOOP:
+CMP D            
+JC DIV_DONE      
+SUB B            
+MOV D, A         
+INR E             
+JMP DIV_LOOP      
+
+DIV_DONE:
+LXI H, 8002H      
+MOV M, E         
+INX H            
+MOV M, D         
+
+HLT 
+             
+DIV_ZERO:
+MVI A, FFH        
+LXI H, 8002H      
+MOV M, A         
+INX H
+MOV M, A         
+HLT             

@@ -1,0 +1,20 @@
+// Guia_1604.txt
+// 854157 - Matheus Felipe Cavalcanti Xavier
+// Encontrar o maior valor de um arranjo
+JMP MAIN          // Função principal
+
+MAIN:    LXI H,0050 // HL = início do arranjo
+         MOV A,M    // A = MEM[HL] (primeiro elemento)
+         INX H      // Incrementa HL
+
+FIND_MAX: MOV B,M   // B = MEM[HL] (próximo elemento)
+          CMP B     // Compara A com B
+          JC CONTINUE // Se A > B, continua
+          MOV A,B   // Atualiza A para o maior valor
+
+CONTINUE: INX H     // Incrementa HL
+          DCR C     // Decrementa o contador
+          JNZ FIND_MAX // Repete enquanto não for o último
+
+         STA 0052   // Salva o maior valor em MEM[0052]
+         HLT        // Fim do programa

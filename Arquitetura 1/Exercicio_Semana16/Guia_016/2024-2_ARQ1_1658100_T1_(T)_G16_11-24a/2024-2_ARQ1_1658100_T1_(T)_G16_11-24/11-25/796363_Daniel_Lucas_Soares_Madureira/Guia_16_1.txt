@@ -1,0 +1,15 @@
+LXI H,C050 ; HL = endereço de 2501
+MOV C,M ; copia o conteudo de memória para B
+MOV B,C
+INX H ; passando para a segunda posição do array com o segundo valor, o do endereço 2502
+MOV C,M ; copiando o conteudo de memória para C
+MVI A,00H 
+SOMAR: 
+    ADD B ; similar A += B
+    DCR C ; decrementa c 
+    JNZ SOMAR ; pula para a linha somar até C seja == 0
+
+INX H ; endereço 2503
+MOV M,A ; endereço 2503 tem o valor de A
+
+HLT

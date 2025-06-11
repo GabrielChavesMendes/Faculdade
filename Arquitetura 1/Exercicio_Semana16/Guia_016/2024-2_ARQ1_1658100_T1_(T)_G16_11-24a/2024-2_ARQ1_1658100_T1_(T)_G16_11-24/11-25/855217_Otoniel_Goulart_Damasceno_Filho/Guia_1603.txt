@@ -1,0 +1,37 @@
+// Aluno Otoniel Filho
+// Código 1524526
+// Matricula 855217
+
+// Resto da divisão entre dois números inteiros de 8 bits (IMOD)
+JMP MAIN  // Desvio para a área principal
+
+// Função IMOD
+F_IMOD:
+    MVI D, 00      // Inicializa D = 0 (resto)
+    MOV A, C       // A recebe dado1 (dividendo)
+    MOV B, M       // B recebe dado2 (divisor)
+    
+IMOD_LOOP:
+    CMP B          // Compara A (dividendo) com B (divisor)
+    JC IMOD_DONE   // Se A < B, sai do loop (resto encontrado)
+    SUB B          // A = A - B (subtração do divisor do dividendo)
+    JMP IMOD_LOOP  // Continua subtraindo enquanto possível
+
+IMOD_DONE:
+    MOV D, A       // Armazena o resto em D
+    RET            // Retorna da função
+
+MAIN:
+    LXI H, 0050h   // Carrega o endereço base dos dados
+    MOV A, M       // A recebe dado1 (dividendo)
+    INX H          // Avança para dado2
+    MOV C, M       // C recebe dado2 (divisor)
+    CALL F_IMOD    // Chama a função IMOD
+    STA 0052h      // Armazena o resultado (resto) em MEM[0052]
+    HLT            // Finaliza a execução
+
+END
+// Área de dados
+dado1: 15h  ; Dividendo (21 em decimal)
+dado2: 04h  ; Divisor (4 em decimal)
+dado3: 00h  ; Resultado (resto, inicialmente 0)

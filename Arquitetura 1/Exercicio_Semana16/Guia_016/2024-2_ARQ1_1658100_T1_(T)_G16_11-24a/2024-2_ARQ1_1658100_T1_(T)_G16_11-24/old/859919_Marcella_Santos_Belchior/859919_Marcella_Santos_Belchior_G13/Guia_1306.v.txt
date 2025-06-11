@@ -1,0 +1,42 @@
+/*
+Guia_1306.v
+859919 - Marcella Santos Belchior
+*/
+module Guia_1306(
+    output [4:0] Q,   // Saída de 5 bits
+    input clk,         // Sinal de relógio
+    input reset        // Sinal de reset (ativo baixo)
+);
+
+    // Declaração dos flip-flops JK
+    jkff FF0 ( .q(Q[0]), .j(1), .k(1), .clk(clk), .reset(reset) );
+    jkff FF1 ( .q(Q[1]), .j(Q[0]), .k(Q[0]), .clk(clk), .reset(reset) );
+    jkff FF2 ( .q(Q[2]), .j(Q[1]), .k(Q[1]), .clk(clk), .reset(reset) );
+    jkff FF3 ( .q(Q[3]), .j(Q[2]), .k(Q[2]), .clk(clk), .reset(reset) );
+    jkff FF4 ( .q(Q[4]), .j(Q[3]), .k(Q[3]), .clk(clk), .reset(reset) );
+
+endmodule
+
+module jkff (
+    output reg q,      // Saída Q do flip-flop JK
+    input j,           // Entrada J
+    input k,           // Entrada K
+    input clk,         // Relógio
+    input reset        // Reset (ativo baixo)
+);
+    always @(posedge clk or negedge reset)
+    begin
+        if (~reset)  // Se reset ativado
+            q <= 0;  // Resetar a saída para 0
+        else
+        begin
+            case ({j, k})
+                2'b00: q <= q;    // Não altera
+                2'b01: q <= 0;    // Q = 0
+                2'b10: q <= 1;    // Q = 1
+                2'b11: q <= ~q;   // Toggle
+            endcase
+        end
+    end
+endmodule
+

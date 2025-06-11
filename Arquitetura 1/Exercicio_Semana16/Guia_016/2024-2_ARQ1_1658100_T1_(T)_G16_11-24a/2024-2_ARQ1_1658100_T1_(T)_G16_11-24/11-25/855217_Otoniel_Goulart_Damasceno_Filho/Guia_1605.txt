@@ -1,0 +1,61 @@
+// Aluno Otoniel Filho
+// Código 1524526
+// Matricula 855217
+
+// Converter um valor BCD para o hexadecimal equivalente
+JMP MAIN        // Desvia para a área principal
+
+// Função BCD_TO_HEX
+F_BCD_TO_HEX:
+    MOV A, M    // A = dado1 (BCD)
+    MOV B, A    // B = dado1 (cópia para extração dos dígitos)
+    MVI C, 0Ah  // C = 10 (usado na multiplicação por 10)
+
+    // Extraindo o nibble mais significativo (dígito alto)
+    ANI 0F0h    // A = A & F0h (isola o nibble alto)
+    RRC         // Ajusta o nibble alto para a posição correta
+    RRC
+    RRC
+    RRC
+    MOV D, A    // D = dígito alto
+
+    // Extraindo o nibble menos significativo (dígito baixo)
+    MOV A, B    // Restaura o valor original do BCD
+    ANI 0Fh     // A = A & 0Fh (isola o nibble baixo)
+    MOV E, A    // E = dígito baixo
+
+    // Multiplicação do dígito alto (D) por 10 (C)
+    MVI H, 00   // H = 0 (parte alta do produto)
+    MVI L, 00   // L = 0 (parte baixa do produto)
+    MOV A, D    // A = dígito alto
+    CALL F_MUL  // Chama a função de multiplicação
+
+    // Adiciona o dígito baixo (E) ao produto
+    MOV A, L    // A = parte baixa do produto
+    ADD E       // A = A + E (soma o dígito baixo)
+    MOV L, A    // L = resultado final
+    MOV A, H    // A = parte alta do resultado (deve ser 0 para BCD válido)
+
+    RET
+
+// Função de multiplicação (multiplica A * C, resultado em HL)
+F_MUL:
+    MVI D, 00   // D = 0 (acumulador para a soma)
+MUL_LOOP:
+    ADD D       // A = A + D
+    DCR C       // Decrementa C (contador)
+    JNZ MUL_LOOP // Repete enquanto C > 0
+    MOV L, A    // L = produto final
+    RET
+
+MAIN:
+    LXI H, 0050h // Carrega o endereço de dado1
+    CALL F_BCD_TO_HEX // Chama a função de conversão
+    SHLD 0052h    // Armazena o resultado em dado3 (hexadecimal)
+    HLT           // Finaliza a execução
+
+END
+// Área de dados
+dado1: 24h  // Exemplo de número BCD (24 BCD = 18 hexadecimal)
+dado2: 00h  // Não utilizado
+dado3: 00h  // Resultado hexadecimal

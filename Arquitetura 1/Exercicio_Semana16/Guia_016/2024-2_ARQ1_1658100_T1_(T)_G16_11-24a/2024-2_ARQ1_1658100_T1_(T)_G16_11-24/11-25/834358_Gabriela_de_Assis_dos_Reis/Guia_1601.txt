@@ -1,0 +1,35 @@
+// Guia_1601.txt
+// 834358 - Gabriela de Assis dos Reis
+; Dados:
+; dado01 em 0300h (8 bits)
+; dado02 em 0301h (8 bits)
+; dado03 em 0302h (16 bits: parte baixa e alta)
+; ==========================
+
+START:
+    
+    LXI H, 0300h       ; HL aponta para o endereço do dado01
+    MOV B, M           ; B <- dado01 (multiplicando)
+    INX H              ; Incrementa HL para apontar para dado02
+    MOV C, M           ; C <- dado02 (multiplicador)
+    MVI H, 00h         ; H <- 00 (parte alta do resultado = 0)
+    MVI L, 00h         ; L <- 00 (parte baixa do resultado = 0)
+
+    
+MULT_LOOP:
+    MOV A, C           ; A <- C (multiplicador)
+    CPI 00h            ; Verifica se multiplicador é 0
+    JZ STORE_RESULT    ; Se C == 0, vai armazenar o resultado
+    ADD L              ; Soma acumulador (parte baixa)
+    MOV L, A           ; Atualiza parte baixa
+    MOV A, H           ; Carrega parte alta
+    ACI 00h            ; Adiciona carry da soma anterior
+    MOV H, A           ; Atualiza parte alta
+    DCR C              ; Decrementa o multiplicador
+    JMP MULT_LOOP      ; Repete o loop até multiplicador == 0
+
+    
+STORE_RESULT:
+    LXI D, 0302h       ; DE aponta para dado03 (endereço do resultado)
+    SHLD 0302h         ; Armazena H e L (resultado de 16 bits) em dado03
+    HLT                ; Finaliza o programa

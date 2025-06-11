@@ -1,0 +1,39 @@
+/*
+Guia_1201.v
+859919 - Marcella Santos Belchior
+*/
+
+module Guia_1201 (
+    input CLK,          // Clock (borda de subida para escrita, borda de descida para leitura)
+    input R_W,          // Controlador de leitura/escrita (1 para escrita, 0 para leitura)
+    input [0:0] ADDR,   // Endereço (apenas 1 bit, já que é 1x4)
+    input [3:0] _input, // Dados de entrada (4 bits)
+    output reg [3:0] _output, // Dados de saída (4 bits)
+    input CLR           // Sinal de reset (clear)
+);
+
+    // Definindo os flip-flops JK para os 4 bits de dados
+    reg [3:0] ram_data;
+
+    // Escrever/ler a RAM na borda de subida/descida do clock
+    always @(posedge CLK or posedge CLR) begin
+        if (CLR) begin
+            ram_data <= 4'b0000;  // Limpar os dados se CLR for ativado
+        end else if (R_W) begin
+            if (ADDR == 1'b0) begin
+                ram_data <= _input;  // Escrever dados quando R/W for 1 e o endereço for 0
+            end
+        end
+    end
+
+    // Lendo os dados na borda de descida do clock
+    always @(negedge CLK) begin
+        if (!R_W && ADDR == 1'b0) begin
+            _output <= ram_data;  // Ler os dados quando R/W for 0 e o endereço for 0
+        end else begin
+            _output <= 4'b0000;  // Se o endereço não for 0, a saída é 0 ou indefinida
+        end
+    end
+
+endmodule
+

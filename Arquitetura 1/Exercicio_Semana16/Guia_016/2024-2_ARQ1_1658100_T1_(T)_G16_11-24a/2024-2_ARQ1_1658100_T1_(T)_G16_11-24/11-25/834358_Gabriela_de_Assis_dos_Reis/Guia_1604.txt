@@ -1,0 +1,30 @@
+// Guia_1604.txt
+// 834358 - Gabriela de Assis dos Reis
+; ==========================
+; Configuração dos Dados:
+; arranjo: começa em 0300h
+; tamanho: número de elementos (ex.: 05h em 02FFh)
+; maior: será armazenado em 0305h
+; ==========================
+
+START:
+    LXI H, 02FFh       ; HL aponta para o endereço do tamanho
+    MOV C, M           ; C <- tamanho do arranjo
+    LXI H, 0300h       ; HL aponta para o início do arranjo
+    MOV A, M           ; A <- primeiro elemento do arranjo (inicializa maior)
+
+    FIND_MAX_LOOP:
+    INX H              ; Incrementa HL para o próximo elemento
+    MOV B, M           ; B <- elemento atual
+    CMP B              ; Compara A (maior atual) com B (elemento atual)
+    JC SKIP_UPDATE     ; Se A > B, pula a atualização do maior
+    MOV A, B           ; Atualiza A com o novo maior valor
+
+SKIP_UPDATE:
+    DCR C              ; Decrementa o contador (C = C - 1)
+    JNZ FIND_MAX_LOOP  ; Se C != 0, repete o loop
+
+    STORE_RESULT:
+    LXI H, 0305h       ; HL aponta para o endereço do maior
+    MOV M, A           ; Armazena o maior valor em 0305h
+    HLT                ; Finaliza o programa

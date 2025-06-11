@@ -1,0 +1,37 @@
+// Guia_1606.txt
+// Andriel Mark da Silva Pinto
+// Matrícula: 859093
+//
+// Cálculo do quadrado de um número de 8 bits utilizando a soma de ímpares sucessivos
+// dado01 é o número de entrada
+// dado02 irá armazenar o quadrado de dado01
+//
+// Função: CALCULAR_QUADRADO
+// Calcula o quadrado de dado01 somando os números ímpares
+// @retorna o quadrado no endereço 0052h
+// @parâmetro: dado01 (número de 8 bits)
+//
+//
+
+JMP MAIN   // Salta para o programa principal
+
+CALCULAR_QUADRADO:
+              MVI B,01    // B = 1 (primeiro número ímpar)
+              MVI D,00    // D = 0 (acumulador para o quadrado)
+              MOV A,M     // A = dado01 (valor de entrada)
+LOOP:         MOV E,B     // E = B (número ímpar)
+              ADD D       // D = D + E (acumula os ímpares)
+              MOV D,M     // Armazena o valor do quadrado em D
+              INX H       // Avança para o próximo número
+              MOV B,M     // Atualiza o próximo número ímpar
+              MOV A,B     // Verifica se a soma de ímpares chegou ao quadrado
+              CPI M      // Se B == dado01, sai do loop
+              JNZ LOOP   // Continua o loop se não for igual
+              STA 0052h  // Armazena o quadrado no endereço 0052h
+              RET         // Retorna ao programa principal
+
+MAIN:
+              LXI H, 0050h   // Carrega o endereço de dado01 em HL
+              MOV A,M        // Carrega dado01 em A
+              CALL CALCULAR_QUADRADO  // Chama a função para calcular o quadrado
+              HLT             // Finaliza o programa

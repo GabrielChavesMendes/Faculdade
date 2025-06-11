@@ -1,0 +1,39 @@
+// Guia_1603.txt
+// 834358 - Gabriela de Assis dos Reis
+; ==========================
+; Dados:
+; dado01 em 0300h (8 bits, dividendo)
+; dado02 em 0301h (8 bits, divisor)
+; dado03 em 0302h (8 bits, resto)
+; ==========================
+
+START:
+    ; ===== Inicialização =====
+    LXI H, 0300h       ; HL aponta para o endereço do dado01
+    MOV A, M           ; A <- dado01 (dividendo)
+    INX H              ; Incrementa HL para apontar para dado02
+    MOV B, M           ; B <- dado02 (divisor)
+
+    
+    CMP B              ; Verifica se divisor é 0
+    JZ ERROR_DIV_ZERO  ; Se divisor == 0, erro (divisão por zero)
+
+    
+MOD_LOOP:
+    CMP B              ; Verifica se A (dividendo) < B (divisor)
+    JC STORE_RESULT    ; Se A < B, fim do cálculo do módulo
+    SUB B              ; A <- A - B (subtração do divisor do dividendo)
+    JMP MOD_LOOP       ; Continua o loop
+
+    
+STORE_RESULT:
+    LXI H, 0302h       ; HL aponta para dado03
+    MOV M, A           ; Armazena o resto em dado03
+    HLT                ; Finaliza o programa
+
+    
+ERROR_DIV_ZERO:
+    MVI A, FFh         ; Define A como -1 (indicador de erro)
+    LXI H, 0302h       ; HL aponta para dado03
+    MOV M, A           ; Armazena o valor de erro em dado03
+    HLT                ; Finaliza o programa

@@ -1,0 +1,45 @@
+/*
+Guia_1207.v
+859919 - Marcella Santos Belchior
+*/
+
+module Guia_1207 (
+    input CLK,          // Clock
+    input R_W,          // Controle de leitura/escrita (1 para escrita, 0 para leitura)
+    input [2:0] ADDR,   // Endereço de 3 bits (000 a 111)
+    input [15:0] _input, // Dados de entrada (16 bits)
+    output reg [15:0] _output, // Dados de saída (16 bits)
+    input CLR           // Sinal de reset
+);
+
+    // Definindo 8 instâncias de RAM 1x16, uma para cada endereço
+    reg [15:0] ram_data [0:7]; // Memórias RAM 1x16 (8 memórias, 1 endereço de 16 bits cada)
+
+    // Escrever os dados na borda de subida do clock
+    always @(posedge CLK or posedge CLR) begin
+        if (CLR) begin
+            // Limpar todas as localizações de memória
+            ram_data[0] <= 16'b0;
+            ram_data[1] <= 16'b0;
+            ram_data[2] <= 16'b0;
+            ram_data[3] <= 16'b0;
+            ram_data[4] <= 16'b0;
+            ram_data[5] <= 16'b0;
+            ram_data[6] <= 16'b0;
+            ram_data[7] <= 16'b0;
+        end else if (R_W) begin
+            // Escrever na memória correspondente
+            ram_data[ADDR] <= _input;
+        end
+    end
+
+    // Ler os dados na borda de descida do clock
+    always @(negedge CLK) begin
+        if (!R_W) begin
+            // Ler da memória correspondente
+            _output <= ram_data[ADDR];
+        end
+    end
+
+endmodule
+

@@ -1,0 +1,23 @@
+        ORG 2000H          ; Define o início do programa
+
+; Inicialização
+        LXI H, 2500H       ; Carrega o endereço inicial do arranjo no par HL
+        MOV C, M           ; Armazena o tamanho do arranjo no registrador C (primeiro byte do arranjo)
+        INX H              ; Incrementa HL para apontar para o primeiro elemento do arranjo
+        MOV A, M           ; Carrega o primeiro valor do arranjo no acumulador
+        INX H              ; Aponta HL para o próximo elemento do arranjo
+
+LOOP:   MOV B, M           ; Carrega o próximo valor do arranjo no registrador B
+        CMP B              ; Compara o acumulador (A) com B
+        JC SKIP            ; Se A > B, pula para SKIP
+        MOV A, B           ; Caso contrário, atualiza A com o novo maior valor
+SKIP:   INX H              ; Aponta HL para o próximo elemento
+        DCR C              ; Decrementa o contador C (tamanho do arranjo)
+        JNZ LOOP           ; Se C != 0, repete o loop
+        STA 2600H          ; Armazena o maior valor encontrado no endereço 2600H
+        HLT                ; Fim do programa
+
+; Dados
+        ORG 2500H          ; Define a origem dos dados
+        DB 05H             ; Tamanho do arranjo (número de elementos)
+        DB 10H, 25H, 7AH, 33H, 12H ; Elementos do arranjo

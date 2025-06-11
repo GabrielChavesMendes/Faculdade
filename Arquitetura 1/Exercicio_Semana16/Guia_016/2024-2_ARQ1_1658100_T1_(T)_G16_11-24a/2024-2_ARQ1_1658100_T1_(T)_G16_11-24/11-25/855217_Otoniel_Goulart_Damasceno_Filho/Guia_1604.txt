@@ -1,0 +1,38 @@
+// Aluno Otoniel Filho
+// Código 1524526
+// Matricula 855217
+
+// Encontrar o maior valor de um arranjo de 8 bits
+JMP MAIN  // Desvio para a área principal
+
+// Função MAIOR
+F_MAIOR:
+    MVI D, 00       // Inicializa D = 0 (maior valor encontrado)
+    MOV A, M        // A recebe o primeiro valor do arranjo
+    MOV D, A        // D recebe A (inicializa maior valor)
+    
+LOOP_MAIOR:
+    INX H           // HL aponta para o próximo valor do arranjo
+    MOV A, M        // A recebe o valor atual do arranjo
+    ORA A           // Testa se chegou ao fim (A == 0)
+    JZ FIM_LOOP     // Se A == 0, termina o loop
+    CMP D           // Compara A com D
+    JC PROXIMO      // Se A < D, pula para o próximo elemento
+    MOV D, A        // Atualiza D com A (novo maior valor)
+PROXIMO:
+    JMP LOOP_MAIOR  // Continua verificando os próximos valores
+
+FIM_LOOP:
+    STA 0052h       // Armazena o maior valor encontrado em dado3
+    RET             // Retorna da função
+
+MAIN:
+    LXI H, 0050h    // HL aponta para o início do arranjo
+    CALL F_MAIOR    // Chama a função F_MAIOR
+    HLT             // Finaliza a execução
+
+END
+// Área de dados
+arranjo:
+    DB 05h, 02h, 0Fh, 08h, 03h, 00h  // Exemplo de arranjo (termina com 0)
+dado3: 00h        // Espaço para armazenar o maior valor encontrado

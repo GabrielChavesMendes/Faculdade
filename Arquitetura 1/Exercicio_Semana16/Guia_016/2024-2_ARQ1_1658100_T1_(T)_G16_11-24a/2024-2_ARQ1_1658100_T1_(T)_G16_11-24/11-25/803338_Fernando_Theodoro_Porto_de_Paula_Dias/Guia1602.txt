@@ -1,0 +1,46 @@
+// Guia_1602.txt
+// 803338- Fernando Theodoro Porto de Paula Dias
+//
+// Integer division of two 8-bit numbers
+// dado03 = dado01 / dado02
+// Result is stored at memory location 0052h (quociente) and 0053h (resto)
+
+JMP MAIN // Pular para o início do programa
+
+// Função IDIV: Divide dois números usando subtrações sucessivas
+F_IDIV: POP H           // Salvar endereço de retorno
+POP D           // Pegar os parâmetros (B = dividendo, C = divisor)
+LXI H,0000      // Inicializar quociente e resto (HL = quociente, D = resto)
+MOV A,B         // Copiar dividendo para A
+MOV L,A         // Armazenar o dividendo como resto inicial
+MOV A,00        // Inicializar quociente
+MOV H,A         // Inicializar H com 0
+DIV_LOOP: CMP C // Comparar resto com divisor
+JC END_DIV      // Se resto < divisor, terminar
+MOV A,L         // Copiar resto para A
+SUB C           // Subtrair divisor
+MOV L,A         // Atualizar resto
+INR H           // Incrementar quociente
+JMP DIV_LOOP    // Repetir
+
+END_DIV: PUSH H // Restaurar endereço de retorno
+RET             // Retornar com quociente em H e resto em L
+
+// Main program
+MAIN: LXI H,0050 // Carregar endereço base (dados)
+MOV B,M         // B = dado01 (dividendo)
+INX H           // Avançar para próximo dado
+MOV C,M         // C = dado02 (divisor)
+PUSH B          // Empilhar dividendo
+PUSH C          // Empilhar divisor
+CALL F_IDIV     // Chamar função IDIV
+MOV A,H         // Copiar quociente
+STA 0052        // Armazenar quociente em 0052h
+MOV A,L         // Copiar resto
+STA 0053        // Armazenar resto em 0053h
+HLT             // Encerrar
+
+// Área de dados
+// dado01: 08h ; Dividendo
+// dado02: 03h ; Divisor
+// resultado: quociente = 02h ; resto = 02h

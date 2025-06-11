@@ -1,0 +1,31 @@
+// Guia_1607.txt
+// 793605 -  Caio Faria Diniz
+// Calcula o fatorial de um número de 8 bits
+JMP MAIN
+
+// Função FAT
+F_FAT:
+    POP H          // Salvar endereço de retorno
+    POP B          // BC contém o dado
+    MVI A, 01      // A = 1 (resultado inicial)
+FAT_LOOP:
+    CMP B          // Verifica se B é 0
+    JZ FAT_END     // Se B == 0, fim
+    CALL F_IMUL    // Multiplica A pelo valor atual de B
+    DCR B          // Decrementa o contador
+    JMP FAT_LOOP
+FAT_END:
+    PUSH H         // Restaurar endereço de retorno
+    RET
+
+// Programa principal
+MAIN:
+    LXI H, 0050    // HL aponta para dado01
+    MOV B, M       // B = MEM[0050]
+    CALL F_FAT     // Calcula o fatorial
+    STA 0052       // Armazena o resultado em 0052
+    HLT
+
+// Dados
+// dado01: 04h ; número
+// dado02: 00h ; fatorial do número

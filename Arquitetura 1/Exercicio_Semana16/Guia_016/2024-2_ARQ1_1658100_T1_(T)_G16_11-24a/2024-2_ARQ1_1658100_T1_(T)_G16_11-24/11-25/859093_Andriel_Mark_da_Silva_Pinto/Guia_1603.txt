@@ -1,0 +1,34 @@
+// Guia_1602.txt
+// Andriel Mark da Silva Pinto
+// Matrícula: 859093
+//
+// Divisão inteira de dois números de 8 bits usando subtrações sucessivas (IDIV)
+// Armazenar manualmente o dividendo na posição de memória 0050h
+// Armazenar manualmente o divisor na posição de memória 0051h
+// O quociente será armazenado em 0052h
+//
+// Função: DIV
+// Divide o dividendo pelo divisor usando subtrações sucessivas
+// @retorna o quociente no registrador D
+// @parâmetros B (dividendo), C (divisor)
+//
+
+JMP MAIN   // Salta para o programa principal
+
+DIV:       MVI D,00    // Limpa D (quociente inicial)
+           MOV A,B     // Carrega o dividendo em A
+LOOP:      CMP C       // Compara A (resto atual) com C (divisor)
+           JC FIM_DIV  // Se A < C, finaliza a divisão
+           SUB C       // Subtrai o divisor de A
+           MOV A,A     // Atualiza o valor de A (resto)
+           INR D       // Incrementa o quociente
+           JMP LOOP    // Repete o processo
+FIM_DIV:   RET         // Retorna com D contendo o quociente
+
+MAIN:      LXI H,0050  // Carrega HL com o endereço 0050h
+           MOV B,M     // Move o primeiro número (dividendo) para B
+           INX H       // Incrementa HL para apontar para o próximo número
+           MOV C,M     // Move o segundo número (divisor) para C
+           CALL DIV    // Chama a função DIV para calcular o quociente
+           STA 0052    // Armazena o quociente (D) em 0052h
+           HLT         // Finaliza o programa

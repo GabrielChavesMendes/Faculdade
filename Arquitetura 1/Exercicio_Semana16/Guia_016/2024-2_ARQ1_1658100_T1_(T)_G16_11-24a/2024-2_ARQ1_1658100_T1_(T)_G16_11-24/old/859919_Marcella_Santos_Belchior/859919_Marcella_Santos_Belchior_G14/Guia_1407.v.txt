@@ -1,0 +1,27 @@
+/*
+Guia_1407.v
+859919 - Marcella Santos Belchior
+*/
+module Guia_1407 (
+    output reg [4:0] q,   // Saída de 5 bits do registrador
+    input [4:0] d,        // Entrada de 5 bits
+    input clk,            // Sinal de clock
+    input rst,            // Sinal de reset
+    input LD              // Sinal de carga inicial (load/preset)
+);
+
+    // Registrador de deslocamento circular em anel torcido para a direita
+    always @(posedge clk or posedge rst) begin
+        if (rst) begin
+            q <= 5'b00000;      // Reset: Zera todos os bits
+        end
+        else if (LD) begin
+            q <= d;             // Carga inicial: Carrega os dados de entrada
+        end
+        else begin
+            q <= {q[0], q[4:1]}; // Deslocamento circular para a direita (anel torcido)
+        end
+    end
+
+endmodule
+

@@ -1,0 +1,54 @@
+
+// Guia_1601.txt 
+// 855842 - Mateus Resende Ottoni
+//
+// Objetivo: dado03 = dado01 * dado02
+// Calcular o produto (IMUL) de dois dados com 8 bits cada
+//
+ 
+// Área de código		// Comentário 
+	JMP	MAIN		// Ir para a função principal
+
+	
+ F_MUL:	MVI	A,00		// A = 0
+	MOV	D,B		// D = B // Variável local
+	MOV	E,C		// E = C // Variável local
+	MOV	A,D		// A = D
+
+	LXI	H,0054h		// HL = 0054h // Dado temporário
+	ADD	M		// Adicionar valor do dado temporário
+	STA	0054h		// Guardar valor para
+				//  caso haja repetição
+
+	LXI	H,0055h		// HL = 0055h // contador
+	MOV	A,M		// A = MEM[HL]
+	ADI	1		// Incrementar contador por 1
+	STA	0055h		// Guardar contador atualizado
+	CMP	E		// Comparar contador com o segundo valor
+	JM	F_MUL		// Repetir se atender a condição
+
+	LXI	H,0054h		// HL = 0054h // Dado temporário
+	MOV	A,M		// A = MEM[HL]
+	RET			// Return // A
+
+ MAIN:
+	MVI	A,00		// A = 0
+	STA	0054h		// Guardar valor nulo no
+	STA	0055h		//  dado temporário e contador
+
+	LXI	H,0052h		// HL = 0052h // Dado 1
+	MOV	B,M		// B = MEM [HL]
+	INX	H		// HL = HL+1  // Dado 2
+	MOV	C,M		// C = MEM [HL]
+ C_MUL: CALL	F_MUL		// A = F_MUL(B, C)
+	STA	0050h		// MEM[0050] = A
+	HLT			// } 
+ END: 
+
+
+; Área de dados 
+; dado1:  52h  ; primeiro dado	 em hexadecimal
+; dado2:  53h  ; segundo dado	 em hexadecimal
+; dado3:  54h  ; dado temporário em hexadecimal
+; dado3:  55h  ; contador	 em hexadecimal
+; dado4:  50h  ; resultado	 em hexadecimal

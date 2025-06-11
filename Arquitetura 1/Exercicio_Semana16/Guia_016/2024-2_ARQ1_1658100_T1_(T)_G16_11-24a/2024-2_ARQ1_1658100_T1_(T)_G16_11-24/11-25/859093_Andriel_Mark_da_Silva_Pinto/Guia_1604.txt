@@ -1,0 +1,34 @@
+// Guia_1604.txt
+// Andriel Mark da Silva Pinto
+// Matrícula: 859093
+//
+// Encontrar o maior valor de um arranjo de 8 bits utilizando repetição
+// O maior valor será armazenado em 0052h
+// O arranjo de dados está armazenado a partir do endereço 0050h
+//
+// Função: MAIOR_VALOR
+// Encontra o maior valor de um arranjo de números de 8 bits
+// @retorna o maior valor no endereço 0052h
+// @arranjo de dados começando em 0050h
+//
+
+JMP MAIN   // Salta para o programa principal
+
+MAIOR_VALOR:   MVI D,00    // Limpa D (inicializa o maior valor)
+              MOV E,M     // Carrega o primeiro valor do arranjo em E
+              MOV D,E     // O maior valor começa sendo o primeiro
+              INX H       // Aponta para o próximo elemento do arranjo
+LOOP:         MOV E,M     // Carrega o próximo valor em E
+              CMP D       // Compara o valor atual com o maior
+              JC PROXIMO  // Se D > E, vai para o próximo valor
+              MOV D,E     // Se E > D, E é o novo maior valor
+PROXIMO:      INX H       // Avança para o próximo valor do arranjo
+              MOV A,H     // Verifica se chegou ao final do arranjo
+              CPI 00      // Fim do arranjo
+              JNZ LOOP    // Continua o loop se não for o fim
+              STA 0052    // Armazena o maior valor encontrado em 0052h
+              RET         // Retorna ao programa principal
+
+MAIN:         LXI H,0050  // Carrega o endereço do arranjo em HL
+              CALL MAIOR_VALOR  // Chama a função MAIOR_VALOR
+              HLT         // Finaliza o programa

@@ -1,0 +1,33 @@
+// Guia_1606.txt
+// 793605 -  Caio Faria Diniz
+// Calcula o quadrado de um número de 8 bits usando somas sucessivas
+JMP MAIN
+
+// Função SQR
+F_SQR:
+    POP H          // Salvar endereço de retorno
+    POP B          // BC contém o dado
+    MVI A, 00      // A = 0 (resultado inicial)
+    MVI D, 01      // D = 1 (primeiro número ímpar)
+SQR_LOOP:
+    CMP B          // Verifica se B é 0
+    JZ SQR_END     // Se B == 0, fim
+    ADD D          // Soma o número ímpar atual
+    INX D          // Incrementa para o próximo ímpar
+    DCR B          // Decrementa o contador
+    JMP SQR_LOOP
+SQR_END:
+    PUSH H         // Restaurar endereço de retorno
+    RET
+
+// Programa principal
+MAIN:
+    LXI H, 0050    // HL aponta para dado01
+    MOV B, M       // B = MEM[0050]
+    CALL F_SQR     // Calcula o quadrado
+    STA 0052       // Armazena o resultado em 0052
+    HLT
+
+// Dados
+// dado01: 05h ; número
+// dado02: 00h ; quadrado do número

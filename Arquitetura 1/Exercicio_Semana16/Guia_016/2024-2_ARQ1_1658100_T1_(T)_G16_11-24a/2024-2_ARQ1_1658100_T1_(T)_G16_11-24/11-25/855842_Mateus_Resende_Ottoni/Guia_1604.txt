@@ -1,0 +1,56 @@
+
+// Guia_1604.txt 
+// 855842 - Mateus Resende Ottoni
+//
+// Objetivo: Encontrar o maior valor em um arranjo
+//
+ 
+// Área de código		// Comentário 
+
+	JMP	MAIN		// Ir para a função principal
+
+F_SWAP:
+	MOV	C,D		// C = D
+	MOV	A,D		// A = D
+	JMP	F_END		// Pular para o local de chamada
+
+F_BIG:
+	MVI	B,00		// Atribuir valor zero
+				//  a B para a comparação
+	LXI	H,0052h		// Ir até a primeira posição do array
+	MOV	C,M		// A = MEM [HL]
+	INX	H		// HL = HL+1
+
+F_LOOP:	MOV	D,M		// D = MEM[HL]
+	MOV	A,C		// A = C
+	CMP	D		// Comparar os valores
+	JM	F_SWAP		// Trocar o valor de C por D
+
+F_END:	INX	H		// HL = HL+1
+	MOV	A,M		// A = MEM[HL]
+	CMP	B		// Comparar o próximo espaço com zero
+	JNZ	F_LOOP		// Se não for zero, o array não
+				//  acabou, então repetir processo
+
+	MOV	A,C		// A = C
+	RET			// Return // A
+
+
+MAIN:
+	MVI	A,00		// A = 0
+
+	LXI	H,0052h		// HL = 0052h // Dado 1
+	MOV	B,M		// B = MEM [HL]
+	INX	H		// HL = HL+1  // Dado 2
+	MOV	C,M		// C = MEM [HL]
+C_BIG:	CALL	F_BIG		// A = F_BIG(B, C)
+	STA	0050h		// MEM[0050] = A
+	HLT			//
+END: 
+
+
+; Área de dados 
+; dado1:  52h  ; primeiro dado	 em hexadecimal
+; dado2:  53h  ; segundo dado	 em hexadecimal
+...
+; dado3:  50h  ; resultado	 em hexadecimal

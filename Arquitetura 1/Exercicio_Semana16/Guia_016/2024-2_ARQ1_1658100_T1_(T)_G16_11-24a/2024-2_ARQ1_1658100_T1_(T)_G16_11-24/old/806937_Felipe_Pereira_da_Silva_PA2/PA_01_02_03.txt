@@ -1,0 +1,109 @@
+/*
+      Preparação_02
+      806937 - FELIPE PEREIRA DA SILVA
+      ------------------------------------------------    
+*/
+
+At | At+1 | Da | JaKa | Ta | Bt | Bt+1 | Db | JbKb | Tb | 
+
+0     0     0   01/00   0    0    0      0   00/01   0    
+0     0     0   01/00   0    0    1      1   11/10   1
+0     0     0   01/00   0    1    1      1   00/10   0
+0     1     1   11/10   1    1    1      1   00/10   0
+1     1     1   00/10   0    0    0      0   00/01   0
+1     0     0   11/01   1    0    0      0   00/01   0
+1     1     1   00/10   0    1    1      1   00/10   0
+1     1     1   00/10   0    1    0      0   11/01   1   
+
+1 - Montar as expressões por mintermos dos flip-flops
+
+a) SoP (Da) =  B.C + A.C'
+   Sop (Db) =  A'.C + A'.B + A.C'
+
+b) SoP (Ja) =  B.C + A.C'
+   Sop (Jb) =  A'.C + A'.B + A.C'
+
+c) SoP (Ka) =  A'.B' + A'.C' + B'.C
+   Sop (Kb) =  B'.C' + A.B' + A.C
+
+d) SoP (Ta) =  A'.B.C + A.B'.C
+    Sop (Tb) =  A'.B'.C + A.B.C 
+
+2 - Montar as expressões compactas por MAXTERMOS dos flip-flops
+
+a) PoS (Da) =  (A+C).(B+C').(A+B'+C)
+   PoS (Db) =  (B+C).(A'+C')
+
+b) PoS (Ja) = (A+C).(B+C').(A+B'+C)
+   PoS (Jb) =  (B+C).(A'+C')
+
+c) PoS (Ka) =  (B'+C').(A'+C)
+   PoS (Kb) =  (C'+C).(B'+C)
+
+d) PoS (Ta) =  C.(A+B).(A'+B')
+   PoS (Tb) =  C.(A'+B).(A+B')
+
+3 - Montar os mapas de Veitch-Karnaugh correspondentes e simplificar suas expressões SoP
+
+Da     bc    bc    bc    bc
+       00    01    11    10
+a=0    0     0     1     0
+a=1    1     0     1     1
+
+-------------------------------------------
+
+Sa     bc    bc    bc    bc
+       00    01    11    10
+a=0    0     0     0     0
+a=1    1     1     1     1
+
+-------------------------------------------
+
+Ra     bc    bc    bc    bc
+       00    01    11    10
+a=0    1     1     0     1
+a=1    0     1     0     0
+
+-------------------------------------------
+
+Ta     bc    bc    bc    bc
+       00    01    11    10
+a=0    0     0     1     0
+a=1    0     1     0     0
+
+-------------------------------------------
+
+Sb     bc    bc    bc    bc
+       00    01    11    10
+a=0    0     1     1     1
+a=1    0     0     0     1
+
+-------------------------------------------
+
+Rb     bc    bc    bc    bc
+       00    01    11    10
+a=0    1     0     0     0
+a=1    1     1     1     0
+
+-------------------------------------------
+
+Jb     bc    bc    bc    bc
+       00    01    11    10
+a=0    0     1     1     1
+a=1    0     0     0     1
+
+-------------------------------------------
+
+Kb     bc    bc    bc    bc
+       00    01    11    10
+a=0    1     0     0     0
+a=1    1     1     1     0
+
+
+
+
+
+
+
+
+   

@@ -1,0 +1,44 @@
+/*
+Guia_1202.v
+859919 - Marcella Santos Belchior
+*/
+module Guia_1202 (
+    input CLK,          // Clock
+    input R_W,          // Controle de leitura/escrita (1 para escrita, 0 para leitura)
+    input ADDR,         // Endereço (1 bit para escolher entre as duas memórias)
+    input [7:0] _input, // Dados de entrada (8 bits)
+    output reg [7:0] _output, // Dados de saída (8 bits)
+    input CLR           // Sinal de reset
+);
+
+    // Definindo duas instâncias de RAM 1x4
+    reg [3:0] ram_data_0; // Primeira memória de 4 bits
+    reg [3:0] ram_data_1; // Segunda memória de 4 bits
+
+    // Escrever os dados na borda de subida do clock
+    always @(posedge CLK or posedge CLR) begin
+        if (CLR) begin
+            ram_data_0 <= 4'b0000;  // Limpar a memória 0
+            ram_data_1 <= 4'b0000;  // Limpar a memória 1
+        end else if (R_W) begin
+            if (ADDR == 1'b0) begin
+                ram_data_0 <= _input[3:0];  // Escrever os 4 bits baixos na RAM 0
+            end else if (ADDR == 1'b1) begin
+                ram_data_1 <= _input[7:4];  // Escrever os 4 bits altos na RAM 1
+            end
+        end
+    end
+
+    // Ler os dados na borda de descida do clock
+    always @(negedge CLK) begin
+        if (!R_W) begin
+            if (ADDR == 1'b0) begin
+                _output <= {4'b0000, ram_data_0};  // Lê da RAM 0 (completa com 4 bits de 0)
+            end else if (ADDR == 1'b1) begin
+                _output <= {ram_data_1, 4'b0000};  // Lê da RAM 1 (completa com 4 bits de 0)
+            end
+        end
+    end
+
+endmodule
+

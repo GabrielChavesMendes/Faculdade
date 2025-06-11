@@ -1,0 +1,23 @@
+// Guia_1604.txt
+// 803338- Fernando Theodoro Porto de Paula Dias
+//
+// Find the largest value in an array
+// dado03 = maior valor
+// Result is stored at memory location 0052h
+
+JMP MAIN // Pular para o início do programa
+
+// Função MAX: Encontra o maior valor do arranjo
+F_MAX: POP H           // Salvar endereço de retorno
+POP D           // Pegar os parâmetros (HL = endereço base, B = tamanho)
+MOV A,M         // Inicializar o maior valor com o primeiro elemento
+INX H           // Avançar para o próximo elemento
+DCR B           // Decrementar o contador de elementos
+MAX_LOOP: CMP M // Comparar com o próximo elemento
+JC SKIP_UPDATE  // Se A >= M, pular atualização
+MOV A,M         // Atualizar o maior valor
+SKIP_UPDATE: INX H // Avançar para o próximo elemento
+DCR B           // Decrementar contador
+JNZ MAX_LOOP    // Repetir enquanto houver elementos
+PUSH H          // Restaurar endereço de retorno
+RET             // Retornar com o maior valor em

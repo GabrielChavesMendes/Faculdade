@@ -1,0 +1,35 @@
+// Guia_1606.txt
+// 803338- Fernando Theodoro Porto de Paula Dias
+//
+// Calculate the square of an 8-bit number
+// dado02 = SQR(dado01)
+// Result is stored at memory location 0052h
+
+JMP MAIN // Pular para o início do programa
+
+// Função SQR: Calcula o quadrado somando ímpares sucessivos
+F_SQR: POP H           // Salvar endereço de retorno
+POP B           // Pegar o parâmetro (C = número para calcular o quadrado)
+MOV D,C         // D = C (contador de ímpares)
+MVI A,00        // A = 0 (inicializar o acumulador para o quadrado)
+MVI E,01        // E = 1 (primeiro número ímpar)
+
+SQR_LOOP: ADD E // A = A + E (somar número ímpar)
+INR E           // Incrementar o número ímpar
+DCR D           // Decrementar o contador
+JNZ SQR_LOOP    // Repetir enquanto o contador > 0
+
+PUSH H          // Restaurar endereço de retorno
+RET             // Retornar com o quadrado em A
+
+// Main program
+MAIN: LXI H,0050 // Carregar endereço base (dado)
+MOV C,M         // C = dado01
+PUSH B          // Empilhar número para calcular o quadrado
+CALL F_SQR      // Chamar função SQR
+STA 0052        // Armazenar resultado em 0052h
+HLT             // Encerrar
+
+// Área de dados
+// dado01: 05h ; Número para calcular o quadrado
+// resultado: quadrado = 19h (25 decimal)

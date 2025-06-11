@@ -1,0 +1,37 @@
+// Guia_1601.txt
+// Andriel Mark da Silva Pinto
+// Matrícula: 859093
+//
+// Multiplication of two 8-bit numbers using repeated addition (IMUL)
+// Manually store 1st number in memory location 0050h
+// Manually store 2nd number in memory location 0051h
+// Result (16-bit) will be stored in 0052h (LSB) and 0053h (MSB)
+//
+// Function: MULT
+// Multiplies two numbers using repeated addition
+// @return result in DE register pair
+// @param B (multiplicand), C (multiplier)
+//
+
+JMP MAIN   // Salta para o programa principal
+
+MULT:      MVI D,00    // Limpa D (MSB do resultado)
+           MVI E,00    // Limpa E (LSB do resultado)
+           MOV A,C     // Carrega o multiplicador em A
+           CPI 00      // Verifica se o multiplicador é zero
+           JZ END_MULT // Se for zero, retorna resultado como 0
+LOOP:      ADD B       // Soma o multiplicando em A
+           JNC NO_CY   // Se não houver carry, pula o incremento de D
+           INR D       // Incrementa D para contabilizar o carry
+NO_CY:     MOV E,A     // Armazena o LSB do resultado atual em E
+           DCR C       // Decrementa o multiplicador
+           JNZ LOOP    // Repete até que o multiplicador seja zero
+END_MULT:  RET         // Retorna o resultado nos registradores DE
+
+MAIN:      LXI H,0050  // Carrega HL com o endereço 0050h
+           MOV B,M     // Move o primeiro número para B
+           INX H       // Incrementa HL para apontar para o próximo número
+           MOV C,M     // Move o segundo número para C
+           CALL MULT   // Chama a função MULT para multiplicar B e C
+           SHLD 0052   // Armazena o resultado de 16 bits em 0052h e 0053h
+           HLT         // Finaliza o programa

@@ -1,0 +1,65 @@
+/*
+Guia_1302.v
+859919 - Marcella Santos Belchior
+*/
+module Guia_1302(
+    output [4:0] Q,     // Saída de 5 bits
+    input clk,           // Clock
+    input clear          // Reset
+);
+    wire [4:0] j, k;    // Entradas J e K para os flip-flops
+
+    // Flip-Flops JK para cada bit
+    jkff FF0 ( .q(Q[0]), .qnot(), .j(j[0]), .k(k[0]), .clk(clk), .preset(1'b0), .clear(clear) );
+    jkff FF1 ( .q(Q[1]), .qnot(), .j(j[1]), .k(k[1]), .clk(Q[0]), .preset(1'b0), .clear(clear) );
+    jkff FF2 ( .q(Q[2]), .qnot(), .j(j[2]), .k(k[2]), .clk(Q[1]), .preset(1'b0), .clear(clear) );
+    jkff FF3 ( .q(Q[3]), .qnot(), .j(j[3]), .k(k[3]), .clk(Q[2]), .preset(1'b0), .clear(clear) );
+    jkff FF4 ( .q(Q[4]), .qnot(), .j(j[4]), .k(k[4]), .clk(Q[3]), .preset(1'b0), .clear(clear) );
+
+    // Definir entradas J e K para a contagem crescente
+    assign j[0] = 1'b1;  // O flip-flop mais significativo alterna com J = 1 e K = 1
+    assign k[0] = 1'b1;
+
+    assign j[1] = Q[0];   // Os flip-flops posteriores dependem das saídas anteriores
+    assign k[1] = Q[0];
+
+    assign j[2] = Q[1];
+    assign k[2] = Q[1];
+
+    assign j[3] = Q[2];
+    assign k[3] = Q[2];
+
+    assign j[4] = Q[3];
+    assign k[4] = Q[3];
+
+endmodule
+
+module jkff ( output q, output qnot,
+input j, input k,
+input clk, input preset, input clear );
+
+reg q, qnot;
+always @( posedge clk or posedge preset or posedge clear )
+begin
+    if ( clear ) begin 
+        q <= 0; 
+        qnot <= 1; 
+    end
+    else if ( preset ) begin 
+        q <= 1; 
+        qnot <= 0; 
+    end
+    else if ( j & ~k ) begin 
+        q <= 1; 
+        qnot <= 0; 
+    end
+    else if ( ~j & k ) begin 
+        q <= 0; 
+        qnot <= 1; 
+    end
+    else if ( j & k ) begin
+        q <= ~q; 
+        qnot <= ~qnot; 
+    end
+end
+endmodule // jkff

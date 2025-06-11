@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project source="2.16.1.4.jar" version="1.0">
+  This file is intended to be loaded by Logisim http://logisim.altervista.org
+
+  <lib desc="#Wiring" name="0"/>
+  <lib desc="#Gates" name="1"/>
+  <lib desc="#TTL" name="2"/>
+  <lib desc="#Plexers" name="3">
+    <tool name="Multiplexer">
+      <a name="enable" val="false"/>
+    </tool>
+    <tool name="Demultiplexer">
+      <a name="enable" val="false"/>
+    </tool>
+    <tool name="Decoder">
+      <a name="enable" val="false"/>
+    </tool>
+  </lib>
+  <lib desc="#Arithmetic" name="4"/>
+  <lib desc="#Memory" name="5">
+    <tool name="ROM">
+      <a name="contents">addr/data: 8 8
+0
+</a>
+    </tool>
+  </lib>
+  <lib desc="#I/O" name="6"/>
+  <lib desc="#Base" name="7">
+    <tool name="Text Tool">
+      <a name="text" val=""/>
+      <a name="font" val="Dialog plain 12"/>
+      <a name="color" val="#000000"/>
+      <a name="halign" val="center"/>
+      <a name="valign" val="base"/>
+    </tool>
+  </lib>
+  <main name="main"/>
+  <options>
+    <a name="gateUndefined" val="ignore"/>
+    <a name="simlimit" val="1000"/>
+    <a name="simrand" val="0"/>
+  </options>
+  <mappings>
+    <tool lib="7" map="Button2" name="Poke Tool"/>
+    <tool lib="7" map="Button3" name="Menu Tool"/>
+    <tool lib="7" map="Ctrl Button1" name="Menu Tool"/>
+  </mappings>
+  <toolbar>
+    <tool lib="7" name="Poke Tool"/>
+    <tool lib="7" name="Edit Tool"/>
+    <sep/>
+    <tool lib="7" name="Text Tool">
+      <a name="text" val=""/>
+      <a name="font" val="Dialog plain 12"/>
+      <a name="color" val="#000000"/>
+      <a name="halign" val="center"/>
+      <a name="valign" val="base"/>
+    </tool>
+    <tool lib="0" name="Pin">
+      <a name="tristate" val="false"/>
+    </tool>
+    <tool lib="0" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+    </tool>
+    <tool lib="1" name="NOT Gate"/>
+    <tool lib="1" name="AND Gate"/>
+    <tool lib="1" name="OR Gate"/>
+  </toolbar>
+  <circuit name="main">
+    <a name="circuit" val="main"/>
+    <a name="clabel" val=""/>
+    <a name="clabelup" val="east"/>
+    <a name="clabelfont" val="Dialog plain 12"/>
+    <a name="clabelcolor" val="#000000"/>
+    <wire from="(120,370)" to="(130,370)"/>
+    <wire from="(120,390)" to="(130,390)"/>
+    <wire from="(120,370)" to="(120,390)"/>
+    <wire from="(120,170)" to="(120,370)"/>
+    <wire from="(220,370)" to="(250,370)"/>
+    <wire from="(220,390)" to="(250,390)"/>
+    <wire from="(220,370)" to="(220,390)"/>
+    <wire from="(220,170)" to="(220,370)"/>
+    <wire from="(120,80)" to="(360,80)"/>
+    <wire from="(120,80)" to="(120,170)"/>
+    <wire from="(360,100)" to="(360,380)"/>
+    <wire from="(290,380)" to="(360,380)"/>
+    <wire from="(220,170)" to="(330,170)"/>
+    <wire from="(330,170)" to="(330,510)"/>
+    <wire from="(170,530)" to="(330,530)"/>
+    <wire from="(170,380)" to="(170,530)"/>
+    <wire from="(370,530)" to="(450,530)"/>
+    <wire from="(370,520)" to="(370,530)"/>
+    <wire from="(450,90)" to="(450,510)"/>
+    <wire from="(400,90)" to="(450,90)"/>
+    <wire from="(560,510)" to="(560,520)"/>
+    <wire from="(560,520)" to="(560,530)"/>
+    <wire from="(490,520)" to="(560,520)"/>
+    <wire from="(600,520)" to="(660,520)"/>
+    <wire from="(490,520)" to="(560,520)"/>
+    <comp lib="1" loc="(490,520)" name="NAND Gate"/>
+    <comp lib="0" loc="(660,520)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="label" val="s"/>
+    </comp>
+    <comp lib="1" loc="(370,520)" name="NAND Gate"/>
+    <comp lib="1" loc="(170,380)" name="NAND Gate"/>
+    <comp lib="0" loc="(120,170)" name="Pin">
+      <a name="tristate" val="false"/>
+      <a name="label" val="a"/>
+    </comp>
+    <comp lib="1" loc="(290,380)" name="NAND Gate"/>
+    <comp lib="0" loc="(220,170)" name="Pin">
+      <a name="tristate" val="false"/>
+      <a name="label" val="b"/>
+    </comp>
+    <comp lib="1" loc="(400,90)" name="NAND Gate"/>
+    <comp lib="1" loc="(600,520)" name="NAND Gate"/>
+  </circuit>
+</project>

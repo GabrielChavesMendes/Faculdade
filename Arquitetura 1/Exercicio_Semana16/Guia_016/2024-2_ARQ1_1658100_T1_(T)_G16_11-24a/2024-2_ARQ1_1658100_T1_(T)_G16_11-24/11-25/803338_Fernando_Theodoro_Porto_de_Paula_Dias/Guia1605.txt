@@ -1,0 +1,41 @@
+// Guia_1605.txt
+// 803338- Fernando Theodoro Porto de Paula Dias
+//
+// Convert a BCD value to its hexadecimal equivalent
+// Result is stored at memory location 0052h
+
+JMP MAIN // Pular para o início do programa
+
+// Função BCD_TO_HEX: Converte BCD para hexadecimal
+F_BCD_TO_HEX: POP H           // Salvar endereço de retorno
+POP B           // Pegar o parâmetro (C = valor em BCD)
+MOV A,C         // Copiar valor para A
+ANI 0F          // Isolar os dígitos de unidade
+MOV D,A         // Salvar dígitos de unidade em D
+MOV A,C         // Recuperar o valor original
+ANI F0          // Isolar os dígitos de dezena
+RRC             // Deslocar 4 bits para a direita
+RRC
+RRC
+RRC
+MOV E,A         // Salvar dígitos de dezena em E
+MOV A,E         // A = dígitos de dezena
+MVI B,0A        // B = 10 (base para conversão)
+MUL_LOOP: ADD A // Multiplicar dezena por 10
+DCR B
+JNZ MUL_LOOP
+ADD D           // Somar unidades
+PUSH H          // Restaurar endereço de retorno
+RET             // Retornar com o valor hexadecimal em A
+
+// Main program
+MAIN: LXI H,0050 // Carregar endereço base (dado BCD)
+MOV C,M         // C = valor em BCD
+PUSH B          // Empilhar valor em BCD
+CALL F_BCD_TO_HEX // Chamar função BCD_TO_HEX
+STA 0052        // Armazenar valor hexadecimal em 0052h
+HLT             // Encerrar
+
+// Área de dados
+// dado01: 25h ; Valor em BCD
+// resultado: 19h ; Valor hexadecimal equivalente

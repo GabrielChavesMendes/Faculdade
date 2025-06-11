@@ -1,0 +1,45 @@
+// Guia_1605.txt
+// 834358 - Gabriela de Assis dos Reis
+; ==========================
+; Configuração dos Dados:
+; dado01: número em BCD (endereço 0300h)
+; dado02: resultado em hexadecimal (endereço 0301h)
+; ==========================
+
+START:
+    
+    LXI H, 0300h       ; HL aponta para o dado01
+    MOV A, M           ; A <- dado01 (valor em BCD)
+
+    ; ===== Separar Dígitos HI e LOW =====
+    ANI 0F0h           ; Isola o dígito alto (HI)
+    RRC                ; Shift para a direita
+    RRC                ; Continua o shift
+    RRC                ; Continua o shift
+    RRC                ; Continua o shift
+    MOV B, A           ; B <- HI (dígito alto em BCD)
+
+    LXI H, 0300h       ; HL ainda aponta para dado01
+    MOV A, M           ; A <- dado01 (para isolar o LOW)
+    ANI 0Fh            ; Isola o dígito baixo (LOW)
+    MOV C, A           ; C <- LOW (dígito baixo em BCD)
+
+    
+    ; Multiplicar HI por 10 (10 = 8 + 2)
+    MOV A, B           ; A <- HI
+    MOV D, A           ; Salva HI em D para soma
+    ADD A              ; A <- A + A (HI * 2)
+    MOV B, A           ; B <- HI * 2
+    MOV A, D           ; Recupera HI
+    RAL                ; Shift esquerda (HI * 8)
+    RAL
+    RAL
+    ADD B              ; A <- HI * 8 + HI * 2 (HI * 10)
+
+    ; Somar LOW
+    ADD C              ; A <- HI * 10 + LOW
+
+    
+    LXI H, 0301h       ; HL aponta para dado02
+    MOV M, A           ; Salva o resultado convertido em dado02
+    HLT                ; Finaliza o programa

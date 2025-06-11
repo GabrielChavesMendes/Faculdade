@@ -1,0 +1,32 @@
+// Guia_1605.txt
+// 854157 - Matheus Felipe Cavalcanti Xavier
+// Conversão de BCD para hexadecimal
+JMP MAIN          // Função principal
+
+// Função BCD_TO_HEX
+F_BCD_TO_HEX: MOV A,B // A = B (dado BCD)
+              ANI F0  // A = A & F0h (extrai nibble alto)
+              RAR     // Desloca 4 vezes para obter o valor em decimal
+              RAR
+              RAR
+              RAR
+              MOV D,A // D = nibble alto (multiplicador de 10)
+              MOV A,C // A = C (dado BCD)
+              ANI 0F  // A = A & 0Fh (nibble baixo)
+              MOV E,A // E = nibble baixo
+              MVI A,0A // A = 10
+
+MUL_LOOP: CMP D      // Verifica se D = 0
+          JZ FINISH  // Se D = 0, termina
+          ADD E      // E = E + 10
+          DCR D      // Decrementa D
+          JMP MUL_LOOP // Repete o loop
+
+FINISH:   RET        // Retorna o valor convertido
+
+// Função principal
+MAIN:    LXI H,0050 // HL = endereço inicial
+         MOV B,M    // B = MEM[HL] (dado BCD)
+         CALL F_BCD_TO_HEX // Converte o valor
+         STA 0052   // Salva o resultado em MEM[0052]
+         HLT        // Fim do programa

@@ -1,0 +1,29 @@
+// Guia_1604.txt
+// 793605 -  Caio Faria Diniz
+// Encontrar o maior valor de um arranjo
+JMP MAIN
+
+// Função MAX: Maior valor
+F_MAX:
+    MOV A, M    // A = MEM[HL]
+    INX H       // Avança no arranjo
+    CMP M       // Compara A com MEM[HL]
+    JC MAX_NEXT // Se A < MEM[HL], continua
+    MOV A, M    // Atualiza o maior valor
+MAX_NEXT:
+    INX H       // Avança no arranjo
+    DCR B       // Decrementa contador
+    JNZ F_MAX   // Repete enquanto B != 0
+    RET
+
+// Programa principal
+MAIN:
+    LXI H, 0050 // HL aponta para o início do arranjo
+    MVI B, 05   // Número de elementos no arranjo
+    CALL F_MAX  // Chama F_MAX
+    STA 0056    // Armazena o maior valor em 0056
+    HLT
+
+// Dados
+// arranjo: 03h, 07h, 02h, 09h, 04h ; arranjo de 5 elementos
+// max: 00h ; resultado

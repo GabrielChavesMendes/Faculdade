@@ -1,0 +1,21 @@
+ORG 8000H
+
+LXI H, 8000H
+MOV B, M          
+MVI C, 00H        
+MVI D, 01H        
+
+LOOP:
+CMP B            
+JZ DONE          
+ADD C            
+MOV C, A          
+INR D            
+INR D            
+DCR B            
+JMP LOOP         
+
+DONE:
+LXI H, 8001H     
+MOV M, C        
+HLT

@@ -1,0 +1,27 @@
+/*
+Guia_1405.v
+859919 - Marcella Santos Belchior
+*/
+module Guia_1405(
+    output reg q,       // Saída serial
+    input [5:0] d,      // Entrada de 6 bits paralela
+    input clk,          // Sinal de clock
+    input en,           // Controle de habilitação (enable)
+    input rst           // Sinal de reset (ativo alto)
+);
+    
+    // Variável para controlar o índice de transmissão
+    reg [2:0] index;   // Índice para percorrer os 6 bits
+
+    // Processamento do conversor paralelo-para-série
+    always @(posedge clk or posedge rst) begin
+        if (rst) begin
+            q <= 0;         // Reset da saída
+            index <= 0;     // Reset do índice
+        end else if (en) begin
+            q <= d[5 - index];  // Transmitir o bit correspondente
+            index <= index + 1;  // Avançar para o próximo bit
+        end
+    end
+
+endmodule

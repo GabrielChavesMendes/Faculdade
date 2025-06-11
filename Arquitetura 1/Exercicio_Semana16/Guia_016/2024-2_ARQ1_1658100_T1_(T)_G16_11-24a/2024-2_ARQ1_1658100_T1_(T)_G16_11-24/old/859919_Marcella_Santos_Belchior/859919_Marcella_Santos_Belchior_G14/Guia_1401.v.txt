@@ -1,0 +1,46 @@
+/*
+Guia_1401.v
+859919 - Marcella Santos Belchior
+*/
+module Guia_1401(
+    output [5:0] q,     // Saída do registrador de 6 bits
+    input d,             // Entrada de dados (bit a ser carregado)
+    input clk,           // Sinal de clock
+    input load,          // Sinal de carga (load=LD)
+    input shift,         // Sinal de deslocamento
+    input clear,         // Sinal de reset (ativo baixo)
+    input preset         // Sinal de preset (ativo alto para carregar 1 no primeiro flip-flop)
+);
+
+    // Instância dos flip-flops D
+    dff FF0 ( .q(q[0]), .qnot(), .d(load ? d : q[1]), .clk(clk), .preset(preset), .clear(clear) );
+    dff FF1 ( .q(q[1]), .qnot(), .d(q[0]), .clk(clk), .preset(1'b0), .clear(clear) );
+    dff FF2 ( .q(q[2]), .qnot(), .d(q[1]), .clk(clk), .preset(1'b0), .clear(clear) );
+    dff FF3 ( .q(q[3]), .qnot(), .d(q[2]), .clk(clk), .preset(1'b0), .clear(clear) );
+    dff FF4 ( .q(q[4]), .qnot(), .d(q[3]), .clk(clk), .preset(1'b0), .clear(clear) );
+    dff FF5 ( .q(q[5]), .qnot(), .d(q[4]), .clk(clk), .preset(1'b0), .clear(clear) );
+
+endmodule
+
+module dff (
+    output reg q,        // Saída do flip-flop
+    output qnot,         // Saída invertida do flip-flop
+    input d,             // Entrada de dados
+    input clk,           // Sinal de clock
+    input preset,        // Sinal de preset
+    input clear          // Sinal de reset
+);
+
+    always @(posedge clk or posedge preset or posedge clear) begin
+        if (clear) begin
+            q <= 0;   // Reset do flip-flop
+        end else if (preset) begin
+            q <= 1;   // Preset do flip-flop
+        end else begin
+            q <= d;   // Atribui o valor de entrada ao flip-flop
+        end
+    end
+
+    assign qnot = ~q;  // Saída invertida
+
+endmodule

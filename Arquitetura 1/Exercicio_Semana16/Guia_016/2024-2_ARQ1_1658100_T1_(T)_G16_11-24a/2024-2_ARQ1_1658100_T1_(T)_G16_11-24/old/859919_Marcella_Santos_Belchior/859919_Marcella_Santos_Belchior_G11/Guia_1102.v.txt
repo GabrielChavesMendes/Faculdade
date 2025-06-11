@@ -1,0 +1,74 @@
+/*
+Guia_1104.v
+859919 - Marcella Santos Belchior
+*/
+
+// --------------------
+// --- FSM Reconhece "1001" uma vez
+// --------------------
+module Guia_1104 (
+    output reg y,    // Saída (1 quando a sequência "1001" é reconhecida)
+    input x,         // Entrada (sinal de entrada bit a bit)
+    input clk,       // Clock
+    input reset      // Reset
+);
+
+    // Definição dos estados
+    parameter start = 3'b000,
+              s1    = 3'b001,
+              s10   = 3'b010,
+              s100  = 3'b011,
+              s1001 = 3'b100, // Estado que reconhece a sequência
+              done  = 3'b101; // Estado final após reconhecer a sequência
+
+    reg [2:0] E1, E2; // Variáveis para estado atual e próximo estado
+
+    // Lógica de transição de estados
+    always @(x or E1) begin
+        case (E1)
+            start: 
+                if (x)
+                    E2 = s1;
+                else
+                    E2 = start;
+            s1:
+                if (~x)
+                    E2 = s10;
+                else
+                    E2 = s1;
+            s10:
+                if (x)
+                    E2 = s100;
+                else
+                    E2 = start;
+            s100:
+                if (~x)
+                    E2 = s1001;
+                else
+                    E2 = start;
+            s1001: 
+                E2 = done; // Após reconhecer a sequência, vai para o estado final
+            done: 
+                E2 = done; // Permanece no estado final
+            default: 
+                E2 = start;
+        endcase
+    end
+
+    // Atualização do estado atual com base no clock e reset
+    always @(posedge clk or negedge reset) begin
+        if (~reset)
+            E1 <= start;
+        else
+            E1 <= E2;
+    end
+
+    // Lógica de saída (Moore FSM: saída depende apenas do estado atual)
+    always @(E1) begin
+        case (E1)
+            s1001: y = 1; // Saída é 1 apenas no estado que reconhece "1001"
+            done: y = 1;  // Continua em 1 após a sequência ser reconhecida
+            default: y = 0;
+        endcase
+    end
+endmodule

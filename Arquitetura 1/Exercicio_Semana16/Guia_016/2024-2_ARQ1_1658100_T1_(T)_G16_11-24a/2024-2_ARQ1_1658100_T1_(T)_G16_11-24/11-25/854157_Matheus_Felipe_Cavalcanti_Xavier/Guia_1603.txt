@@ -1,0 +1,25 @@
+// Guia_1603.txt
+// 854157 - Matheus Felipe Cavalcanti Xavier
+// Resto da divisão de dois números de 8 bits
+JMP MAIN          // Função principal
+
+// Função IMOD
+F_IMOD: MOV D,B   // D = B (dividendo)
+        MOV E,C   // E = C (divisor)
+
+IMOD_LOOP: CMP D   // Verifica se D < E
+           JC END_IMOD // Se D < E, termina
+           SUB E    // D = D - E
+           JMP IMOD_LOOP // Repete o loop
+
+END_IMOD: MOV A,D  // A = D (resto)
+          RET      // Retorna o resto em A
+
+// Função principal
+MAIN:    LXI H,0050 // HL = endereço inicial (dados)
+         MOV B,M    // B = MEM[HL] (dado01)
+         INX H      // Incrementa HL
+         MOV C,M    // C = MEM[HL] (dado02)
+         CALL F_IMOD // Chama F_IMOD
+         STA 0052   // Salva o resultado em MEM[0052]
+         HLT        // Fim do programa

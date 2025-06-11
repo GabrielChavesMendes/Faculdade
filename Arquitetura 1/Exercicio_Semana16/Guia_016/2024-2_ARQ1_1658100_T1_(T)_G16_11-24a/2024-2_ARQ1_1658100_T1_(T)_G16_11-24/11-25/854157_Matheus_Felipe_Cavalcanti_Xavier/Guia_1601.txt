@@ -1,0 +1,26 @@
+// Guia_1601.txt
+// 854157 - Matheus Felipe Cavalcanti Xavier
+// Multiplicação de dois números de 8 bits
+JMP MAIN          // Função principal
+
+// Função IMUL
+F_IMUL: MVI A,00  // A = 0 (inicializa o resultado)
+       MOV D,B    // D = B (multiplicando)
+       MOV E,C    // E = C (multiplicador)
+
+IMUL_LOOP: CMP E   // Verifica se E = 0
+           JZ END_IMUL // Se E = 0, termina
+           ADD D    // A = A + D
+           DCR E    // E = E - 1
+           JMP IMUL_LOOP // Repete o loop
+
+END_IMUL: RET      // Retorna o resultado em A
+
+// Função principal
+MAIN:    LXI H,0050 // HL = endereço inicial (dados)
+         MOV B,M    // B = MEM[HL] (dado01)
+         INX H      // Incrementa HL
+         MOV C,M    // C = MEM[HL] (dado02)
+         CALL F_IMUL // Chama F_IMUL
+         STA 0052   // Salva o resultado em MEM[0052]
+         HLT        // Fim do programa

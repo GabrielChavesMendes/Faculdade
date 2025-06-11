@@ -1,0 +1,35 @@
+        ORG 2000H          ; Define o início do programa
+
+; Inicialização
+        LDA 2501H          ; Carrega o valor do dado01 no acumulador
+        MOV B, A           ; Move o valor para o registrador B (contador)
+        MVI C, 01H         ; Inicializa o registrador C com o valor 1 (acumulador do fatorial)
+
+; Loop para calcular o fatorial
+FACTORIAL_LOOP:
+        MOV A, C           ; Carrega o acumulador do fatorial no acumulador
+        MOV D, B           ; Move o contador para o registrador D
+        CALL MULTIPLY      ; Chama a sub-rotina de multiplicação (A = C * D)
+        MOV C, A           ; Armazena o resultado da multiplicação em C
+        DCR B              ; Decrementa o contador
+        JNZ FACTORIAL_LOOP ; Continua o loop enquanto B != 0
+
+; Armazenar o resultado
+        STA 2502H          ; Armazena o resultado do fatorial no endereço 2502H
+        HLT                ; Fim do programa
+
+; Sub-rotina para multiplicação (A = C * D)
+MULTIPLY:
+        MVI A, 00H         ; Inicializa o acumulador (A) com 0
+MULT_LOOP:
+        ADD C              ; Soma C ao acumulador
+        DCR D              ; Decrementa D
+        JNZ MULT_LOOP      ; Continua enquanto D != 0
+        RET                ; Retorna ao programa principal
+
+; Dados
+        ORG 2501H          ; Define a origem dos dados
+        DB 05H             ; Valor de entrada (dado01)
+
+        ORG 2502H          ; Espaço para o resultado
+        DB 00H             ; Resultado do fatorial (dado02)

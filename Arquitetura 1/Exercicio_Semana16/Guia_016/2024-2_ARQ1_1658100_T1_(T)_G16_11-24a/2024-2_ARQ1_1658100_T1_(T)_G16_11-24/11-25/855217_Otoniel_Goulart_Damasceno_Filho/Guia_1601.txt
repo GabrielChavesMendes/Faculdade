@@ -1,0 +1,37 @@
+// Aluno Otoniel Filho
+// Código 1524526
+// Matricula 855217
+
+// Multiplicação de dois números de 8 bits (IMUL)
+JMP MAIN  // Desvio para a área principal
+
+// Função IMUL
+F_IMUL:
+    MVI D, 00   // Inicializa D = 0 (parte mais significativa do resultado)
+    MVI E, 00   // Inicializa E = 0 (parte menos significativa do resultado)
+    
+    MOV B, C    // B recebe dado1
+    MOV A, B    // A recebe dado1
+    
+    MOV B, C    // B recebe dado2
+    MOV C, B    // C recebe dado2
+    
+    // Loop de soma sucessiva
+    MVI A, 00   // Inicializa A = 0
+    MOV D, A    // D recebe A
+    MOV E, A    // E recebe A
+
+IMUL_LOOP:
+    MOV A, B    // A recebe dado1
+    ADD A, D    // Soma A + D (atualiza parte mais significativa)
+    MOV D, A    // Armazena o resultado em D
+    MOV A, E    // A recebe E
+    MOV B, A    // B recebe A
+    CALL F_ADD  // Chamada da função F_ADD
+
+    RET
+
+// Área de dados
+dado1: 10       // Primeiro operando
+dado2: 02       // Segundo operando
+dado3: 00       // Espaço reservado para resultado ou uso posterior

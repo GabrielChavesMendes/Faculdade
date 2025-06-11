@@ -1,0 +1,74 @@
+/*
+Guia_1107.v
+859919 - Marcella Santos Belchior
+*/
+// --------------------
+// --- FSM para reconhecer "x000"
+// --------------------
+module Guia_1107 (
+    output reg y,    // Saída (1 quando uma sequência "x000" é reconhecida)
+    input x,         // Entrada (sinal de entrada bit a bit)
+    input clk,       // Clock
+    input reset      // Reset
+);
+
+    // Definição dos estados
+    parameter start = 3'b000,
+              s1    = 3'b001, // Reconheceu "x"
+              s10   = 3'b010, // Reconheceu "x0"
+              s100  = 3'b011, // Reconheceu "x00"
+              s000  = 3'b100; // Reconheceu "x000"
+
+    reg [2:0] E1, E2; // Variáveis para estado atual e próximo estado
+
+    // Lógica de transição de estados
+    always @(x or E1) begin
+        case (E1)
+            start: 
+                if (~x) // Início com "0"
+                    E2 = s1;
+                else
+                    E2 = start;
+            s1: 
+                if (~x) // Reconheceu "x0"
+                    E2 = s10;
+                else
+                    E2 = start;
+            s10: 
+                if (~x) // Reconheceu "x00"
+                    E2 = s100;
+                else
+                    E2 = start;
+            s100: 
+                if (~x) // Reconheceu "x000"
+                    E2 = s000;
+                else
+                    E2 = start;
+            s000: 
+                if (~x) // Permite novas sequências terminando em "000"
+                    E2 = s10;
+                else
+                    E2 = start;
+            default: 
+                E2 = start;
+        endcase
+    end
+
+    // Atualização do estado atual com base no clock e reset
+    always @(posedge clk or negedge reset) begin
+        if (~reset)
+            E1 <= start;
+        else
+            E1 <= E2;
+    end
+
+    // Lógica de saída
+    always @(E1) begin
+        case (E1)
+            s000: 
+                y = 1; // Saída é 1 quando a sequência "x000" é reconhecida
+            default: 
+                y = 0; // Em todos os outros casos, saída é 0
+        endcase
+    end
+endmodule

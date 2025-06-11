@@ -1,0 +1,36 @@
+/*
+Guia_1305.v
+859919 - Marcella Santos Belchior
+*/
+module Guia_1305(
+    output [2:0] Q,   // Saída de 3 bits (valor do contador)
+    input clk,         // Sinal de relógio
+    input reset        // Reset (ativo baixo)
+);
+    // Flip-flops T
+    tff FF0 ( .q(Q[0]), .t(t[0]), .clk(clk), .reset(reset) );
+    tff FF1 ( .q(Q[1]), .t(t[1]), .clk(clk), .reset(reset) );
+    tff FF2 ( .q(Q[2]), .t(t[2]), .clk(clk), .reset(reset) );
+
+    // Lógica para definir as entradas T de cada flip-flop
+    assign t[0] = 1'b1;                // FF0 alterna sempre (sempre T=1)
+    assign t[1] = Q[0];                // FF1 alterna quando Q[0] é 1
+    assign t[2] = Q[0] & Q[1];        // FF2 alterna quando Q[0] e Q[1] são 1 (atinge 7)
+
+endmodule
+
+module tff (
+    output reg q,      // Saída Q do flip-flop
+    input t,           // Entrada T
+    input clk,         // Relógio
+    input reset        // Reset (ativo baixo)
+);
+    always @(posedge clk or negedge reset)
+    begin
+        if (~reset)  // Se reset ativado
+            q <= 0;  // Resetar saída para 0
+        else if (t)  // Se T=1, alterna a saída
+            q <= ~q;
+    end
+endmodule
+

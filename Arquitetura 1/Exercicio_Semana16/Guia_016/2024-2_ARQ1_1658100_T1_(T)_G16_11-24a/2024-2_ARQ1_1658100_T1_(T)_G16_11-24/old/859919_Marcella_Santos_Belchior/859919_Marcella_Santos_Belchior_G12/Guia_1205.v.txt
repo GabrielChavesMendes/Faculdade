@@ -1,0 +1,69 @@
+/*
+Guia_1205.v
+859919 - Marcella Santos Belchior
+*/
+module Guia_1205 (
+    input CLK,          // Clock
+    input R_W,          // Controle de leitura/escrita (1 para escrita, 0 para leitura)
+    input [2:0] ADDR,   // Endereço de 3 bits (000 a 111)
+    input [7:0] _input, // Dados de entrada (8 bits)
+    output reg [7:0] _output, // Dados de saída (8 bits)
+    input CLR           // Sinal de reset
+);
+
+    // Definindo duas instâncias de RAM 4x8
+    reg [7:0] ram_data_0_0; // Memória 1 - Endereço 00
+    reg [7:0] ram_data_0_1; // Memória 1 - Endereço 01
+    reg [7:0] ram_data_0_2; // Memória 1 - Endereço 02
+    reg [7:0] ram_data_0_3; // Memória 1 - Endereço 03
+
+    reg [7:0] ram_data_1_0; // Memória 2 - Endereço 04
+    reg [7:0] ram_data_1_1; // Memória 2 - Endereço 05
+    reg [7:0] ram_data_1_2; // Memória 2 - Endereço 06
+    reg [7:0] ram_data_1_3; // Memória 2 - Endereço 07
+
+    // Escrever os dados na borda de subida do clock
+    always @(posedge CLK or posedge CLR) begin
+        if (CLR) begin
+            // Limpar todas as localizações de memória
+            ram_data_0_0 <= 8'b00000000;
+            ram_data_0_1 <= 8'b00000000;
+            ram_data_0_2 <= 8'b00000000;
+            ram_data_0_3 <= 8'b00000000;
+            ram_data_1_0 <= 8'b00000000;
+            ram_data_1_1 <= 8'b00000000;
+            ram_data_1_2 <= 8'b00000000;
+            ram_data_1_3 <= 8'b00000000;
+        end else if (R_W) begin
+            // Escrever na memória correspondente
+            case (ADDR)
+                3'b000: ram_data_0_0 <= _input; // Endereço 00
+                3'b001: ram_data_0_1 <= _input; // Endereço 01
+                3'b010: ram_data_0_2 <= _input; // Endereço 02
+                3'b011: ram_data_0_3 <= _input; // Endereço 03
+                3'b100: ram_data_1_0 <= _input; // Endereço 04
+                3'b101: ram_data_1_1 <= _input; // Endereço 05
+                3'b110: ram_data_1_2 <= _input; // Endereço 06
+                3'b111: ram_data_1_3 <= _input; // Endereço 07
+            endcase
+        end
+    end
+
+    // Ler os dados na borda de descida do clock
+    always @(negedge CLK) begin
+        if (!R_W) begin
+            // Ler da memória correspondente
+            case (ADDR)
+                3'b000: _output <= ram_data_0_0; // Endereço 00
+                3'b001: _output <= ram_data_0_1; // Endereço 01
+                3'b010: _output <= ram_data_0_2; // Endereço 02
+                3'b011: _output <= ram_data_0_3; // Endereço 03
+                3'b100: _output <= ram_data_1_0; // Endereço 04
+                3'b101: _output <= ram_data_1_1; // Endereço 05
+                3'b110: _output <= ram_data_1_2; // Endereço 06
+                3'b111: _output <= ram_data_1_3; // Endereço 07
+            endcase
+        end
+    end
+
+endmodule

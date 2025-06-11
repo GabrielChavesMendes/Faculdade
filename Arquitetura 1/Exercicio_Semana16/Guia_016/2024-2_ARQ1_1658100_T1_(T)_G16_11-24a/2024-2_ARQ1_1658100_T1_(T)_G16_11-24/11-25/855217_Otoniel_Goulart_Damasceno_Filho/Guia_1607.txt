@@ -1,0 +1,46 @@
+// Aluno Otoniel Filho
+// Código 1524526
+// Matricula 855217
+
+// Calcular o fatorial de um número de 8 bits
+JMP MAIN       // Desvia para a área principal
+
+// Função FAT (Fatorial)
+F_FAT:
+    MVI D, 01  // D = 1 (inicializa o acumulador do fatorial)
+    MOV B, C   // B = dado1 (número para calcular o fatorial)
+    
+FAT_LOOP:
+    MOV A, D   // A = fatorial acumulado (D)
+    CALL F_MULT // Chama a função de multiplicação (A * B)
+    MOV D, A   // Atualiza o fatorial acumulado (D)
+    DCR B      // Decrementa o número (B)
+    JNZ FAT_LOOP // Se B != 0, repete o loop
+    
+    RET        // Retorna para a rotina principal
+
+// Função F_MULT - Multiplicação de dois números de 8 bits
+// A = multiplicando, B = multiplicador
+F_MULT:
+    MVI H, 00  // H = 0 (parte alta do resultado)
+    MVI L, 00  // L = 0 (parte baixa do resultado)
+
+MULT_LOOP:
+    ADD L      // L = L + A (soma o acumulador parcial)
+    DCR B      // Decrementa o multiplicador
+    JNZ MULT_LOOP // Repete enquanto B != 0
+    
+    MOV A, L   // Resultado final da multiplicação está em L
+    RET        // Retorna para a chamada anterior
+
+MAIN:
+    LXI H, 0050h // Carrega o endereço de dado1
+    MOV C, M     // C = dado1 (número para calcular o fatorial)
+    CALL F_FAT   // Chama a função FAT
+    STA 0052h    // Armazena o resultado do fatorial em dado3
+    HLT          // Finaliza a execução
+
+END
+// Área de dados
+dado1: 05h  // Número para calcular o fatorial (5 em decimal)
+dado3: 00h  // Resultado do fatorial (120 em decimal = 78h)

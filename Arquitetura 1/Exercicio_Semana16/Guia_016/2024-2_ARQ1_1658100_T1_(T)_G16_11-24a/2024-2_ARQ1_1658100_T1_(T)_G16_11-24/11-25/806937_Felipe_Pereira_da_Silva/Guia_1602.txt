@@ -1,0 +1,18 @@
+// Guia 1602 - 806937 - Felipe Pereira da Silva 
+
+LDA dado01
+MOV B, A
+LDA dado02
+MOV C, A
+MVI A, 00H
+
+IDIV_LOOP:
+SUB C
+JC IDIV_DONE
+INR A
+JMP IDIV_LOOP
+
+IDIV_DONE:
+MOV D, A
+STA dado03
+HLT

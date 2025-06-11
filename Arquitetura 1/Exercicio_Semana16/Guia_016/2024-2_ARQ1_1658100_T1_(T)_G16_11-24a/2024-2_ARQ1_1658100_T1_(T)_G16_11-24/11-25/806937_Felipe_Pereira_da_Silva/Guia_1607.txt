@@ -1,0 +1,18 @@
+// Guia 1607 - 806937 - Felipe Pereira da Silva 
+
+LDA dado01
+MOV B, A
+MVI A, 01H
+
+FAT_LOOP:
+MOV C, B
+DCR C
+MUL_LOOP:
+ADD A
+DCR C
+JNZ MUL_LOOP
+DCR B
+JNZ FAT_LOOP
+
+STA dado02
+HLT

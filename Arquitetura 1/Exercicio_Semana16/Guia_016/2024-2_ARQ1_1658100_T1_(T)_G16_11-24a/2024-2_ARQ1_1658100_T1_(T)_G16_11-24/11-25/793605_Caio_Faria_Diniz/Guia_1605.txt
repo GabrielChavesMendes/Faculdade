@@ -1,0 +1,32 @@
+// Guia_1605.txt
+// 793605 -  Caio Faria Diniz
+// Converter um número BCD em hexadecimal equivalente
+JMP MAIN
+
+// Função BCD_TO_HEX
+F_BCD_TO_HEX:
+    MOV A, C       // A = C (valor BCD)
+    ANI F0H        // A = A & F0h (extrai os 4 bits mais significativos)
+    RRC            // Shift à direita para obter o dígito alto
+    RRC
+    RRC
+    RRC
+    MOV B, A       // B = dígito alto
+    MOV A, C       // A = C (valor original)
+    ANI 0FH        // A = A & 0Fh (extrai os 4 bits menos significativos)
+    MVI D, 0AH     // D = 10
+    CALL F_IMUL    // Multiplica o dígito alto por 10 (B * D)
+    ADD A          // Soma o dígito baixo
+    RET
+
+// Programa principal
+MAIN:
+    LXI H, 0050    // HL aponta para dado01
+    MOV C, M       // C = MEM[0050]
+    CALL F_BCD_TO_HEX // Converte o valor BCD
+    STA 0052       // Armazena o resultado em 0052
+    HLT
+
+// Dados
+// dado01: 24h ; valor BCD
+// dado02: 00h ; resultado em hexadecimal

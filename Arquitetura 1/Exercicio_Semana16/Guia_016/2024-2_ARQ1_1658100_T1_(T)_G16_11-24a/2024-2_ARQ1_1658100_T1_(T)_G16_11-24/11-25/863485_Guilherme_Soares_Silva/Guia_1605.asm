@@ -1,0 +1,52 @@
+; Nome: Guilherme Soares Silva
+; Matricula: 863485
+
+JMP MAIN
+
+TOHEXA:	MOV D,B
+	MOV E,B
+	
+	MVI A,0F
+	ANA E
+	MOV E,A
+
+	MVI A,F0
+	ANA D
+	RAR
+	RAR
+	RAR
+	RAR
+	MOV D,A
+	MVI A,00
+
+	MVI C,0A
+MULTI:	ADD D
+	DCR C
+	JNZ MULTI
+
+	ADD E
+
+	RET
+
+LOADER: 	MVI A,34
+	STA C0A0
+	MVI A,93
+	STA C0A2
+	RET
+
+MAIN: 	CALL LOADER
+
+	LXI H,C0A0
+	MOV B,M
+
+	CALL TOHEXA
+	STA C0B0
+
+	LXI H,C0A2
+	MOV B,M
+	
+	CALL TOHEXA
+	STA C0B2
+	
+
+HLT

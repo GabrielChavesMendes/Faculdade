@@ -1,0 +1,15 @@
+// Guia 1606 - 806937 - Felipe Pereira da Silva 
+
+LDA dado01
+MOV B, A
+MVI C, 01H
+MVI A, 00H
+
+SQR_LOOP:
+ADD C
+INR C
+DCR B
+JNZ SQR_LOOP
+
+STA dado02
+HLT

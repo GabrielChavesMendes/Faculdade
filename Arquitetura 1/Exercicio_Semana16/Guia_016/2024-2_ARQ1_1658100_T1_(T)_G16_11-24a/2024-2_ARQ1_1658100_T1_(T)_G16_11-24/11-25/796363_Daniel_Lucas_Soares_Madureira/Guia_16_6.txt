@@ -1,0 +1,26 @@
+        ORG 2000H          ; Define o início do programa
+
+; Inicialização
+        LDA 2501H          ; Carrega o valor (dado01) do endereço 2501H no acumulador
+        MOV B, A           ; Move o valor para o registrador B (contador de iterações)
+        MVI C, 01H         ; Inicializa o registrador C com o primeiro número ímpar (1)
+        MVI D, 00H         ; Inicializa o registrador D (acumulador da soma)
+
+; Loop para calcular o quadrado
+LOOP:   ADD C              ; Soma o número ímpar atual ao acumulador (A)
+        MOV D, A           ; Atualiza o acumulador de soma (D)
+        INX C              ; Incrementa C para o próximo número ímpar
+        INX C              ; Incrementa novamente para manter a sequência de ímpares
+        DCR B              ; Decrementa o contador de iterações
+        JNZ LOOP           ; Repete enquanto B != 0
+
+; Armazenar o resultado
+        STA 2502H          ; Armazena o quadrado (dado02) no endereço 2502H
+        HLT                ; Fim do programa
+
+; Dados
+        ORG 2501H          ; Define a origem dos dados
+        DB 05H             ; Valor de entrada (dado01)
+
+        ORG 2502H          ; Espaço para o resultado
+        DB 00H             ; Resultado (dado02, inicialmente 0)

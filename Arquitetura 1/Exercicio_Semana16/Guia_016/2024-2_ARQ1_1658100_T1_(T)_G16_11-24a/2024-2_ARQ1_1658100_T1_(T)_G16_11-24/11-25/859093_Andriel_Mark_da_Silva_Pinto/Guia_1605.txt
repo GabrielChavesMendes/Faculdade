@@ -1,0 +1,44 @@
+// Guia_1605.txt
+// Andriel Mark da Silva Pinto
+// Matrícula: 859093
+//
+// Conversão de BCD (Binary Coded Decimal) para Hexadecimal
+// dado01 (HI) e dado02 (LOW) representam o valor BCD
+// O resultado hexadecimal será armazenado em 0052h
+//
+// Função: BCD_TO_HEX
+// Converte o valor BCD para hexadecimal
+// @parâmetros: dado01 (HI), dado02 (LOW)
+// @retorno: valor hexadecimal armazenado em 0052h
+//
+
+JMP MAIN   // Salta para o programa principal
+
+BCD_TO_HEX:  
+              MOV A, M     // Carrega o valor HI (dado01) em A
+              MVI B, 0A    // MVI B com 10 (valor de multiplicação)
+              CALL MULTIPLICAR // Chama a função de multiplicação por 10
+
+              MOV A, M     // Carrega o valor LOW (dado02) em A
+              ADD D        // Soma o valor LOW ao produto
+              MOV M, A     // Armazena o resultado final em 0052h
+              RET
+
+MULTIPLICAR:  
+              MVI D, 00    // Limpa D para armazenar o produto
+              MOV E, A     // Salva o valor de A (HI) em E
+LOOP:         MOV A, E     // Carrega o valor de E (HI) em A
+              ADD A        // Soma o valor com ele mesmo (multiplica por 2)
+              MOV D, A     // Armazena o valor parcial em D
+              MOV A, D     // Carrega o valor de D novamente em A
+              ADD D        // Soma novamente (multiplica por 4)
+              MOV D, A     // Armazena o valor final em D
+              RET
+
+MAIN:         LXI H, 0050  // Carrega HL com o endereço 0050h
+              MOV M, A     // Carrega o primeiro valor BCD (HI)
+              INX H        // Avança para o próximo byte (LOW)
+              MOV M, A     // Carrega o segundo valor BCD (LOW)
+              CALL BCD_TO_HEX // Chama a função de conversão
+              STA 0052     // Armazena o resultado hexadecimal em 0052h
+              HLT          // Finaliza o programa

@@ -1,0 +1,29 @@
+; Antonio Drumond Cota de Sousa - 855947
+
+JMP MAIN
+
+IMUL:	MVI A,00
+FLAG:	ADD B
+	DCR C
+	JNZ FLAG
+	RET
+
+LOADER: 	MVI A,13
+	STA C0A0
+	MVI A,08
+	STA C0B0
+	RET
+
+
+MAIN:	CALL LOADER
+	
+	LXI H,C0A0
+	MOV B,M
+	LXI H,C0B0
+	MOV C,M
+	
+	CALL IMUL
+	
+	STA C0A2
+
+HLT

@@ -1,0 +1,234 @@
+DISCIPLINA: ARQUITETURA DE COMPUTADORES I - GUIA 06
+ALUNA: ALESSANDRA FARIA RODRIGUES
+MATRICULA: 828333
+
+01)
+
+	a) f(x,y,z) = ∑m(1,6,7)
+
+		SoP(1,6,7) = (x'y'z) + (xyz') + (xyz) = simplificando = (x'y'z) + xy
+
+	(Mapa de Karnaugh) - (Em Logisim no arquivo: Logisim/Guia_0601)
+	x/yz	00	01	11	10
+	0	0	1	0	0
+	1	0	0	1	1
+
+---------------------------------------------------------------------------------------
+	b) f(x,y,z) = ∑m(2,4,6) 
+
+		SoP(2,4,6) = (x'yz') + (xy'z') + (xyz') = simplificando = (yz' + xz')
+
+	(Mapa de Karnaugh) - (Em Logisim no arquivo: Logisim/Guia_0601)
+	x/yz	00	01	11	10
+	0	0	0	0	1
+	1	1	0	0	1
+
+----------------------------------------------------------------------------------------
+	c) f(x,y,z) = ∑m(1,2,5,6)
+
+		SoP(1,2,5,6) = (x'y'z) + (x'yz') + (xy'z) + (xyz') = simplificando = y'z + yz'
+
+	(Mapa de Karnaugh) - (Em Logisim no arquivo: Logisim/Guia_0601)
+	x/yz	00	01	11	10
+	0	0	1	0	1
+	1	0	1	0	1
+
+--------------------------------------------------------------------------------------------
+	d) f(x,y,z) = ∑m(1,2,4,5) 
+
+		SoP(1,2,4,5) = (x'y'z) + (x'yz') + (xy'z') + (xy'z) = simplificando = xy' + y'z + x'yz'
+
+	(Mapa de Karnaugh) - (Em Logisim no arquivo: Logisim/Guia_0601)
+	x/yz	00	01	11	10
+	0	0	1	0	1
+	1	1	1	0	0
+
+-----------------------------------------------------------------------------------------------
+	e) f(x,y,z) = ∑m(0,3,6,7) 
+		SoP(0,3,6,7) = (x'y'z') + (x'yz) + (xyz') + (xyz) = simplificando = xy + yz + x'y'z'                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+	(Mapa de Karnaugh) - (Em Logisim no arquivo: Logisim/Guia_0601)
+	x/yz	00	01	11	10
+	0	1	0	1	0
+	1	0	0	1	1
+
+------------------------------------------------------------------------------------------------
+
+02) 
+	a)  F (X,Y,Z) = π M ( 1, 5, 7 )
+
+		PoS(1,5,7) = (x+y+z')(x'+y+z')(x'+y'+z') = simplificando = (y+z')(x'+z')
+
+	(Mapa de Karnaugh) - (Em Logisim no arquivo: Logisim/Guia_0602)
+	x/yz	00	01	11	10
+	0	1	0	1	1
+	1	1	0	0	1
+
+------------------------------------------------------------------------------------------
+	b) F (X,Y,Z) = π M ( 0, 4, 6 ) 
+
+		PoS(0,4,6) = (x+y+z)(x'+y+z)(x'+y'+z) = simplificando = (y+z)(x'+z)
+
+	(Mapa de Karnaugh) - (Em Logisim no arquivo: Logisim/Guia_0602)
+	x/yz	00	01	11	10
+	0	0	1	1	1
+	1	0	1	1	0
+
+------------------------------------------------------------------------------------------------
+	c) F (X,Y,Z) = π M ( 1, 2, 3, 5 ) 
+
+		PoS(1,2,3,5) = (x+y+z')(x+y'+z)(x+y'+z')(x'+y+z') = simplificando = (y+z')(x+y')
+
+	(Mapa de Karnaugh) - (Em Logisim no arquivo: Logisim/Guia_0602)
+	x/yz	00	01	11	10
+	0	1	0	0	0
+	1	1	0	1	1
+
+--------------------------------------------------------------------------------------------------
+	d) F (X,Y,Z) = π M ( 0, 3, 4, 7 )
+
+		PoS(0,3,4,7) = (x+y+z)(x+y'+z')(x'+y+z)(x'+y'+z') = simplificando = (y+z)(y'+z')
+
+	(Mapa de Karnaugh) - (Em Logisim no arquivo: Logisim/Guia_0602)
+	x/yz	00	01	11	10
+	0	0	1	0	1
+	1	0	1	0	1
+
+------------------------------------------------------------------------------------------------------
+	e) F (X,Y,Z) = π M ( 2, 3, 6, 7 ) 
+
+		PoS(2,3,6,7) = (x+y'+z)(x+y'+z')(x'+y'+z)(x'+y'+z') = simplificando = (x+y')(x'+y')
+
+	(Mapa de Karnaugh) - (Em Logisim no arquivo: Logisim/Guia_0602)
+	x/yz	00	01	11	10
+	0	1	1	0	0
+	1	1	1	0	0
+
+--------------------------------------------------------------------------------------------------------
+
+03)
+	a) f (x,y,w,z) = ∑ m ( 1, 2, 5, 8, 12, 13 ) 
+		Sop(1,2,5,8,12,13) = (x'y'w'z)+(x'y'wz')+(x'yw'z)+(xy'w'z')+(xyw'z')+(xyw'z) = 	
+		simplificando = xw'z' + x'w'z + yw'z + x'y'wz'
+
+	(Mapa de Karnaugh) - (Em Logisim no arquivo: Logisim/Guia_0603)
+	xy/wz	00	01	11	10
+	00	0	1	0	1
+	01	0	1	0	0
+	11	1	1	0	0
+	10	1	0	0	0
+
+------------------------------------------------------------------------------------------
+	b) f (x,y,w,z) = ∑ m ( 0, 1, 3, 5, 7, 13, 15 ) 
+
+		SoP( 0, 1, 3, 5, 7, 13, 15 ) = (x'y'w'z') + (x'y'w'z) + (x'y'wz) + (x'yw'z) + (x'ywz) + (xyw'z) + (xywz) =
+		simplificando = x'y'w' + x'y'z + x'yz + xy
+
+	(Mapa de Karnaugh) - (Em Logisim no arquivo: Logisim/Guia_0603)
+	xy/wz	00	01	11	10
+	00	1	1	1	0
+	01	1	1	1	0
+	11	0	1	1	0
+	10	0	0	0	0
+
+
+---------------------------------------------------------------------------------------------------------------------------------
+	c) f (x,y,w,z) = ∑ m ( 0, 1, 2, 6, 7, 10, 14, 15 ) 
+	simplificando = x'y'w' + wz' + yw
+
+	(Mapa de Karnaugh) - (Em Logisim no arquivo: Logisim/Guia_0603)
+	xy/wz	00	01	11	10
+	00	1	1	0	1
+	01	0	0	1	1
+	11	0	0	1	1
+	10	0	0	0	1
+
+
+----------------------------------------------------------------------------------------------------------
+	d) f (x,y,w,z) = ∑ m ( 2, 4, 6, 7, 10, 13, 14 )
+	simplificando = wz' + x'yw + x'yz' + xyw'z
+
+	(Mapa de Karnaugh) - (Em Logisim no arquivo: Logisim/Guia_0603)
+	xy/wz	00	01	11	10
+	00	0	0	0	1
+	01	1	0	1	1
+	11	0	1	0	1
+	10	0	0	0	1
+
+----------------------------------------------------------------------------------------------------------
+	e) f (x,y,w,z) = ∑ m ( 0, 1, 3, 7, 8, 9, 11, 13 ) 
+	simplificando = y'w' + y'z +x'wz + x'wz 
+
+	(Mapa de Karnaugh) - (Em Logisim no arquivo: Logisim/Guia_0603)
+	xy/wz	00	01	11	10
+	00	1	1	1	0
+	01	0	0	1	0
+	11	0	1	0	0
+	10	1	1	1	0
+
+----------------------------------------------------------------------------------------------------------------
+
+04)
+
+ 	a) F (X,Y,W,Z) = π M ( 2, 6, 7, 14 )  
+	simplificando = (x+w'+z)(y'+w'+z)(x+y'+w')
+
+	(Mapa de Karnaugh) - (Em Logisim no arquivo: Logisim/Guia_0604)
+	XY/WZ	00	01	11	10
+	00	1	1	1	0
+	01	1	1	0	0
+	11	1	1	1	0
+	10	1	1	1	1
+
+----------------------------------------------------------------------------------------------------------------
+
+	b) F (X,Y,W,Z) = π M ( 4, 5, 9, 13, 14 ) 
+	simplificando = (x+y'+w)(x'+w+z')(x'+y'+w'+z)
+
+	(Mapa de Karnaugh) - (Em Logisim no arquivo: Logisim/Guia_0604)
+	XY/WZ	00	01	11	10
+	00	1	1	1	1
+	01	0	0	1	1
+	11	1	0	1	0
+	10	1	0	1	1
+
+------------------------------------------------------------------------------------------------------
+
+	c) F (X,Y,W,Z) = π M ( 4, 7, 8, 13, 15 )  
+	simplificando = (y'+w'+z')(x'+y'+z')(x+y'+w+z)(x'+y+w+z)
+
+	(Mapa de Karnaugh) - (Em Logisim no arquivo: Logisim/Guia_0604)
+	XY/WZ	00	01	11	10
+	00	1	1	1	1
+	01	0	1	0	1
+	11	1	0	0	1
+	10	0	1	1	1
+
+----------------------------------------------------------------------------------------------
+
+	d) F (X,Y,W,Z) = π M ( 1, 5, 9, 11, 14, 15 )  
+	simplificando = (x+w+z')(x'+y'+w')(x'+y+z')
+
+	(Mapa de Karnaugh) - (Em Logisim no arquivo: Logisim/Guia_0604)
+	XY/WZ	00	01	11	10
+	00	1	0	1	1
+	01	1	0	1	1
+	11	1	1	0	0
+	10	1	0	0	1
+
+----------------------------------------------------------------------------------------------
+
+	e) F (X,Y,W,Z) = π M ( 2, 5, 6, 7, 11, 13, 15 ) 
+	simplificando = (y'+z')(x+w'+z)(x'+w'+z')
+
+	(Mapa de Karnaugh) - (Em Logisim no arquivo: Logisim/Guia_0604)
+	XY/WZ	00	01	11	10
+	00	1	1	1	0
+	01	1	0	0	0
+	11	1	0	0	1
+	10	1	1	0	1
+
+----------------------------------------------------------------------------------------------------------
+
+05)  simplificação = (x.z') + (x.y')
+
+06) simplificação = (x+w) . (x+w') . (y'+w'+z')

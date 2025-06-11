@@ -1,0 +1,52 @@
+HO_07
+
+1)Projetar o primeiro nome e o último nome dos atores de sexo feminino;
+select distinct first_name, last_name
+from actors
+where gender = 'F'
+
+2)Projetar o nome dos filmes com ano superior à 1999;
+select distinct name
+from movies
+where year > 1999
+
+3)Projetar o nome do filme e o nome do diretor de cada filme;
+select distinct movies.name as filme, directors.first_name, directors.last_name as diretor
+from movies, movies_directors, directors
+where movies.id = movies_directors.movie_id
+and movies_directors.director_id = directors.id;
+
+4)Projetar o nome do filme, nome do ator e o papel que cada ator teve no filme 
+select distinct movies.name as filme, actors.first_name, actors.last_name as ator, roles.role as papel
+from movies
+join roles on movies.id = roles.movie_id
+join actors on roles.actor_id = actors.id
+where movies.name is not NULL 
+and actors.first_name is not NULL 
+and actors.last_name is not NULL 
+and roles.role is not NULL;
+
+5)para filmes com ranking acima da nota 6;
+select distinct name
+from movies
+where rank > 6
+
+6)Projetar o nome do diretor e o número de filmes que cada diretor dirigiu;
+select distinct directors.first_name, directors.last_name as diretor,count(movies_directors.movie_id) as total_filmes
+from directors
+join movies_directors ON directors.id = movies_directors.director_id
+group by directors.first_name, directors.last_name;
+
+7)Projetar o gênero e o número de filmes de cada gênero; 
+select distinct movies_genres.genre as genero, count(movies_genres.movie_id) as total_genero
+from movies_genres
+group by movies_genres.genre
+
+8)Projetar o gênero, o ranking (nota) médio, mínimo e máximo dos filmes do gênero;
+select distinct movies_genres.genre as genero,
+avg(movies.rank) as medio,
+max(movies.rank) as maximo,
+min(movies.rank) as minimo
+from movies
+join movies_genres on movies.id = movies_genres.movie_id
+group by movies_genres.genre

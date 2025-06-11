@@ -1,0 +1,75 @@
+/*
+Guia_1108.v
+859919 - Marcella Santos Belchior
+*/
+// --------------------
+// --- FSM para reconhecer "010" ou "101"
+// --------------------
+module Guia_1108 (
+    output reg y,    // Saída (1 quando "010" ou "101" é reconhecido)
+    input x,         // Entrada (sinal de entrada bit a bit)
+    input clk,       // Clock
+    input reset      // Reset
+);
+
+    // Definição dos estados
+    parameter start = 3'b000,
+              s0    = 3'b001, // Reconheceu "0"
+              s01   = 3'b010, // Reconheceu "01"
+              s10   = 3'b011, // Reconheceu "10"
+              s010  = 3'b100, // Reconheceu "010"
+              s101  = 3'b101; // Reconheceu "101"
+
+    reg [2:0] E1, E2; // Variáveis para estado atual e próximo estado
+
+    // Lógica de transição de estados
+    always @(x or E1) begin
+        case (E1)
+            start:
+                if (~x) // Início com "0"
+                    E2 = s0;
+                else
+                    E2 = s10;
+            s0:
+                if (x) // Reconheceu "01"
+                    E2 = s01;
+                else
+                    E2 = s0;
+            s01:
+                if (~x) // Reconheceu "010"
+                    E2 = s010;
+                else
+                    E2 = s10;
+            s10:
+                if (~x) // Reconheceu "101"
+                    E2 = s101;
+                else
+                    E2 = s01;
+            s010:
+                E2 = start; // Volta ao início após reconhecer "010"
+            s101:
+                E2 = start; // Volta ao início após reconhecer "101"
+            default:
+                E2 = start;
+        endcase
+    end
+
+    // Atualização do estado atual com base no clock e reset
+    always @(posedge clk or negedge reset) begin
+        if (~reset)
+            E1 <= start;
+        else
+            E1 <= E2;
+    end
+
+    // Lógica de saída
+    always @(E1) begin
+        case (E1)
+            s010, s101:
+                y = 1; // Saída é 1 quando "010" ou "101" é reconhecido
+            default:
+                y = 0; // Em todos os outros casos, saída é 0
+        endcase
+    end
+endmodule
+

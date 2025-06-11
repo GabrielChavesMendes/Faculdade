@@ -1,0 +1,32 @@
+// Aluno Otoniel Filho
+// Código 1524526
+// Matricula 855217
+
+// Calcular o quadrado de um número de 8 bits
+JMP MAIN       // Desvia para a área principal
+
+// Função SQR
+F_SQR:
+    MVI D, 00  // D = 0 (acumulador para o quadrado)
+    MOV B, C   // B = dado1 (número a ser elevado ao quadrado)
+    MOV A, B   // A = dado1 (cópia do número)
+    
+SQR_LOOP:
+    ADD D      // D = D + A (soma o acumulador)
+    DCR C      // Decrementa C (contador de multiplicações)
+    JNZ SQR_LOOP // Repete o loop enquanto C != 0
+    
+    MOV A, D   // A = D (resultado do quadrado)
+    RET        // Retorna da função
+
+MAIN:
+    LXI H, 0050h // Carrega o endereço de dado1
+    MOV C, M     // C = dado1 (número a ser elevado ao quadrado)
+    CALL F_SQR   // Chama a função F_SQR para calcular o quadrado
+    STA 0052h    // Armazena o resultado (quadrado) em dado3
+    HLT          // Finaliza a execução
+
+END
+// Área de dados
+dado1: 05h  // Número a ser elevado ao quadrado (5 em decimal)
+dado3: 00h  // Resultado do quadrado (25 em decimal = 19h)

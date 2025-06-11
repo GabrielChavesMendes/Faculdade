@@ -1,0 +1,38 @@
+
+// Guia_1603.txt 
+// 855842 - Mateus Resende Ottoni
+//
+// Objetivo: dado03 = dado01 % dado02
+// Calcular o resto inteiro (IMOD) de dois dados com 8 bits cada
+//
+ 
+// Área de código		// Comentário 
+
+	JMP	MAIN		// Ir para a função principal
+	
+F_MOD:
+	MOV	A,B		// A = B
+F_LOOP:	SUB	C		// A = A-C
+
+	CMP	C		// Comparar o resto com o segundo valor
+	JP	F_LOOP		// Repetir se ainda for maior
+	RET			// Retornar // A
+
+MAIN:
+	MVI	A,00		// A = 0
+	STA	0054h		// Guardar valor nulo no contador
+
+	LXI	H,0052h		// HL = 0052h // Dado 1
+	MOV	B,M		// B = MEM [HL]
+	INX	H		// HL = HL+1  // Dado 2
+	MOV	C,M		// C = MEM [HL]
+C_MOD: CALL	F_MOD		// A = F_MOD(B, C)
+	STA	0050h		// MEM[0050] = A
+	HLT			//
+END: 
+
+
+; Área de dados 
+; dado1:  52h  ; primeiro dado	 em hexadecimal
+; dado2:  53h  ; segundo dado	 em hexadecimal
+; dado4:  50h  ; resultado	 em hexadecimal

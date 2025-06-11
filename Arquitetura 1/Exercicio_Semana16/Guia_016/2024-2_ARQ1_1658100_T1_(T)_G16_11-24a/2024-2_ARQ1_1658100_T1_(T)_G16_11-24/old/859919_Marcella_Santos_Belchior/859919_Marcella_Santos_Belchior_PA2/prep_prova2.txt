@@ -1,0 +1,162 @@
+ -    Preparação para a prova 2  - 
+
+859919 - Marcella Santos Belchior
+
+m	at	bt	c		at+1	 bt+1  
+----------------------------------------------
+0	0	0	0		0	 0	  
+1	0	0	1		0	 0	  
+2	0	1	0		0	 1	  
+3	0	1	1		0	 0	  
+4	1	0	0		1	 1	  
+5	1	0	1		1	 0	  
+6	1	1	0		1	 1	 
+7	1	1	1		1	 1	 
+
+ 
+
+at	at+1		Da		JaKa	Ta	
+---------------------------------------------------
+0	0		0           	00		0
+0	1		0		00		0
+1	0		0		00		0
+1	1		1		10		1
+0	0		1		00		0
+0	1		1		10		0
+1	0		1		01		0
+1	1	        0		00		1
+
+
+
+bt	bt+1		Db		JbKb	Tb	
+---------------------------------------------------
+0	0		0		00		0
+0	1		1		10		1
+1	1		0		01		1
+1	1		1		00		0
+0	0		0		00		0
+0	0		1		00		0
+1	1		0		00		0
+1	0	        1		01		1
+
+
+
+01.) Montar as expressões por mintermos dos flip-flops:
+
+a.) 	SoP (Da) = m3+m4+m5+m6   =  SoP(Da) = c.a'.b + c.a.b + c.a.b' + c.a'.b'
+
+	SoP (Db) = m1+m3+m5+m7  = SoP(Db) = c.a'.b' + c.a.b' + c.a'.b + c.a.b
+
+
+b.) 	SoP (Ja) = m3 = SoP(Ja) = c'.a'.b' + c'.a'.b + c.a'.b' + c.a'.b
+
+	SoP (Jb) =  m7  = SoP(Jb) = c.a'.b + c.a.b + c.a.b' + c.a'.b'
+
+	SoP (Ka) = m1+m3+m7  =  SoP(Ka) = c.a'.b' + c.a.b' + c.a'.b + c.a.b
+
+	SoP (Kb) = m2+m4+m6 =  SoP(Kb) = c'.a'.b' + c'.a'.b + c.a'.b' + c.a'.b
+
+
+c.) 	SoP (Ta) = m3+m7 = SoP(Ta) = c'.a'.b + c.a'.b' + c.a'.b + c.a.b
+
+	SoP (Tb) = m1+m2+m7 = SoP(Tb) = c.a'.b' + c.a.b' + c.a'.b + c.a.b
+
+
+02.) Montar as expressões compactas por MAXTERMOS dos flip-flops:
+
+a.) 	PoS(Da) = (c + a + b).(c + a' + b').(c' + a + b')
+
+	PoS(Db) = (c + a' + b).(c' + a + b).(c + a + b')
+
+
+b.) 	PoS(Ja) = (c' + a + b).(c + a' + b).(c' + a + b')
+
+	PoS(Jb) = (c + a' + b).(c + a + b').(c' + a + b')
+ 
+	PoS(Ka) = (c' + a + b).(c + a' + b).(c' + a + b')
+
+	PoS(Kb) = (c' + a + b).(c + a' + b')
+
+
+c.) 	PoS(Ta) = (c' + a' + b).(c + a + b')
+
+	PoS(Tb) = (c' + a + b).(c + a' + b)
+
+
+03.) Montar os mapas de Veitch-Karnaugh correspondentes e simplificar suas expressões SoP:
+
+Da  -     Expressão simplificada: Da = (b.a')+(a.b')
+------------
+ab/c  0  1
+------------
+00    0  0
+01    1  0
+11    0  1
+10    1  0
+
+Sa  -     Expressão simplificada: a + b'
+------------
+ab/c  0  1
+------------
+00    1  1
+01    1  0
+11    1  1
+10    1  1
+
+Ra  -     Expressão simplificada: b . a'
+------------
+ab/c  0  1
+------------
+00    0  0
+01    1  0
+11    0  0
+10    0  1
+
+Ta  -     Expressão simplificada: Ta=b⋅c
+------------
+ab/c  0  1
+------------
+00    0  0
+01    0  1
+11    1  0
+10    0  1
+
+Sb -     Expressão simplificada: b + a'
+------------
+ab/c  0  1
+------------
+00    1  1
+01    1  1
+11    1  0
+10    1  1
+
+Rb -     Expressão simplificada: a . b'
+------------
+ab/c  0  1
+------------
+00    0  0
+01    0  1
+11    1  0
+10    0  1
+
+Jb -     Expressão simplificada:  Jb=c
+------------
+ab/c  0  1
+------------
+00    0  1
+01    0  1
+11    0  0
+10    0  1
+
+Kb -     Expressão simplificada: Kb=b⋅c '
+------------
+ab/c  0  1
+------------
+00    0  0
+01    1  0
+11    1  0
+10    1  0
+
+
+
+
